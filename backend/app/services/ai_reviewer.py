@@ -16,6 +16,7 @@ from pydantic import BaseModel
 from pydantic_ai import Agent, RunContext
 from pydantic_ai.capabilities import Thinking, WebFetch, WebSearch
 from pydantic_ai.messages import ModelMessage
+from pydantic_ai.models.anthropic import AnthropicModel, AnthropicModelSettings
 
 from agent.skilled_agent import SkilledAgent
 from app.core.config import settings
@@ -273,10 +274,13 @@ class AIReviewer(SkilledAgent):
 
     def __init__(self) -> None:
         super().__init__(
-            model=settings.ai_model,
+            model=AnthropicModel(
+                'claude-sonnet-5',
+                settings=AnthropicModelSettings(anthropic_thinking={'type': 'adaptive'}),
+            ),
             skills=[_SCREEN_CANDIDATE_SKILL],
             output_type=AIReviewOutput,
-            capabilities=[Thinking(), WebSearch(), WebFetch()],
+            capabilities=[Thinking(effort='high'), WebSearch(), WebFetch()],
         )
 
         @self.tool

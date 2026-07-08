@@ -8,7 +8,7 @@ Use this file when producing `correspondence`.
 - Preserve HireFlow style used by existing templates.
 - Ask only for missing information required to advance screening.
 
-## Template mapping (`.agent/skills/references/template/`)
+## Template mapping (`.agent/skills/screen-candidate/references/template/`)
 
 Review these files if the scenario you are dealing with is relevant to the situations below.
 

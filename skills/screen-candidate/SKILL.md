@@ -15,10 +15,17 @@ Deterministic automation may already handle obvious cases. This skill handles th
 
 ## Your output
 
-Your output must contain exactly these fields:
+Your final output must contain exactly these fields:
 - `update_type`: `recommend_advance` | `recommend_decline` | `recommend_follow_up`
-- `internal_notes`: required
+- `internal_notes`: required and must conform to `references/internal-notes-checklist.md`
 - `correspondence`: required for `recommend_follow_up`; optional otherwise
+
+Important:
+- Do not emit the final output structure early.
+- Do not emit placeholder, partial, progress-update, or empty values in the final output structure.
+- Do not return the final output structure immediately after loading this skill.
+- Return the final output structure only after you have completed the required research, applied the screening flow, and made a real recommendation decision based on the instructions in this skill.
+- If research is still in progress, continue using tools and thinking; do not produce the final structured output yet.
 
 ## Decision model
 
@@ -56,7 +63,9 @@ If the company-credibility or experience-fit decision is not obvious, review `re
 
 If you retrieved a LinkedIn profile and need to interpret it, review `references/linkedin-review.md` before deciding.
 
-Just before finalizing `internal_notes`, review `references/internal-notes-checklist.md` and conform to that structure.
+Just before finalizing `internal_notes`, review `references/internal-notes-checklist.md` and conform exactly to that structure.
+
+Do not finalize `internal_notes` until the review is complete enough to support a real recommendation.
 
 If `correspondence` is needed, review `references/correspondence-playbook.md` before drafting.
 

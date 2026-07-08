@@ -52,7 +52,7 @@ from pydantic_ai_skills import SkillsCapability
 
 # Skills are always stored under this path inside the sandbox work_dir
 _SKILLS_SUBDIR = Path(".agent") / "skills"
-_SKILL_REFERENCES_TEMPLATE_SUBDIR = _SKILLS_SUBDIR / "references" / "template"
+_SKILL_REFERENCES_TEMPLATE_SUBDIR = Path("references") / "template"
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 _TEMPLATES_SOURCE_DIR = _REPO_ROOT / "templates"
 
@@ -146,8 +146,8 @@ class SkilledAgent(Agent):
                 src = Path(src)
                 shutil.copytree(src, skills_dest / src.name, dirs_exist_ok=True)
 
-            # Make shared correspondence templates available inside the sandbox
-            # for skills to reference consistently.
+            # Make shared correspondence templates available inside each skill's
+            # references directory for skills to reference consistently.
             #
             # NOTE: We intentionally fail fast when the source templates
             # directory is missing, because the screening agent relies on these
@@ -158,9 +158,11 @@ class SkilledAgent(Agent):
                     f"Required templates directory not found: {templates_src}"
                 )
 
-            templates_dest = self._work_dir / _SKILL_REFERENCES_TEMPLATE_SUBDIR
-            templates_dest.mkdir(parents=True, exist_ok=True)
-            shutil.copytree(templates_src, templates_dest, dirs_exist_ok=True)
+            for src in skills:
+                src = Path(src)
+                templates_dest = self._work_dir / _SKILLS_SUBDIR / src.name / _SKILL_REFERENCES_TEMPLATE_SUBDIR
+                templates_dest.mkdir(parents=True, exist_ok=True)
+                shutil.copytree(templates_src, templates_dest, dirs_exist_ok=True)
 
         # ------------------------------------------------------------------
         # Build sandbox toolset

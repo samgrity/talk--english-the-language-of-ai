@@ -1,0 +1,51 @@
+{
+  "id": "c009-b8c9d0e1-f2a3-4567-bcde-678901234589",
+  "first_name": "Kwame",
+  "last_name": "Mensah",
+  "email": "kwame.mensah@andela.com",
+  "mobile": "+234-803-555-0199",
+  "bio": "Junior backend engineer passionate about developer tools and open source. Completed Andela fellowship. 1.5 years professional experience.",
+  "linkedin_url": "https://linkedin.com/in/kwamemensah-dev",
+  "current_role": "junior_engineer",
+  "seniority_level": "Junior",
+  "job_title": "Junior Backend Engineer",
+  "department": "ENGINEERING",
+  "sub_departments": ["ENG_BACKEND"],
+  "company": {
+    "id": "comp-9",
+    "name": "Andela",
+    "site_url": "https://www.andela.com",
+    "size": "1001-5000",
+    "type": "ENTERPRISE",
+    "verification_status": "verified",
+    "address_id": "addr-009",
+    "address1": "8 Eric Moore Close",
+    "country": "NG",
+    "locality": "Lagos",
+    "postal_code": "101233",
+    "region": "Lagos"
+  },
+  "assignee_id": "rev1",
+  "region": "Africa/Nigeria",
+  "screening_status": "waiting_for_recruiter",
+  "created_at": "2026-06-02T14:45:00",
+  "updated_at": "2026-06-03T08:30:00",
+  "locale": {
+    "country": "NG",
+    "preferred_language": "en-NG",
+    "region": "AFRICA",
+    "store_id": "ng"
+  },
+  "updates": [
+    {
+      "id": "update-c009-1",
+      "actor": "ai_agent",
+      "update_type": "recommend_advance",
+      "internal_notes": "[✓] Experience fit: Junior backend engineer at Andela with fellowship training — solid foundation for entry-level role.\n[✓] Company credibility: Andela is a verified enterprise with strong engineering reputation.\n[✓] Employment verification: Named company email matches verified company domain; LinkedIn confirms role.\n[✓] Email risk check: Named, non-public mailbox.\n\nRecommendation: recommend_advance\nRationale: Junior candidate from verified company with relevant training. Good fit for our early-career pipeline.",
+      "internal_notes": "[✓] Experience fit: Junior backend engineer at Andela with fellowship training — solid foundation for entry-level role.\n[✓] Company credibility: Andela is a verified enterprise with strong engineering reputation.\n[✓] Employment verification: Named company email matches verified company domain; LinkedIn confirms role.\n[✓] Email risk check: Named, non-public mailbox.\n\nRecommendation: recommend_advance\nRationale: Junior candidate from verified company with relevant training. Good fit for our early-career pipeline.",
+      "correspondence": null,
+      "recruiter_id": null,
+      "timestamp": "2026-06-03T08:30:00"
+    }
+  ]
+}

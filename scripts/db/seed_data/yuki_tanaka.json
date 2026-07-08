@@ -1,0 +1,51 @@
+{
+  "id": "c007-f6a7b8c9-d0e1-2345-fabc-456789012367",
+  "first_name": "Yuki",
+  "last_name": "Tanaka",
+  "email": "yuki.tanaka@rakuten.com",
+  "mobile": "+81-90-5555-0456",
+  "bio": "Data scientist with 5 years building recommendation systems at scale. PhD in Machine Learning from University of Tokyo. Published 12 papers.",
+  "linkedin_url": "https://linkedin.com/in/yukitanaka-ml",
+  "current_role": "senior_data_scientist",
+  "seniority_level": "Senior",
+  "job_title": "Senior Data Scientist",
+  "department": "ENGINEERING",
+  "sub_departments": ["ENG_DATA"],
+  "company": {
+    "id": "comp-7",
+    "name": "Rakuten",
+    "site_url": "https://www.rakuten.com",
+    "size": "10001+",
+    "type": "PUBLIC_COMPANY",
+    "verification_status": "verified",
+    "address_id": "addr-007",
+    "address1": "1-14-1 Tamagawa",
+    "country": "JP",
+    "locality": "Tokyo",
+    "postal_code": "158-0094",
+    "region": "Tokyo"
+  },
+  "assignee_id": "rev1",
+  "region": "Asia-Pacific/Japan",
+  "screening_status": "waiting_for_recruiter",
+  "created_at": "2026-05-20T22:30:00",
+  "updated_at": "2026-06-01T11:00:00",
+  "locale": {
+    "country": "JP",
+    "preferred_language": "ja-JP",
+    "region": "APAC",
+    "store_id": "jp"
+  },
+  "updates": [
+    {
+      "id": "update-c007-1",
+      "actor": "ai_agent",
+      "update_type": "recommend_advance",
+      "internal_notes": "[✓] Experience fit: PhD + 5 years ML at Rakuten building recommendation systems — ideal match for our ML platform role.\n[✓] Company credibility: Rakuten is a verified public company.\n[✓] Employment verification: Named company email matches verified company domain; LinkedIn confirms role and publications.\n[✓] Email risk check: Named, non-public mailbox.\n\nRecommendation: recommend_advance\nRationale: Top-tier ML candidate from verified public company. Strong academic + industry credentials. Clear advancement.",
+      "internal_notes": "[✓] Experience fit: PhD + 5 years ML at Rakuten building recommendation systems — ideal match for our ML platform role.\n[✓] Company credibility: Rakuten is a verified public company.\n[✓] Employment verification: Named company email matches verified company domain; LinkedIn confirms role and publications.\n[✓] Email risk check: Named, non-public mailbox.\n\nRecommendation: recommend_advance\nRationale: Top-tier ML candidate from verified public company. Strong academic + industry credentials. Clear advancement.",
+      "correspondence": null,
+      "recruiter_id": null,
+      "timestamp": "2026-05-22T14:30:00"
+    }
+  ]
+}

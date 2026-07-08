@@ -1,0 +1,15 @@
+Hi {{first_name}},
+
+Congratulations on your internship!
+
+To complete your registration, please provide:
+
+• Supervisor’s name, email, phone number, and title
+• Internship start and end dates
+• Expected graduation date
+• A direct, non-shared company email
+
+Membership must be used strictly for work-related projects.
+
+Thanks,
+The HireFlow Team

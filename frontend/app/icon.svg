@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>HireFlow – application review</title>
+  <!-- Square icon: solid green field, white check -->
+  <rect width="512" height="512" fill="#16A34A"/>
+  <path
+    d="M 112 268 L 224 380 L 400 144"
+    fill="none"
+    stroke="#FFFFFF"
+    stroke-width="48"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

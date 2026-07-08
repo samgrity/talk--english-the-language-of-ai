@@ -1,0 +1,10 @@
+Hi {{first_name}},
+
+Your application is being reviewed. However, we cannot grant an interview under your registered email address.
+
+We have a strict no shared or unnamed email policy. Please provide a direct, named company email (e.g., {{first_name}}@companydomain.com).
+
+We’re happy to help if you have questions!
+
+Best,
+The HireFlow Team

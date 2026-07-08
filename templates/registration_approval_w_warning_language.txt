@@ -1,0 +1,10 @@
+Hi {{first_name}},
+
+Your membership has now been approved!
+
+Please ensure you provide accurate project details when placing orders. Missing information may result in account restrictions.
+
+We are excited to have you on board.
+
+Thanks,
+The HireFlow Team

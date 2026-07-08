@@ -1,0 +1,10 @@
+Hi {{first_name}},
+
+Your application is being reviewed. We see you have registered with a public domain email address (such as gmail, yahoo, etc.).
+
+Full sampling access requires a direct, named company domain email.
+
+Are you able to provide one (e.g., {{first_name}}@companydomain.com)?
+
+Kind regards,
+The HireFlow Team

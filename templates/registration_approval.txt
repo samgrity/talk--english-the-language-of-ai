@@ -1,0 +1,8 @@
+Hi {{first_name}},
+
+Thank you for your follow-up. Your membership account has now been approved!
+
+We are excited to have you on board. If you need anything else, we’re here to help.
+
+Thanks,
+The HireFlow Team

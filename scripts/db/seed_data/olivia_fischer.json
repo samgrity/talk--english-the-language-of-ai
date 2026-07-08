@@ -1,0 +1,40 @@
+{
+  "id": "c008-a7b8c9d0-e1f2-3456-abcd-567890123478",
+  "first_name": "Olivia",
+  "last_name": "Fischer",
+  "email": "info@fischer-legal.de",
+  "mobile": "+49-170-555-0678",
+  "bio": "Legal counsel with 7 years specializing in tech IP and GDPR compliance. Previously at Freshfields.",
+  "linkedin_url": "https://linkedin.com/in/oliviafischer-legal",
+  "current_role": "senior_counsel",
+  "seniority_level": "Senior",
+  "job_title": "Senior Legal Counsel",
+  "department": "LEGAL",
+  "sub_departments": [],
+  "company": {
+    "id": "comp-8",
+    "name": "Fischer Legal Partners",
+    "site_url": "https://www.fischer-legal.de",
+    "size": "11-50",
+    "type": "OTHER",
+    "verification_status": "unverified",
+    "address_id": "addr-008",
+    "address1": "Unter den Linden 10",
+    "country": "DE",
+    "locality": "Berlin",
+    "postal_code": "10117",
+    "region": "Berlin"
+  },
+  "assignee_id": "rev2",
+  "region": "Europe/Germany",
+  "screening_status": "waiting_for_ai",
+  "created_at": "2026-06-04T09:15:00",
+  "updated_at": "2026-06-04T09:15:00",
+  "locale": {
+    "country": "DE",
+    "preferred_language": "de-DE",
+    "region": "EU",
+    "store_id": "eu"
+  },
+  "updates": []
+}

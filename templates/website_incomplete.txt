@@ -1,0 +1,10 @@
+Hi {{first_name}},
+
+Thank you for registering.
+
+We were unable to verify your company’s design services due to an incomplete or inaccessible website.
+
+Please reach out once your website is complete and we’ll be happy to review your account again.
+
+Thanks,
+The HireFlow Team

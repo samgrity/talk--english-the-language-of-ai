@@ -1,0 +1,10 @@
+Hi {{first_name}},
+
+HireFlow allows only one active account per person. It appears you already have an approved membership.
+
+Your existing account gives you access to all tools and features.
+
+Please reach out if you need help accessing it.
+
+Best regards,
+The HireFlow Team

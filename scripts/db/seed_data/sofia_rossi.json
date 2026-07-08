@@ -1,0 +1,71 @@
+{
+  "id": "c010-c9d0e1f2-a3b4-5678-cdef-789012345690",
+  "first_name": "Sofia",
+  "last_name": "Rossi",
+  "email": "sofia.rossi@yahoo.com",
+  "mobile": "+39-333-555-0321",
+  "bio": "Finance manager with 10 years experience in FP&A and fundraising. Led Series B at Italian fintech scaleup.",
+  "linkedin_url": "https://linkedin.com/in/sofiarossi-finance",
+  "current_role": "head_of_finance",
+  "seniority_level": "Senior",
+  "job_title": "Head of Finance",
+  "department": "FINANCE",
+  "sub_departments": [],
+  "company": {
+    "id": "comp-10",
+    "name": "ScalePay Italia",
+    "site_url": "https://www.scalepay.it",
+    "size": "51-200",
+    "type": "SCALEUP",
+    "verification_status": "unverified",
+    "address_id": "addr-010",
+    "address1": "Via Monte Napoleone 8",
+    "country": "IT",
+    "locality": "Milan",
+    "postal_code": "20121",
+    "region": "Lombardy"
+  },
+  "assignee_id": "rev3",
+  "region": "Europe/Italy",
+  "screening_status": "waiting_for_candidate",
+  "created_at": "2026-05-30T15:30:00",
+  "updated_at": "2026-06-05T17:45:00",
+  "locale": {
+    "country": "IT",
+    "preferred_language": "it-IT",
+    "region": "EU",
+    "store_id": "eu"
+  },
+  "updates": [
+    {
+      "id": "update-c010-1",
+      "actor": "ai_agent",
+      "update_type": "recommend_follow_up",
+      "internal_notes": "[✓] Experience fit: Head of Finance with Series B fundraising experience — relevant for our finance leadership role.\n[ ] Company credibility: ScalePay Italia website (https://www.scalepay.it) has basic presence but limited third-party coverage.\n[✗] Email risk check: Personal Yahoo email domain requires stronger verification.\n[ ] Employment verification: Cannot verify employment without company-domain email.\n\nRecommendation: recommend_follow_up\nRationale: Strong experience signals but personal email domain and limited company presence make verification necessary. Request company-domain email and additional proof of role.",
+      "internal_notes": "[✓] Experience fit: Head of Finance with Series B fundraising experience — relevant for our finance leadership role.\n[ ] Company credibility: ScalePay Italia website has basic presence but limited third-party coverage.\n[✗] Email risk check: Personal Yahoo email domain requires stronger verification.\n[ ] Employment verification: Cannot verify employment without company-domain email.\n\nRecommendation: recommend_follow_up\nRationale: Strong experience signals but personal email domain and limited company presence make verification necessary. Request company-domain email and additional proof of role.",
+      "correspondence": "Hi Sofia,\n\nThank you for your application. To continue with your screening, we need a bit more information:\n\n- A direct, named company-domain email (for example, sofia.rossi@scalepay.it)\n- A link confirming your current role at ScalePay Italia (team page or LinkedIn)\n\nWe look forward to hearing from you.\n\nBest,\nThe HireFlow Team",
+      "recruiter_id": null,
+      "timestamp": "2026-05-31T09:30:00"
+    },
+    {
+      "id": "update-c010-2",
+      "actor": "human_recruiter",
+      "update_type": "follow_up",
+      "internal_notes": "Solid finance background. Sending the AI-drafted follow-up to verify employment.",
+      "internal_notes": "Solid finance background. Sending the AI-drafted follow-up to verify employment.",
+      "correspondence": "Hi Sofia,\n\nThank you for your application. To continue with your screening, we need a bit more information:\n\n- A direct, named company-domain email (for example, sofia.rossi@scalepay.it)\n- A link confirming your current role at ScalePay Italia (team page or LinkedIn)\n\nWe look forward to hearing from you.\n\nBest,\nPete Mitchell\nHireFlow Recruiting",
+      "recruiter_id": "rev3",
+      "timestamp": "2026-06-02T11:15:00"
+    },
+    {
+      "id": "update-c010-3",
+      "actor": "candidate",
+      "update_type": "general_update",
+      "internal_notes": "",
+      "internal_notes": "",
+      "correspondence": "Hi Pete, thanks for reaching out. Here's my company email: sofia.rossi@scalepay.it — I applied with my personal email by mistake. My LinkedIn profile (linkedin.com/in/sofiarossi-finance) lists my current role at ScalePay. We're listed on Crunchbase here: crunchbase.com/organization/scalepay-italia. Let me know if you need anything else. —Sofia",
+      "recruiter_id": null,
+      "timestamp": "2026-06-05T17:45:00"
+    }
+  ]
+}

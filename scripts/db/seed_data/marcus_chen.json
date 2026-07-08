@@ -1,0 +1,51 @@
+{
+  "id": "c002-a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "first_name": "Marcus",
+  "last_name": "Chen",
+  "email": "marcus@growstack.io",
+  "mobile": "+1-415-555-0187",
+  "bio": "Product leader with 6 years shipping B2B SaaS. Previously at Stripe and a YC-backed fintech. Passionate about developer tools.",
+  "linkedin_url": "https://linkedin.com/in/marcuschen-pm",
+  "current_role": "group_product_manager",
+  "seniority_level": "Senior",
+  "job_title": "Group Product Manager",
+  "department": "PRODUCT",
+  "sub_departments": ["PROD_WEB", "PROD_GROWTH"],
+  "company": {
+    "id": "comp-2",
+    "name": "GrowStack",
+    "site_url": "https://www.growstack.io",
+    "size": "51-200",
+    "type": "SCALEUP",
+    "verification_status": "verified",
+    "address_id": "addr-002",
+    "address1": "350 Rhode Island St",
+    "country": "US",
+    "locality": "San Francisco",
+    "postal_code": "94103",
+    "region": "CA"
+  },
+  "assignee_id": "rev2",
+  "region": "North America/United States",
+  "screening_status": "waiting_for_recruiter",
+  "created_at": "2026-05-28T08:30:00",
+  "updated_at": "2026-06-03T14:20:00",
+  "locale": {
+    "country": "US",
+    "preferred_language": "en-US",
+    "region": "NA",
+    "store_id": "us"
+  },
+  "updates": [
+    {
+      "id": "update-c002-1",
+      "actor": "ai_agent",
+      "update_type": "recommend_advance",
+      "internal_notes": "[✓] Experience fit: Strong product leadership at Stripe (https://www.linkedin.com/in/marcuschen-pm shows GPM role) and YC startup matches our B2B SaaS needs.\n[✓] Company credibility: GrowStack is verified with active product at https://www.growstack.io/products\n[✓] Employment verification: Named domain email matches company site; LinkedIn profile confirms current role\n[✓] Email risk check: Named, non-public mailbox\n\nRecommendation: recommend_advance\nRationale: Candidate has strong product pedigree and verified employment at a verified company. Clear advancement case.",
+      "internal_notes": "[✓] Experience fit: Strong product leadership at Stripe and YC startup matches our B2B SaaS needs.\n[✓] Company credibility: GrowStack is verified with active product.\n[✓] Employment verification: Named domain email matches company site; LinkedIn profile confirms current role.\n[✓] Email risk check: Named, non-public mailbox.\n\nRecommendation: recommend_advance\nRationale: Candidate has strong product pedigree and verified employment at a verified company. Clear advancement case.",
+      "correspondence": "Hi Marcus,\n\nThank you for applying. Our AI review has flagged your application as a strong match. A recruiter will reach out shortly.\n\nBest,\nThe HireFlow Team",
+      "recruiter_id": null,
+      "timestamp": "2026-06-01T10:15:00"
+    }
+  ]
+}

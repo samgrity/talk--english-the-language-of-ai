@@ -1,0 +1,7 @@
+Hi {{first_name}},
+
+Thank you for reaching out regarding your application.
+
+After careful consideration, we are unable to grant an interview at this time. This access level is extended to professionals with experience in architecture, interior design, and construction.
+
+If you feel we have made an error, please feel free to provide additional credentials or project information for reconsideration.

@@ -1,0 +1,10 @@
+Hi {{first_name}},
+
+Thank you for providing additional information. Your account has been approved for Benjamin Moore sampling with free overnight delivery.
+
+Please check your email to activate your account.
+
+We’re excited to have you onboard!
+
+Thanks,
+The HireFlow Team

@@ -2,12 +2,11 @@ import { Application, ApplicationSummary, StatusUpdateRequest, NewUpdateRequest,
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:8000";
 
-export async function getApplications(filter?: string, search?: string, assigneeId?: string): Promise<ApplicationSummary[]> {
+export async function getApplications(filter?: string, search?: string): Promise<ApplicationSummary[]> {
   const params = new URLSearchParams();
   if (filter) params.append('filter', filter);
   if (search && search.trim()) params.append('search', search.trim());
-  if (assigneeId && assigneeId !== 'all') params.append('assignee_id', assigneeId);
-  
+
   const url = `${BACKEND_URL}/api/applications${params.toString() ? '?' + params.toString() : ''}`;
   const response = await fetch(url);
   if (!response.ok) {

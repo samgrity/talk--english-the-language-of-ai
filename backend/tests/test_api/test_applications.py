@@ -109,9 +109,9 @@ def test_filters_status_assignee_and_search(client):
     by_assignee = client.get("/api/applications?filter=all&assignee_id=rev1")
     assert by_assignee.status_code == 200
 
-    by_search = client.get("/api/applications?search=jane")
+    by_search = client.get("/api/applications?search=john")
     assert by_search.status_code == 200
-    assert any("jane" in f"{app['firstName']} {app['lastName']}".lower() for app in by_search.json())
+    assert any("john" in f"{app['firstName']} {app['lastName']}".lower() for app in by_search.json())
 
     specific_status = client.get("/api/applications?filter=waiting_for_ai")
     assert specific_status.status_code == 200

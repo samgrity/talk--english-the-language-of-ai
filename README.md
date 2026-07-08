@@ -14,15 +14,13 @@ In the future if the AI agent tends to make good decisions then their recommenda
 
 ## Walk Through
 
-A recruiter starts by selecting their identity from the login screen – a lightweight placeholder until real authentication is in place.
+The app opens directly to the candidate pipeline. The pipeline can be filtered by screening status or a free-text search across any field, making it easy to triage across all candidates or focus on a specific slice of work.
 
-From there they land in the candidate pipeline, which shows every pending application assigned to them by default. The pipeline can be filtered by screening status, assignee, or a free-text search across any field, making it easy to triage across all candidates or focus on a specific slice of work.
+Opening a candidate brings up a two-pane workspace. The left side shows editable candidate and company details – the reviewer can correct or enrich any field and save changes at any time. The right side shows the full activity timeline: a chronological view of AI recommendations, reviewer decisions, and candidate correspondence all in one place. At the bottom of the right pane, the reviewer can submit a new update – choosing an action such as advancing, declining, requesting more information, or triggering a fresh AI screening.
 
-Opening a candidate brings up a two-pane workspace. The left side shows editable candidate and company details – the recruiter can correct or enrich any field and save changes at any time. The right side shows the full activity timeline: a chronological view of AI recommendations, recruiter decisions, and candidate correspondence all in one place. At the bottom of the right pane, the recruiter can submit a new update – choosing an action such as advancing, declining, requesting more information, or triggering a fresh AI screening.
+When the AI has run, its recommendation appears as an entry in the activity timeline with internal notes and a draft candidate-facing message. If the reviewer agrees, they can copy that recommendation directly into the submission form rather than writing from scratch.
 
-When the AI has run, its recommendation appears as an entry in the activity timeline with internal notes and a draft candidate-facing message. If the recruiter agrees, they can copy that recommendation directly into the submission form rather than writing from scratch.
-
-The AI can be triggered automatically when a new application arrives or when a candidate replies, keeping the pipeline moving without requiring manual intervention. Recruiter decisions are recorded as part of the same activity timeline, so the full story of each candidate – what the AI found, what the candidate said, and what the recruiter decided – is always visible in one place.
+The AI can be triggered automatically when a new application arrives or when a candidate replies, keeping the pipeline moving without requiring manual intervention. Reviewer decisions are recorded as part of the same activity timeline, so the full story of each candidate – what the AI found, what the candidate said, and what the reviewer decided – is always visible in one place.
 
 ## High-Level Structure
 

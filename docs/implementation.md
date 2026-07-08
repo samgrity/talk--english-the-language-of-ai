@@ -7,7 +7,7 @@ This document explains how the prototype is structured today so new contributors
 ### Pipeline Page
 
 **Loading the list:**
-- `frontend/app/queue/page.tsx`: `QueuePage` component checks for active recruiter, calls `loadApplications()` and `loadRecruiters()`
+- `frontend/app/queue/page.tsx`: `QueuePage` component loads applications directly and keeps filter/search state in the URL
 - `frontend/lib/api.ts`: `getApplications()` → `GET /api/applications` with filter params
 - `backend/app/api/routes/applications.py`: `get_applications` endpoint
 - `backend/app/services/application_service.py`: `ApplicationService.list_applications` calls repository and orders results
@@ -16,7 +16,7 @@ This document explains how the prototype is structured today so new contributors
 - `frontend/components/CandidateTable.tsx`: renders the table rows
 
 **Filtering:**
-- `frontend/app/queue/page.tsx`: filter inputs (status, assignee, search) update local state
+- `frontend/app/queue/page.tsx`: filter inputs (status, search) update local state
 - Filter changes update URL via `router.replace` and trigger `loadApplications()` with new params
 - Search input is debounced (1 second); selects fire immediately
 - Same `GET /api/applications` endpoint with different query params
@@ -50,7 +50,7 @@ This document explains how the prototype is structured today so new contributors
 
 **Submitting a recruiter update:**
 - `frontend/components/DecisionForm.tsx`: validates form, passes `NewUpdateRequest` up to hook
-- `frontend/hooks/useScreenCandidate.ts`: `submitUpdate()` injects recruiter ID
+- `frontend/hooks/useScreenCandidate.ts`: `submitUpdate()` injects the app's default reviewer ID
 - `frontend/lib/api.ts`: `addUpdate(id, request)` → `POST /api/applications/{id}/updates`
 - `backend/app/api/routes/applications.py`: `add_update_to_application` endpoint
 - `backend/app/services/application_service.py`: `ApplicationService.add_update` → `_add_recruiter_update`
@@ -80,8 +80,8 @@ The frontend is a Next.js app in `frontend/` with route-level pages and reusable
 
 ### Pages
 
-- `frontend/app/page.tsx`: client redirect to login.
-- `frontend/app/login/page.tsx`: temporary recruiter selection flow (no real auth yet).
+- `frontend/app/page.tsx`: client redirect to queue.
+- `frontend/app/login/page.tsx`: compatibility route that redirects to the queue.
 - `frontend/app/queue/page.tsx`: main pipeline listing with search/filter controls.
 - `frontend/app/review/[id]/page.tsx`: two-pane screening workspace for a single candidate.
 
@@ -90,11 +90,10 @@ The frontend is a Next.js app in `frontend/` with route-level pages and reusable
 - `frontend/components/CandidateTable.tsx`: pipeline table and click-through to screening pages.
 - `frontend/components/screening/CandidateDetailsPane.tsx`: editable candidate and company fields.
 - `frontend/components/screening/UpdateHistoryPane.tsx`: activity timeline plus submission form area.
-- `frontend/components/DecisionForm.tsx`: recruiter action form and AI action button.
-- `frontend/components/screening/RecruiterSelector.tsx`: assignee selection in the screening header.
+- `frontend/components/DecisionForm.tsx`: reviewer action form and AI action button.
 - `frontend/hooks/useScreenCandidate.ts`: screening-page state orchestration.
 - `frontend/lib/api.ts`: frontend API client for backend routes/hooks.
-- `frontend/lib/activeRecruiter.ts`: active recruiter persistence.
+- `frontend/lib/defaultReviewer.ts`: single-reviewer defaults used by the app.
 
 ## Agent Implementation
 

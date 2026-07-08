@@ -63,7 +63,6 @@ describe('CandidateTable', () => {
     expect(screen.getByText('Status')).toBeInTheDocument();
     expect(screen.getByText('Applied')).toBeInTheDocument();
     expect(screen.getByText('Updated')).toBeInTheDocument();
-    expect(screen.getByText('Assignee')).toBeInTheDocument();
   });
 
   it('should render application data in table rows', () => {

@@ -101,7 +101,7 @@ class StatusUpdateRequest(BaseModel):
 class NewUpdateRequest(BaseModel):
     update_type: UpdateType
     internal_notes: str
-    recruiter_id: str
+    recruiter_id: str | None = None
     correspondence: str | None = None
 
 

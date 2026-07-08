@@ -11,10 +11,9 @@ Walk through the docs folder and README briefly.
 
 ## 2. UI walkthrough
 
-- **Login** – recruiter selection placeholder
 - **Pipeline**
-  - default view (pending, assigned to recruiter)
-  - filter by status, assignee, free-text search
+  - default view (pending candidates)
+  - filter by status and free-text search
   - status priority ordering (waiting for recruiter → AI → candidate → completed)
 - **Screening workspace**
   - left pane: editable candidate and company fields, save changes
@@ -32,7 +31,7 @@ Walk through the docs folder and README briefly.
 - Show the internal notes and draft correspondence the AI produces
 
 ### Re-screen with additional context
-- Simulate a case where the human recruiter has gathered extra info
+- Simulate a case where the human reviewer has gathered extra info
 - Add that context as a human update in the timeline
 - Trigger AI screening again and show how the recommendation changes with the richer context
 
@@ -42,7 +41,7 @@ Good way to kick the tires before wiring anything.
 
 ```bash
 cd backend
-uv run ../scripts/review_from_seed_data.py ../scripts/db/seed_data/jane_doe.json
+uv run ../scripts/review_from_seed_data.py ../scripts/db/seed_data/john_berryman.json
 ```
 
 - Runs the full AI screening agent against seed JSON, no DB or hooks needed

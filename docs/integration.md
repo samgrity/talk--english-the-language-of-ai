@@ -10,7 +10,7 @@ Before wiring any production systems, you can run the AI screening agent end-to-
 
 ```bash
 cd backend
-uv run ../scripts/review_from_seed_data.py ../scripts/db/seed_data/jane_doe.json
+uv run ../scripts/review_from_seed_data.py ../scripts/db/seed_data/john_berryman.json
 ```
 
 **Inspect traces:**

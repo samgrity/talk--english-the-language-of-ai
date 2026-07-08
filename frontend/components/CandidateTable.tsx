@@ -46,9 +46,6 @@ export default function CandidateTable({ applications }: Props) {
             <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-24">
               Updated
             </th>
-            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-32">
-              Assignee
-            </th>
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
@@ -116,11 +113,6 @@ function CandidateTableRow({ application, onRowClick }: RowProps) {
       </td>
       <td className="px-4 py-4 whitespace-nowrap">
         <div className="text-sm text-gray-500">{updatedDate}</div>
-      </td>
-      <td className="px-4 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">
-          {application.assignee_name || <span className="text-gray-400 italic">Unassigned</span>}
-        </div>
       </td>
     </tr>
   );

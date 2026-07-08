@@ -1,31 +1,14 @@
 "use client";
 
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useParams, useRouter } from 'next/navigation';
-import ActiveRecruiterBadge from '@/components/ActiveRecruiterBadge';
+import { useParams } from 'next/navigation';
 import CandidateDetailsPane from '@/components/screening/CandidateDetailsPane';
 import UpdateHistoryPane from '@/components/screening/UpdateHistoryPane';
-import RecruiterSelector from '@/components/screening/RecruiterSelector';
-import { ActiveRecruiter, getActiveRecruiter } from '@/lib/activeRecruiter';
 import { useScreenCandidate } from '@/hooks/useScreenCandidate';
 
 export default function ScreenPage() {
   const params = useParams();
-  const router = useRouter();
   const id = typeof params.id === 'string' ? params.id : null;
-  const [activeRecruiter, setActiveRecruiter] = useState<ActiveRecruiter | null>(null);
-  const [authChecked, setAuthChecked] = useState(false);
-
-  useEffect(() => {
-    const reviewer = getActiveRecruiter();
-    if (!reviewer) {
-      router.replace('/login');
-      return;
-    }
-    setActiveRecruiter(reviewer);
-    setAuthChecked(true);
-  }, [router]);
 
   const {
     application,
@@ -41,12 +24,11 @@ export default function ScreenPage() {
     updateCompanyField,
     addSubDepartment,
     removeSubDepartment,
-    updateAssignee,
     saveApplication,
     submitUpdate,
-  } = useScreenCandidate(id, activeRecruiter?.id ?? null);
+  } = useScreenCandidate(id);
 
-  if (!authChecked || loading) {
+  if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 p-2">
         <div className="w-full">
@@ -105,15 +87,6 @@ export default function ScreenPage() {
               <span className="text-gray-900 truncate">
                 {application.firstName} {application.lastName}
               </span>
-            </div>
-            <div className="flex items-center gap-3">
-              {activeRecruiter && <ActiveRecruiterBadge recruiter={activeRecruiter} />}
-              <RecruiterSelector
-                currentAssigneeId={editedApplication.assignee_id}
-                onAssigneeChange={updateAssignee}
-                hasChanges={hasChanges}
-                onSave={saveApplication}
-              />
             </div>
           </div>
         </nav>

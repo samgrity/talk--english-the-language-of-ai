@@ -9,6 +9,8 @@ from app.schemas.application import (
     NewUpdateRequest,
     StatusUpdateRequest,
 )
+
+DEFAULT_RECRUITER_ID = "rev1"
 from app.services.application_service import ApplicationService
 
 router = APIRouter(prefix="/api/applications", tags=["applications"])
@@ -62,5 +64,5 @@ async def add_update(
         update_type=request.update_type,
         internal_notes=request.internal_notes,
         correspondence=request.correspondence,
-        recruiter_id=request.recruiter_id,
+        recruiter_id=request.recruiter_id or DEFAULT_RECRUITER_ID,
     )

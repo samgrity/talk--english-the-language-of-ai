@@ -2,59 +2,34 @@
 
 import { useState, useEffect, useCallback, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import ActiveRecruiterBadge from '@/components/ActiveRecruiterBadge';
-import { ActiveRecruiter, getActiveRecruiter } from '@/lib/activeRecruiter';
-import { ApplicationSummary, FilterStatus, Recruiter } from '@/types/api';
-import { getApplications, getRecruiters } from '@/lib/api';
+import { ApplicationSummary, FilterStatus } from '@/types/api';
+import { getApplications } from '@/lib/api';
 import CandidateTable from '@/components/CandidateTable';
 
 function QueuePageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  
+
   const [applications, setApplications] = useState<ApplicationSummary[]>([]);
-  const [recruiters, setRecruiters] = useState<Recruiter[]>([]);
-  const [activeRecruiter, setActiveRecruiter] = useState<ActiveRecruiter | null>(null);
-  const [authChecked, setAuthChecked] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isFiltering, setIsFiltering] = useState(false);
-  
+
   const [searchText, setSearchText] = useState<string>(searchParams.get('search') || '');
   const [statusFilter, setStatusFilter] = useState<string>(
     searchParams.get('filter') || FilterStatus.PENDING
   );
-  const [assigneeFilter, setAssigneeFilter] = useState<string>(
-    searchParams.get('assignee_id') || ''
-  );
 
-  const updateURL = useCallback((filter: string, search: string, assigneeId: string) => {
+  const updateURL = useCallback((filter: string, search: string) => {
     const params = new URLSearchParams();
     params.set('filter', filter || FilterStatus.PENDING);
     params.set('search', search);
-    params.set('assignee_id', assigneeId || 'all');
-    
+
     const newURL = params.toString() ? `?${params.toString()}` : '/queue';
     router.replace(newURL, { scroll: false });
   }, [router]);
 
-  useEffect(() => {
-    const reviewer = getActiveRecruiter();
-    if (!reviewer) {
-      router.replace('/login');
-      return;
-    }
-
-    const initialAssigneeFilter = searchParams.get('assignee_id') || reviewer.id;
-    setAssigneeFilter(initialAssigneeFilter);
-    updateURL(statusFilter, searchText, initialAssigneeFilter);
-
-    setActiveRecruiter(reviewer);
-    setAuthChecked(true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router, updateURL]);
-
-  const loadApplications = useCallback(async (filter?: string, search?: string, assigneeId?: string) => {
+  const loadApplications = useCallback(async (filter?: string, search?: string) => {
     try {
       if (loading) {
         setLoading(true);
@@ -62,12 +37,7 @@ function QueuePageContent() {
         setIsFiltering(true);
       }
       setError(null);
-      const resolvedAssignee = assigneeId ?? assigneeFilter;
-      const data = await getApplications(
-        filter || statusFilter,
-        search || searchText,
-        resolvedAssignee === 'all' ? undefined : resolvedAssignee
-      );
+      const data = await getApplications(filter || statusFilter, search || searchText);
       setApplications(data);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load applications');
@@ -75,55 +45,34 @@ function QueuePageContent() {
       setLoading(false);
       setIsFiltering(false);
     }
-  }, [assigneeFilter, loading, statusFilter, searchText]);
+  }, [loading, statusFilter, searchText]);
 
-  const loadRecruiters = useCallback(async () => {
-    try {
-      const data = await getRecruiters();
-      setRecruiters(data);
-    } catch {
-      setRecruiters([]);
-    }
+  useEffect(() => {
+    loadApplications();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    if (!authChecked) {
-      return;
-    }
-    loadRecruiters();
-    loadApplications();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [authChecked]);
-
-  useEffect(() => {
-    if (authChecked && !loading) {
-      updateURL(statusFilter, searchText, assigneeFilter);
-      loadApplications(statusFilter, searchText, assigneeFilter);
+    if (!loading) {
+      updateURL(statusFilter, searchText);
+      loadApplications(statusFilter, searchText);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [statusFilter]);
 
   useEffect(() => {
-    if (authChecked && !loading) {
+    if (!loading) {
       const timer = setTimeout(() => {
-        updateURL(statusFilter, searchText, assigneeFilter);
-        loadApplications(statusFilter, searchText, assigneeFilter);
+        updateURL(statusFilter, searchText);
+        loadApplications(statusFilter, searchText);
       }, 1000);
 
       return () => clearTimeout(timer);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchText]);
 
-  useEffect(() => {
-    if (authChecked && !loading) {
-      updateURL(statusFilter, searchText, assigneeFilter);
-      loadApplications(statusFilter, searchText, assigneeFilter);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [assigneeFilter]);
-
-  if (!authChecked || loading) {
+  if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 p-6">
         <div className="max-w-7xl mx-auto">
@@ -177,7 +126,6 @@ function QueuePageContent() {
         <div className="mb-8">
           <div className="flex items-center justify-between gap-4 mb-4">
             <h1 className="text-3xl font-bold text-gray-900">Candidate Pipeline</h1>
-            {activeRecruiter && <ActiveRecruiterBadge recruiter={activeRecruiter} />}
           </div>
         </div>
 
@@ -228,25 +176,6 @@ function QueuePageContent() {
                   <option value={FilterStatus.DECLINED}>Declined</option>
                   <option value={FilterStatus.WITHDRAWN}>Withdrawn</option>
                 </optgroup>
-              </select>
-            </div>
-
-            <div className="sm:w-64">
-              <label htmlFor="assignee-filter" className="block text-sm font-medium text-gray-700 mb-1">
-                Assignee
-              </label>
-              <select
-                id="assignee-filter"
-                value={assigneeFilter}
-                onChange={(e) => setAssigneeFilter(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              >
-                <option value="all">All assignees</option>
-                {recruiters.map((recruiter) => (
-                  <option key={recruiter.id} value={recruiter.id}>
-                    {recruiter.name}
-                  </option>
-                ))}
               </select>
             </div>
           </div>

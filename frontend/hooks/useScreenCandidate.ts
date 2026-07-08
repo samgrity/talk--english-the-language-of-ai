@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { addUpdate, getApplication, updateApplication } from '@/lib/api';
+import { DEFAULT_REVIEWER_ID } from '@/lib/defaultReviewer';
 import { Application, ApplicationUpdateRequest, NewUpdateRequest, SubDepartment } from '@/types/api';
 
 type EditableApplicationField =
@@ -33,7 +34,6 @@ function toUpdateRequest(
   if (JSON.stringify(edited.subDepartments) !== JSON.stringify(original.subDepartments)) {
     request.subDepartments = edited.subDepartments;
   }
-  if (edited.assignee_id !== original.assignee_id) request.assignee_id = edited.assignee_id;
 
   if (edited.company.name !== original.company.name) {
     request.companyName = edited.company.name;
@@ -54,7 +54,7 @@ function toUpdateRequest(
   return request;
 }
 
-export function useScreenCandidate(applicationId: string | null, activeRecruiterId: string | null) {
+export function useScreenCandidate(applicationId: string | null) {
   const [application, setApplication] = useState<Application | null>(null);
   const [editedApplication, setEditedApplication] = useState<Application | null>(null);
   const [loading, setLoading] = useState(true);
@@ -168,18 +168,6 @@ export function useScreenCandidate(applicationId: string | null, activeRecruiter
     [editedApplication, markDirty]
   );
 
-  const updateAssignee = useCallback(
-    (assignee_id: string | undefined) => {
-      if (!editedApplication) return;
-      const next: Application = {
-        ...editedApplication,
-        assignee_id,
-      };
-      markDirty(next);
-    },
-    [editedApplication, markDirty]
-  );
-
   const saveApplication = useCallback(async () => {
     if (!applicationId || !application || !editedApplication || !hasChanges) return;
     const request = toUpdateRequest(application, editedApplication);
@@ -190,21 +178,18 @@ export function useScreenCandidate(applicationId: string | null, activeRecruiter
   const submitUpdate = useCallback(
     async (updateData: NewUpdateRequest) => {
       if (!applicationId) return;
-      if (!activeRecruiterId) {
-        throw new Error('No active recruiter selected. Please log in again.');
-      }
       try {
         setSubmittingUpdate(true);
         await addUpdate(applicationId, {
           ...updateData,
-          recruiter_id: activeRecruiterId,
+          recruiter_id: DEFAULT_REVIEWER_ID,
         });
         await loadApplication();
       } finally {
         setSubmittingUpdate(false);
       }
     },
-    [activeRecruiterId, applicationId, loadApplication]
+    [applicationId, loadApplication]
   );
 
   return {
@@ -221,7 +206,6 @@ export function useScreenCandidate(applicationId: string | null, activeRecruiter
     updateCompanyField,
     addSubDepartment,
     removeSubDepartment,
-    updateAssignee,
     saveApplication,
     submitUpdate,
   };

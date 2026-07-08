@@ -62,8 +62,7 @@ This document explains how the prototype is structured today so new contributors
 **Triggering AI screening:**
 - Submit with `update_type = "request_ai_screen"` follows same path as recruiter update
 - `backend/app/services/application_service.py`: `_add_recruiter_update` sets status to `waiting_for_ai`, commits, then calls `ai_reviewer.review(app.id)` synchronously
-- `AIReviewer.review()` first calls `_try_algorithmic_handling(...)` in `backend/app/services/ai_reviewer.py`; this runs deterministic rules and posts an update directly if a rule fires, short-circuiting the LLM call
-- If no algorithmic rule matches, falls through to full LLM-based screening
+- `AIReviewer.review()` builds the screening prompt and runs the full LLM-based screening flow defined by the `screen-candidate` skill
 - AI reviewer calls back to `ApplicationService.add_update` with actor `AI_AGENT` → routes to `_add_ai_update`
 - Sets status to `waiting_for_recruiter`, appends AI recommendation to updates
 - Hook refresh shows AI recommendation in timeline
@@ -124,7 +123,7 @@ The backend is a FastAPI app in `backend/app/` organized by route, service, and 
 ### Service Layer
 
 - `backend/app/services/application_service.py` is the main orchestrator.
-- `backend/app/services/ai_reviewer.py` handles AI screening with deterministic rules + LLM fallback.
+- `backend/app/services/ai_reviewer.py` handles AI screening via the `screen-candidate` skill and LLM tool use.
 - `backend/app/services/linked_in_retriever.py` handles LinkedIn profile lookups.
 
 ### Repository Layer

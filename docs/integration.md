@@ -55,16 +55,6 @@ The key constraint is: **preserve the repository protocol interfaces**. These ar
 - `backend/app/db/session.py` – database connection
 - `backend/app/api/dependencies.py` – wires repository instances
 
-## Algorithmic Screening Rules
-
-Before every LLM-based screening, `_try_algorithmic_handling(...)` runs deterministic rules:
-
-- Company already flagged → `recommend_decline`
-- Junior candidate without `.edu` email → `recommend_decline`
-- Shared mailbox local part (`info@`, `admin@`, etc.) → `recommend_follow_up`
-- Personal mailbox domain (`gmail.com`, `yahoo.com`, etc.) → `recommend_follow_up`
-- Company already verified and candidate email domain matches company site domain → `recommend_advance`
-
 ## Enum Alignment Required
 
 Verify and align `Department`, `SubDepartment`, and `CompanyType` in both `backend/app/core/enums.py` and `frontend/types/api.ts`.

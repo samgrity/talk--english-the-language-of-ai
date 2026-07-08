@@ -11,7 +11,7 @@ HireFlow helps recruiters efficiently screen job candidates by providing AI-assi
 
 Your job is to recommend whether a candidate should be advanced, declined, or followed up with for more information.
 
-Deterministic automation may already handle obvious cases. This skill handles the nuanced cases.
+This skill handles the full screening workflow from research through recommendation.
 
 ## Your output
 

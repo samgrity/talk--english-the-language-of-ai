@@ -5,95 +5,21 @@ Public surface:
   - AIReviewer               – SkilledAgent subclass that screens candidates
 """
 
-import os
 from calendar import month_abbr
 from pathlib import Path
 from typing import Any
-from urllib.parse import urlparse
 
-import httpx
 from pydantic import BaseModel, Field, field_validator
-from pydantic_ai import Agent, RunContext
+from pydantic_ai import RunContext
 from pydantic_ai.capabilities import Thinking, WebFetch, WebSearch
-from pydantic_ai.messages import ModelMessage
 from pydantic_ai.models.anthropic import AnthropicModel, AnthropicModelSettings
 
 from agent.skilled_agent import SkilledAgent
-from app.core.config import settings
 from app.core.enums import UpdateType
 from app.services.linked_in_retriever import get_linkedin_profile as retrieve_linkedin_profile
 
 _SKILLS_DIR = Path(__file__).resolve().parents[3] / "skills"
 _SCREEN_CANDIDATE_SKILL = _SKILLS_DIR / "screen-candidate"
-_TEMPLATES_DIR = Path(__file__).resolve().parents[3] / "templates"
-
-_LINKDAPI_BASE = "https://linkdapi.com/api/v1/profile/full"
-
-_SHARED_EMAIL_LOCAL_PARTS = {
-    "admin",
-    "contact",
-    "designer",
-    "hello",
-    "info",
-    "intern",
-    "office",
-    "sales",
-    "support",
-    "team",
-}
-
-_PUBLIC_EMAIL_DOMAINS = {
-    "gmail.com",
-    "googlemail.com",
-    "yahoo.com",
-    "ymail.com",
-    "hotmail.com",
-    "outlook.com",
-    "live.com",
-    "msn.com",
-    "aol.com",
-    "icloud.com",
-    "me.com",
-    "mac.com",
-}
-
-
-def _load_template(template_name: str) -> str:
-    """Load a plaintext correspondence template from the root templates directory."""
-    template_path = _TEMPLATES_DIR / template_name
-    return template_path.read_text(encoding="utf-8")
-
-
-def _fill_template(template_name: str, *, first_name: str) -> str:
-    """Fill template placeholders (currently only {{first_name}})."""
-    template = _load_template(template_name)
-    return template.replace("{{first_name}}", first_name or "there")
-
-
-def _email_local_part(email: str) -> str:
-    if "@" not in email:
-        return ""
-    return email.split("@", 1)[0].strip().lower()
-
-
-def _email_domain(email: str) -> str:
-    if "@" not in email:
-        return ""
-    return email.split("@", 1)[1].strip().lower()
-
-
-def _domain_from_url(url: str) -> str:
-    """Extract a normalized domain from a URL.
-
-    Examples:
-      - https://www.example.com/about -> example.com
-      - example.com -> example.com
-    """
-    if not url:
-        return ""
-    parsed = urlparse(url if "://" in url else f"https://{url}")
-    host = (parsed.netloc or parsed.path).strip().lower()
-    return host[4:] if host.startswith("www.") else host
 
 
 def _format_prior_updates_for_prompt(application: Any, max_items: int = 25) -> str:
@@ -134,124 +60,6 @@ def _format_prior_updates_for_prompt(application: Any, max_items: int = 25) -> s
         docs.append(doc)
 
     return "\n\n".join(docs)
-
-
-async def _try_algorithmic_handling(application_id: str, application: Any, service: Any) -> bool:
-    """Try deterministic handling before full agentic/manual screening.
-
-    Returns:
-      - True: this function already called ``service.add_update(...)`` and the
-        caller should return early.
-      - False: nothing deterministic matched; continue into manual/agentic screening.
-
-
-    IMPORTANT CONSTRAINTS (intentional for current phase):
-
-    Uses only data already present on ``application`` and ``application.company``.
-    If we need richer automation, we should extend the data model later.
-
-
-    Automatic rules implemented now:
-      1) Company already flagged -> recommend_decline.
-      2) Junior candidate without .edu email -> recommend_decline.
-      3) Shared mailbox email (info@, admin@, etc.) -> recommend_follow_up.
-      4) Public mailbox domain (gmail/yahoo/etc.) -> recommend_follow_up.
-      5) Company verified + email domain matches company site domain
-         -> recommend_advance.
-
-    Future work (requires richer model data, intentionally deferred):
-      - Domain trust / prior-advanced-count checks for true auto-advance.
-      - Strong company-level auto-decline propagation policy with explicit flags.
-      - More precise junior candidate flow messaging templates.
-      - Explicit fields for "sole proprietor" and "email seen on company site" to
-        avoid conservative follow-up outcomes for shared/public emails.
-      - Additional deterministic paths (brand reps, duplicates, known bad actors).
-    """
-    from app.core.enums import CompanyVerificationStatus, UpdateActor
-
-    first_name = application.firstName
-    email = (application.email or "").strip()
-    local_part = _email_local_part(email)
-    domain = _email_domain(email)
-    seniority = (application.seniorityLevel or "").strip().lower()
-    company = application.company
-    company_domain = _domain_from_url(company.siteUrl or "")
-
-    if company.verificationStatus == CompanyVerificationStatus.FLAGGED:
-        await service.add_update(
-            application_id=application_id,
-            actor=UpdateActor.AI_AGENT,
-            update_type=UpdateType.RECOMMEND_DECLINE,
-            internal_notes=(
-                "Algorithmic handling: company is already flagged. "
-                "Recommend declining this application to align with current "
-                "company-level decision."
-            ),
-            correspondence=_fill_template("upgrade_reject_hard_no.txt", first_name=first_name),
-            recruiter_id=None,
-        )
-        return True
-
-    if "junior" in seniority and not domain.endswith(".edu"):
-        await service.add_update(
-            application_id=application_id,
-            actor=UpdateActor.AI_AGENT,
-            update_type=UpdateType.RECOMMEND_DECLINE,
-            internal_notes=(
-                "Algorithmic handling: candidate is marked as junior but "
-                "email domain is not .edu. Recommend declining under current "
-                "deterministic junior candidate rule."
-            ),
-            correspondence=_fill_template("upgrade_reject_hard_no.txt", first_name=first_name),
-            recruiter_id=None,
-        )
-        return True
-
-    if local_part in _SHARED_EMAIL_LOCAL_PARTS:
-        await service.add_update(
-            application_id=application_id,
-            actor=UpdateActor.AI_AGENT,
-            update_type=UpdateType.RECOMMEND_FOLLOW_UP,
-            internal_notes=(
-                "Algorithmic handling: shared/role mailbox detected from email local "
-                f"part '{local_part}'. Recommend requesting a direct, named email "
-                "before proceeding."
-            ),
-            correspondence=_fill_template("tier_3_tier_7_info_shared.txt", first_name=first_name),
-            recruiter_id=None,
-        )
-        return True
-
-    if domain in _PUBLIC_EMAIL_DOMAINS:
-        await service.add_update(
-            application_id=application_id,
-            actor=UpdateActor.AI_AGENT,
-            update_type=UpdateType.RECOMMEND_FOLLOW_UP,
-            internal_notes=(
-                "Algorithmic handling: personal email domain detected. Recommend asking "
-                "for named company-domain email (or additional verification) before "
-                "proceeding."
-            ),
-            correspondence=_fill_template("tier_3_tier_7_info_generic.txt", first_name=first_name),
-            recruiter_id=None,
-        )
-        return True
-
-    if company.verificationStatus == CompanyVerificationStatus.VERIFIED and company_domain and domain == company_domain:
-        await service.add_update(
-            application_id=application_id,
-            actor=UpdateActor.AI_AGENT,
-            update_type=UpdateType.RECOMMEND_ADVANCE,
-            internal_notes=(
-                "Algorithmic handling: company is already verified and candidate "
-                "email domain matches company site domain. Recommend advancing."
-            ),
-            correspondence=_fill_template("registration_approval.txt", first_name=first_name),
-            recruiter_id=None,
-        )
-        return True
-
-    return False
 
 
 # ---------------------------------------------------------------------------
@@ -319,14 +127,6 @@ class AIReviewer(SkilledAgent):
         from app.core.enums import UpdateActor
 
         application = await service.get_application(application_id)
-
-        has_been_handled = await _try_algorithmic_handling(
-            application_id=application_id,
-            application=application,
-            service=service,
-        )
-        if has_been_handled:
-            return
 
         company_verification_status = getattr(
             application.company.verificationStatus,

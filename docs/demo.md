@@ -6,7 +6,7 @@ Walk through the docs folder and README briefly.
 
 - `README.md` – what the system is, walk-through, quick start
 - `docs/implementation.md` – how the prototype is built: UI pages, backend layers, agent harness, skills-based approach
-- `docs/integration.md` – how to wire it to production: inbound hooks, DB layer, email outbound, algorithmic rules, logging
+- `docs/integration.md` – how to wire it to production: inbound hooks, DB layer, email outbound, logging
 - `docs/future_work.md` – path from recommendation-only to automated action: logging, recruiter feedback, coding analysis, skill iteration
 
 ## 2. UI walkthrough
@@ -63,7 +63,7 @@ Walk through `docs/integration.md`:
 - Inbound hooks: new application → `trigger-ai-screen`; email reply → `candidate-message`
 - Outbound: `send_recruiter_message_to_candidate` stub
 - DB layer: preserve repository interfaces, replace/adapt SQLAlchemy implementations
-- Algorithmic rules in `_try_algorithmic_handling` – review and tune before go-live
+- Screening behavior is driven by the `screen-candidate` skill and supporting references
 - Enum alignment: `Department`, `SubDepartment`, `CompanyType`
 - Logfire token → full observability in production
 

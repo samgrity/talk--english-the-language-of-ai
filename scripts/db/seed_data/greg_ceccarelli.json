@@ -1,0 +1,40 @@
+{
+  "id": "c102-greg-ceccarelli-20260708",
+  "first_name": "Greg",
+  "last_name": "Ceccarelli",
+  "email": "greg.ceccarelli@gmail.com",
+  "mobile": "+1-555-1102",
+  "bio": "Product leader and founder building multiplayer AI tooling for product and engineering teams, but this application came in on a personal inbox and needs extra verification before moving forward.",
+  "linkedin_url": "https://www.linkedin.com/in/gregceccarelli/",
+  "current_role": "chief_product_officer",
+  "seniority_level": "Executive",
+  "job_title": "Co-Founder & CPO",
+  "department": "PRODUCT",
+  "sub_departments": ["PROD_WEB", "PROD_GROWTH"],
+  "company": {
+    "id": "comp-greg-specstory",
+    "name": "SpecStory",
+    "site_url": "https://specstory.com/",
+    "size": "1-10",
+    "type": "STARTUP",
+    "verification_status": "unverified",
+    "address_id": "addr-greg-specstory",
+    "address1": "Remote",
+    "country": "US",
+    "locality": "Washington",
+    "postal_code": "20001",
+    "region": "DC"
+  },
+  "assignee_id": null,
+  "region": "North America/United States",
+  "screening_status": "waiting_for_ai",
+  "created_at": "2026-07-08T10:01:00",
+  "updated_at": "2026-07-08T10:01:00",
+  "locale": {
+    "country": "US",
+    "preferred_language": "en-US",
+    "region": "NA",
+    "store_id": "us"
+  },
+  "updates": []
+}

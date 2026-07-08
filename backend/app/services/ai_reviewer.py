@@ -12,7 +12,7 @@ from typing import Any
 from urllib.parse import urlparse
 
 import httpx
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, field_validator
 from pydantic_ai import Agent, RunContext
 from pydantic_ai.capabilities import Thinking, WebFetch, WebSearch
 from pydantic_ai.messages import ModelMessage
@@ -261,8 +261,15 @@ async def _try_algorithmic_handling(application_id: str, application: Any, servi
 class AIReviewOutput(BaseModel):
     """Structured output produced by the AI screening agent for each candidate."""
     update_type: UpdateType
-    internal_notes: str
+    internal_notes: str = Field(min_length=1)
     correspondence: str | None = None
+
+    @field_validator("internal_notes")
+    @classmethod
+    def internal_notes_must_not_be_blank(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("internal_notes must be a non-empty string")
+        return value
 
 # ---------------------------------------------------------------------------
 # AIReviewer

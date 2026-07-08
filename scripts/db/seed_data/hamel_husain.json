@@ -1,0 +1,68 @@
+{
+  "id": "c104-hamel-husain-20260708",
+  "first_name": "Hamel",
+  "last_name": "Husain",
+  "email": "hamel@parlance-labs.com",
+  "mobile": "+1-555-1104",
+  "bio": "Machine learning engineer and educator focused on making ML and LLM evaluation more accessible through tools, training, and open source software.",
+  "linkedin_url": "https://www.linkedin.com/in/hamelhusain/",
+  "current_role": "ai_engineer_educator",
+  "seniority_level": "Senior",
+  "job_title": "AI Engineer & Educator",
+  "department": "ENGINEERING",
+  "sub_departments": ["ENG_DATA", "ENG_INFRA"],
+  "company": {
+    "id": "comp-hamel-parlance",
+    "name": "Parlance Labs",
+    "site_url": "https://parlance-labs.com/",
+    "size": "1-10",
+    "type": "AGENCY",
+    "verification_status": "unverified",
+    "address_id": "addr-hamel-parlance",
+    "address1": "Remote",
+    "country": "US",
+    "locality": "Remote",
+    "postal_code": "00000",
+    "region": "US"
+  },
+  "assignee_id": null,
+  "region": "North America/United States",
+  "screening_status": "advanced",
+  "created_at": "2026-07-08T10:03:00",
+  "updated_at": "2026-07-08T11:18:00",
+  "locale": {
+    "country": "US",
+    "preferred_language": "en-US",
+    "region": "NA",
+    "store_id": "us"
+  },
+  "updates": [
+    {
+      "id": "upd-hamel-1",
+      "timestamp": "2026-07-08T10:45:00",
+      "actor": "human_recruiter",
+      "internal_notes": "Strong background. Please run AI screening before I make the final call.",
+      "recruiter_id": "rev2",
+      "update_type": "request_ai_screen",
+      "correspondence": null
+    },
+    {
+      "id": "upd-hamel-2",
+      "timestamp": "2026-07-08T11:05:00",
+      "actor": "ai_agent",
+      "internal_notes": "[✓] Experience fit: AI engineer and educator profile directly matches senior ML/AI platform work; LinkedIn and public profile show deep experience in tooling, evaluation, and production ML.\n[✓] Company credibility: Parlance Labs is an active AI consultancy/training business with clear public presence and relevant work.\n[✓] Employment verification: Named company-domain email matches the company and public profile.\n[✓] Email risk check: Non-personal named mailbox.\n[✓] Prior updates: Human recruiter requested standard screening only; no conflicting judgment.\n\nRecommendation: recommend_advance\nRationale: Public background and company evidence support a strong match for advanced AI product and engineering work.\nRationale: Identity and current role are sufficiently corroborated through company-domain email and professional profile.",
+      "recruiter_id": null,
+      "update_type": "recommend_advance",
+      "correspondence": "Hi Hamel,\n\nThanks for your application. We'd like to move you forward to the next step in the process.\n\nBest,\nPete Mitchell\nHireFlow Recruiting"
+    },
+    {
+      "id": "upd-hamel-3",
+      "timestamp": "2026-07-08T11:18:00",
+      "actor": "human_recruiter",
+      "internal_notes": "Agree with the AI review. Advancing to the next stage.",
+      "recruiter_id": "rev2",
+      "update_type": "advance",
+      "correspondence": "Hi Hamel,\n\nWe were impressed by your background and would like to move you forward to the next stage. We'll be in touch shortly with scheduling details.\n\nBest,\nJosh Carter\nHireFlow Recruiting"
+    }
+  ]
+}

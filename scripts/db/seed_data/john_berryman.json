@@ -1,0 +1,40 @@
+{
+  "id": "c101-john-berryman-20260708",
+  "first_name": "John",
+  "last_name": "Berryman",
+  "email": "john@arcturus-labs.com",
+  "mobile": "+1-555-1101",
+  "bio": "AI consultant and engineering leader focused on LLM application development, search, RAG, evaluation, and product feasibility.",
+  "linkedin_url": "https://www.linkedin.com/in/john-berryman-864b1713/",
+  "current_role": "ai_consultant",
+  "seniority_level": "Senior",
+  "job_title": "AI Consultant",
+  "department": "ENGINEERING",
+  "sub_departments": ["ENG_DATA", "ENG_INFRA"],
+  "company": {
+    "id": "comp-john-arcturus",
+    "name": "Arcturus Labs",
+    "site_url": "https://arcturus-labs.com/",
+    "size": "1-10",
+    "type": "STARTUP",
+    "verification_status": "verified",
+    "address_id": "addr-john-arcturus",
+    "address1": "Remote",
+    "country": "US",
+    "locality": "Nashville",
+    "postal_code": "37203",
+    "region": "TN"
+  },
+  "assignee_id": null,
+  "region": "North America/United States",
+  "screening_status": "waiting_for_ai",
+  "created_at": "2026-07-08T10:00:00",
+  "updated_at": "2026-07-08T10:00:00",
+  "locale": {
+    "country": "US",
+    "preferred_language": "en-US",
+    "region": "NA",
+    "store_id": "us"
+  },
+  "updates": []
+}

@@ -1,0 +1,68 @@
+{
+  "id": "c105-hugo-bowne-anderson-20260708",
+  "first_name": "Hugo",
+  "last_name": "Bowne-Anderson",
+  "email": "hugo@gmail.com",
+  "mobile": "+61-555-1105",
+  "bio": "Independent data and AI scientist, consultant, educator, writer, and podcaster with a background in developer relations, data science education, and machine learning communication.",
+  "linkedin_url": "https://www.linkedin.com/in/hugo-bowne-anderson-045939a5/",
+  "current_role": "independent_data_ai_scientist",
+  "seniority_level": "Senior",
+  "job_title": "Independent Data and AI Scientist",
+  "department": "ENGINEERING",
+  "sub_departments": ["ENG_DATA", "ENG_FRONTEND"],
+  "company": {
+    "id": "comp-hugo-independent",
+    "name": "Independent",
+    "site_url": "https://hugobowne.github.io/",
+    "size": "1-10",
+    "type": "OTHER",
+    "verification_status": "unverified",
+    "address_id": "addr-hugo-independent",
+    "address1": "Remote",
+    "country": "AU",
+    "locality": "Sydney",
+    "postal_code": "2010",
+    "region": "NSW"
+  },
+  "assignee_id": null,
+  "region": "Oceania/Australia",
+  "screening_status": "waiting_for_candidate",
+  "created_at": "2026-07-08T10:04:00",
+  "updated_at": "2026-07-08T11:22:00",
+  "locale": {
+    "country": "AU",
+    "preferred_language": "en-AU",
+    "region": "ANZ",
+    "store_id": "au"
+  },
+  "updates": [
+    {
+      "id": "upd-hugo-1",
+      "timestamp": "2026-07-08T10:50:00",
+      "actor": "human_recruiter",
+      "internal_notes": "Interesting profile, but the personal email makes me want a deeper check.",
+      "recruiter_id": "rev3",
+      "update_type": "request_ai_screen",
+      "correspondence": null
+    },
+    {
+      "id": "upd-hugo-2",
+      "timestamp": "2026-07-08T11:08:00",
+      "actor": "ai_agent",
+      "internal_notes": "[✓] Experience fit: Independent data and AI scientist profile is strong and relevant to senior AI/ML work.\n[✓] Company credibility: Public site and LinkedIn presence support a legitimate independent consulting/education practice.\n[ ] Employment verification: Application used a personal email and no company-domain identity linkage is present.\n[✗] Email risk check: Personal mailbox requires stronger corroboration.\n[✓] Prior updates: Human recruiter asked for extra verification; this recommendation is aligned.\n\nRecommendation: recommend_follow_up\nRationale: Public evidence supports the candidate's background, but the personal email leaves current professional identity insufficiently verified.\nRationale: A narrow follow-up asking for a direct work identity signal is the safest next step.",
+      "recruiter_id": null,
+      "update_type": "recommend_follow_up",
+      "correspondence": "Hi Hugo,\n\nThanks for your application. Your background looks strong, but to continue the screening we need one more piece of verification.\n\nPlease reply with either:\n- a direct, named company-domain email, or\n- a link confirming your current professional role (for example, a company page or LinkedIn profile that clearly reflects your current work).\n\nBest,\nPete Mitchell\nHireFlow Recruiting"
+    },
+    {
+      "id": "upd-hugo-3",
+      "timestamp": "2026-07-08T11:22:00",
+      "actor": "human_recruiter",
+      "internal_notes": "Using the AI recommendation as-is and requesting a small amount of extra verification from the candidate.",
+      "recruiter_id": "rev3",
+      "update_type": "follow_up",
+      "correspondence": "Hi Hugo,\n\nThanks for your application. Your background looks strong, but to continue the screening we need one more piece of verification.\n\nPlease reply with either:\n- a direct, named company-domain email, or\n- a link confirming your current professional role (for example, a company page or LinkedIn profile that clearly reflects your current work).\n\nBest,\nPete Mitchell\nHireFlow Recruiting"
+    }
+  ]
+}

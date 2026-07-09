@@ -33,7 +33,7 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument(
         "seed_file",
         type=Path,
-        help="Path to a seed application JSON file (for example scripts/db/seed_data/jane_doe.json)",
+        help="Path to a seed application JSON file (for example scripts/db/seed_data/john_berryman.json)",
     )
     return parser.parse_args()
 
@@ -57,7 +57,8 @@ async def _run(seed_file: Path) -> int:
 
     first_name = _pick(application_data, "first_name", "firstName")
     last_name = _pick(application_data, "last_name", "lastName")
-    company = application_data.get("company") or {}
+    job_opening = application_data.get("job_opening") or application_data.get("jobOpening") or {}
+    company = job_opening.get("company") or application_data.get("company") or {}
     company_name = _pick(company, "name", "name")
     company_url = _pick(company, "site_url", "siteUrl")
 

@@ -1,8 +1,0 @@
-Hi {{first_name}},
-
-Thank you for your patience as we finished our vetting process. We have upgraded your account for extended brand access. Please log out and log back in to see these changes.
-
-If you need anything else, we’re here to help.
-
-Thanks,
-The HireFlow Team

@@ -8,31 +8,28 @@ Use this file when producing `correspondence`.
 - Preserve HireFlow style used by existing templates.
 - Ask only for missing information required to advance screening.
 
-## Template mapping (`.agent/skills/screen-candidate/references/template/`)
+## Template mapping
 
-Review these files if the scenario you are dealing with is relevant to the situations below.
+Read the relevant template from `.agent/skills/screen-candidate/references/template/` and use it directly or adapt it as needed.
 
-- `tier_3_tier_7_info_generic.txt`
-  - Use when you need one or two concrete public/professional artifacts to confirm role fit, including the correct LinkedIn profile when it could not be retrieved.
+- `advance.txt`
+  - Use when recommending `recommend_advance`. Congratulatory note letting the candidate know they are moving forward.
 
-- `tier_3_tier_7_info_shared.txt`
-  - Use when candidate used shared/role mailbox (`info@`, `admin@`, etc.).
+- `decline.txt`
+  - Use when recommending `recommend_decline`. Respectful note informing the candidate they will not be moving forward.
 
-- `website_incomplete.txt`
-  - Use when the candidate's public materials are too thin to confirm fit.
+- `follow_up_need_info.txt`
+  - Use when recommending `recommend_follow_up` and you need the candidate to provide additional information (role-fit evidence, portfolio links, project examples, etc.). Populate `missing_items` with a list of the specific items needed.
 
-- `tier_3_tier_7_upgrade_reject.txt` / `upgrade_reject_hard_no.txt`
-  - Usually for decline recommendations.
-
-- `registration_approval.txt` / `registration_approval_w_warning_language.txt`
-  - Usually for advance recommendations.
+- `follow_up_linkedin.txt`
+  - Use when recommending `recommend_follow_up` specifically because the full LinkedIn profile could not be retrieved. Use `missing_context` to add one or two additional items if needed (for example "one or two concrete examples of closely related work").
 
 ## Allowed customization
 
 You may adapt wording when needed, but keep the same basic structure and tone.
 
 Good customization patterns:
-- Replace a generic ask with specific missing items.
+- Replace `missing_items` / `missing_context` with the specific items relevant to this candidate.
 - Remove irrelevant bullets.
 - Mention exactly one or two concrete next steps.
 
@@ -41,45 +38,25 @@ Avoid:
 - Long questionnaires when one piece of evidence is enough.
 - Requests for information already present in prior updates.
 
-## Example: missing LinkedIn profile + insufficient evidence
+## Examples
 
-```
-Hi {{first_name}},
+### Advance
 
-Thanks for your application.
+Read `advance.txt` from the template directory and fill in `{{first_name}}`, `{{job_title}}`, and `{{company_name}}`.
 
-To continue the screening for this role, please reply with:
-- your correct LinkedIn profile URL, and
-- one or two concrete examples of closely related work, such as a portfolio / GitHub / case-study link or a short description of a recent project that best matches this opening.
+### Decline
 
-Best,
-The HireFlow Team
-```
+Read `decline.txt` from the template directory and fill in `{{first_name}}`, `{{job_title}}`, and `{{company_name}}`.
 
-## Example: shared mailbox
+### Follow-up (need more info)
 
-```
-Hi {{first_name}},
+Read `follow_up_need_info.txt` from the template directory. Populate `missing_items` with specific items such as:
+- "a link to your GitHub or portfolio"
+- "one or two concrete examples of recent projects relevant to this role"
+- "a short description of your current role and responsibilities"
 
-Your application is being reviewed. We cannot proceed under a shared or unnamed mailbox.
+### Follow-up (missing LinkedIn)
 
-Please provide a direct, named professional email address and we will continue your screening.
-
-Best,
-The HireFlow Team
-```
-
-## Example: public materials too thin
-
-```
-Hi {{first_name}},
-
-Thank you for applying.
-
-We were not able to find enough public detail to evaluate your fit for this role.
-
-Please reply with your correct LinkedIn profile URL and one or two relevant links or examples that best represent your experience for this opening.
-
-Thanks,
-The HireFlow Team
-```
+Read `follow_up_linkedin.txt` from the template directory. Populate `missing_context` with any additional items needed beyond the LinkedIn URL, for example:
+- "one or two concrete examples of closely related work"
+- "a link to your portfolio or GitHub"

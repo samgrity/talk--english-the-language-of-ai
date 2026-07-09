@@ -18,7 +18,10 @@ This skill handles the full screening workflow from research through recommendat
 Your final output must contain exactly these fields:
 - `update_type`: `recommend_advance` | `recommend_decline` | `recommend_follow_up`
 - `internal_notes`: required and must conform to `references/internal-notes-checklist.md`
-- `correspondence`: required for `recommend_follow_up`; optional otherwise
+- `correspondence`: required for all recommendation types — use the appropriate template from the correspondence playbook:
+  - `recommend_advance` → congratulatory note from `advance.txt`
+  - `recommend_decline` → respectful rejection from `decline.txt`
+  - `recommend_follow_up` → information request from `follow_up_need_info.txt` or `follow_up_linkedin.txt`
 
 Important:
 - Do not emit the final output structure early.
@@ -67,7 +70,7 @@ Just before finalizing `internal_notes`, review `references/internal-notes-check
 
 Do not finalize `internal_notes` until the review is complete enough to support a real recommendation.
 
-If `correspondence` is needed, review `references/correspondence-playbook.md` before drafting.
+Review `references/correspondence-playbook.md` for the correct template and draft `correspondence` before finalizing your output.
 
 ## Human-overrides-AI rule
 

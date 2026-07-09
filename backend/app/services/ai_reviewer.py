@@ -70,13 +70,20 @@ class AIReviewOutput(BaseModel):
     """Structured output produced by the AI screening agent for each candidate."""
     update_type: UpdateType
     internal_notes: str = Field(min_length=1)
-    correspondence: str | None = None
+    correspondence: str = Field(min_length=1)
 
     @field_validator("internal_notes")
     @classmethod
     def internal_notes_must_not_be_blank(cls, value: str) -> str:
         if not value.strip():
             raise ValueError("internal_notes must be a non-empty string")
+        return value
+
+    @field_validator("correspondence")
+    @classmethod
+    def correspondence_must_not_be_blank(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("correspondence must be a non-empty string")
         return value
 
 # ---------------------------------------------------------------------------

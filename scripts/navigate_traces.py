@@ -344,10 +344,9 @@ def follow_traces(traces_file: Path, verbose: bool) -> None:
         print("No traces yet. Waiting for new traces…")
     else:
         last = traces[-1]
-        print(color(C_META, f"Showing last trace (#{len(traces)})…"))
+        print(color(C_META, f"Watching {traces_file} for new traces… (Ctrl-C to stop)"))
         render_trace(last, show_instructions=verbose, show_tools=verbose,
                      full_responses=verbose)
-        print(color(C_META, f"Watching {traces_file} for new traces… (Ctrl-C to stop)"))
 
     prev_size = _file_size(traces_file)
     prev_traces = traces

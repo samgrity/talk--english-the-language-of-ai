@@ -1,5 +1,0 @@
-Hi {{first_name}},
-
-HireFlow is a tool exclusively for the architectural and interior design profession, and we are obligated to ensure all members meet certain criteria.
-
-Thank you for your request. We continue to expand access as we grow.

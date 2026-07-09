@@ -241,7 +241,7 @@ class TestSkilledAgent:
 
         templates_dir = tmp_path / ".agent" / "skills" / "references" / "template"
         assert templates_dir.exists()
-        assert (templates_dir / "registration_approval.txt").exists()
+        assert (templates_dir / "advance.txt").exists()
 
     def test_raises_if_templates_dir_missing(self, tmp_path, tmp_path_factory, monkeypatch):
         """Agent initialization should fail if root templates directory is missing."""

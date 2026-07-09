@@ -1,6 +1,6 @@
 # LinkedIn Profile Review
 
-Use this file after you have retrieved a LinkedIn profile and need to evaluate what it means for the decision.
+Use this file only after you have retrieved a full LinkedIn profile and need to evaluate what it means for the decision.
 
 ## What to evaluate
 
@@ -32,14 +32,15 @@ Evaluate LinkedIn evidence against the three core questions:
 - Weak or conflicting profile evidence should usually move to `recommend_follow_up` unless disqualifying evidence is clear.
 - If profile evidence clearly shows a mismatch with the opening, `recommend_decline` can be appropriate.
 - If LinkedIn evidence materially informed the recommendation, inline the exact LinkedIn URL in checklist lines and in `Rationale` so reviewers can see how it was used.
+- Search-result snippets, search-result titles, and bare LinkedIn URLs are not full LinkedIn evidence and must not be treated as sufficient for advancement.
 
 ## If LinkedIn retrieval fails
 
 - Retrieval failure is not positive evidence and should not be used to justify advancement.
-- If role fit is still not sufficiently proven after LinkedIn failure, prefer `recommend_follow_up` unless there is already clear disqualifying evidence.
-- Advance without LinkedIn only when equivalent alternate evidence is strong enough (for example portfolio, talks, GitHub, company/team pages, or prior validated context).
-- If alternate evidence is weak, conflicting, or incomplete, do not advance.
+- If the full LinkedIn profile cannot be retrieved, prefer `recommend_follow_up` unless there is already clear disqualifying evidence.
+- Do not advance based only on alternate evidence when the full LinkedIn profile is missing.
+- Do not treat search snippets, LinkedIn search results, or a guessed URL as a substitute for the full LinkedIn profile.
 
 ## Correspondence implications
 
-When LinkedIn evidence is incomplete or conflicting, request one or two precise clarifying items (for example a portfolio link, a specific project example, a case study, GitHub, or an updated profile) rather than a broad questionnaire.
+When LinkedIn evidence is incomplete, conflicting, or unavailable, request one or two precise clarifying items — and explicitly ask for the correct LinkedIn profile URL when the full profile could not be retrieved.

@@ -13,7 +13,7 @@ Use this file when producing `correspondence`.
 Review these files if the scenario you are dealing with is relevant to the situations below.
 
 - `tier_3_tier_7_info_generic.txt`
-  - Use when you need one or two concrete public/professional artifacts to confirm role fit.
+  - Use when you need one or two concrete public/professional artifacts to confirm role fit, including the correct LinkedIn profile when it could not be retrieved.
 
 - `tier_3_tier_7_info_shared.txt`
   - Use when candidate used shared/role mailbox (`info@`, `admin@`, etc.).
@@ -41,16 +41,16 @@ Avoid:
 - Long questionnaires when one piece of evidence is enough.
 - Requests for information already present in prior updates.
 
-## Example: plausible profile but insufficient evidence
+## Example: missing LinkedIn profile + insufficient evidence
 
 ```
 Hi {{first_name}},
 
 Thanks for your application.
 
-To continue the screening for this role, could you please reply with one or two concrete examples of closely related work, such as:
-- a portfolio / GitHub / case-study link, or
-- a short description of a recent project that best matches this opening.
+To continue the screening for this role, please reply with:
+- your correct LinkedIn profile URL, and
+- one or two concrete examples of closely related work, such as a portfolio / GitHub / case-study link or a short description of a recent project that best matches this opening.
 
 Best,
 The HireFlow Team
@@ -78,7 +78,7 @@ Thank you for applying.
 
 We were not able to find enough public detail to evaluate your fit for this role.
 
-Please reply with one or two relevant links or examples that best represent your experience for this opening.
+Please reply with your correct LinkedIn profile URL and one or two relevant links or examples that best represent your experience for this opening.
 
 Thanks,
 The HireFlow Team

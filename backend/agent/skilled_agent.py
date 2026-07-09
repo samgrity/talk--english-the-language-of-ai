@@ -7,7 +7,7 @@ Usage (auto-created temp directory):
 
     agent = SkilledAgent(
         model='anthropic:claude-3-5-sonnet-latest',
-        skills=[Path("my-skills/organize-notes")],
+        skills=[Path("skills")],
         instructions="You are a meticulous research assistant.",
     )
 
@@ -29,7 +29,7 @@ Usage (explicit work_dir):
         agent = SkilledAgent(
             model='anthropic:claude-3-5-sonnet-latest',
             work_dir=tmp,
-            skills=[Path("my-skills/organize-notes")],
+            skills=[Path("skills")],
             instructions="You are a meticulous research assistant.",
         )
 
@@ -48,13 +48,6 @@ from typing import Any
 from pydantic_ai import Agent
 from pydantic_ai_filesystem_sandbox import FileSystemToolset, Sandbox, SandboxConfig, Mount
 from pydantic_ai_skills import SkillsCapability
-
-
-# Skills are always stored under this path inside the sandbox work_dir
-_SKILLS_SUBDIR = Path(".agent") / "skills"
-_SKILL_REFERENCES_TEMPLATE_SUBDIR = Path("references") / "template"
-_REPO_ROOT = Path(__file__).resolve().parents[2]
-_TEMPLATES_SOURCE_DIR = _REPO_ROOT / "templates"
 
 _FILESYSTEM_INSTRUCTIONS = (
     "You have access to a sandboxed filesystem. "
@@ -97,23 +90,17 @@ class SkilledAgent(Agent):
     transparently. The sandbox toolset and skills capability are merged with
     any caller-provided toolsets/capabilities.
 
-    Skills are always stored under <work_dir>/.agent/skills/ inside the sandbox.
-    When skill paths are supplied they are copied into that directory, preserving
-    each skill directory's name.
-
     If no instructions are provided a default personality is used. If
-    instructions are provided, the filesystem (and skills) operational
-    instructions are appended without altering the caller's stated personality
-    or purpose.
+    instructions are provided, the filesystem operational instructions are
+    appended without altering the caller's stated personality or purpose.
 
     Args:
         work_dir: Host directory mounted as virtual root "/" inside the sandbox.
                   If not provided, a temporary directory is created automatically
                   and will be cleaned up when the agent is garbage collected or
                   when cleanup() is called explicitly.
-        skills: Optional list of paths to skill directories (each containing a
-                SKILL.md). Each directory is copied into <work_dir>/.agent/skills/
-                under its own name.
+        skills: Optional list of directories to pass directly to
+                ``SkillsCapability(directories=[...])``.
         **kwargs: Any keyword arguments accepted by pydantic_ai.Agent.
     """
 
@@ -125,9 +112,6 @@ class SkilledAgent(Agent):
         skills: list[str | Path] | None = None,
         **kwargs: Any,
     ) -> None:
-        # ------------------------------------------------------------------
-        # Resolve work_dir – create a temp directory if none provided
-        # ------------------------------------------------------------------
         if work_dir is None:
             self._work_dir = Path(tempfile.mkdtemp(prefix="skilled-agent-"))
             self._owns_work_dir = True
@@ -136,41 +120,6 @@ class SkilledAgent(Agent):
             self._work_dir = Path(work_dir)
             self._owns_work_dir = False
 
-        # ------------------------------------------------------------------
-        # Copy supplied skills into the sandbox's fixed skills directory
-        # ------------------------------------------------------------------
-        skills_dest = self._work_dir / _SKILLS_SUBDIR
-        if skills:
-            skills_dest.mkdir(parents=True, exist_ok=True)
-            for src in skills:
-                src = Path(src)
-                shutil.copytree(src, skills_dest / src.name, dirs_exist_ok=True)
-
-            # Make shared correspondence templates available inside each skill's
-            # references directory for skills to reference consistently.
-            #
-            # NOTE: We intentionally fail fast when the source templates
-            # directory is missing, because the screening agent relies on these
-            # templates for candidate-facing correspondence generation.
-            templates_src = _TEMPLATES_SOURCE_DIR
-            if not templates_src.exists() or not templates_src.is_dir():
-                raise FileNotFoundError(
-                    f"Required templates directory not found: {templates_src}"
-                )
-
-            shared_templates_dest = self._work_dir / _SKILLS_SUBDIR / _SKILL_REFERENCES_TEMPLATE_SUBDIR
-            shared_templates_dest.mkdir(parents=True, exist_ok=True)
-            shutil.copytree(templates_src, shared_templates_dest, dirs_exist_ok=True)
-
-            for src in skills:
-                src = Path(src)
-                templates_dest = self._work_dir / _SKILLS_SUBDIR / src.name / _SKILL_REFERENCES_TEMPLATE_SUBDIR
-                templates_dest.mkdir(parents=True, exist_ok=True)
-                shutil.copytree(templates_src, templates_dest, dirs_exist_ok=True)
-
-        # ------------------------------------------------------------------
-        # Build sandbox toolset
-        # ------------------------------------------------------------------
         config = SandboxConfig(mounts=[
             Mount(host_path=self._work_dir, mount_point="/", mode="rw"),
         ])
@@ -179,23 +128,15 @@ class SkilledAgent(Agent):
         caller_toolsets = list(kwargs.pop("toolsets", None) or [])
         kwargs["toolsets"] = [sandbox_toolset] + caller_toolsets
 
-        # ------------------------------------------------------------------
-        # Build skills capability (always points at the fixed subdir)
-        # ------------------------------------------------------------------
         caller_capabilities = list(kwargs.pop("capabilities", None) or [])
-        has_skills = bool(skills)
-        if has_skills:
-            skills_dest.mkdir(parents=True, exist_ok=True)
+        skill_directories = [Path(path) for path in skills or []]
+        if skill_directories:
             caller_capabilities = (
-                [SkillsCapability(directories=[skills_dest])] + caller_capabilities
+                [SkillsCapability(directories=skill_directories)] + caller_capabilities
             )
         kwargs["capabilities"] = caller_capabilities
 
-        # ------------------------------------------------------------------
-        # Build instructions
-        # ------------------------------------------------------------------
         caller_instructions: str | None = kwargs.pop("instructions", None)
-
         suffix = "\n\n" + _FILESYSTEM_INSTRUCTIONS
 
         if caller_instructions:
@@ -236,6 +177,4 @@ class SkilledAgent(Agent):
         try:
             self.cleanup()
         except Exception:
-            # Ignore all errors during interpreter shutdown when modules
-            # may already be partially torn down.
             pass

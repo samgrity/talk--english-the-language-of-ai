@@ -10,7 +10,7 @@ Use this file when producing `correspondence`.
 
 ## Template mapping
 
-Read the relevant template from `.agent/skills/screen-candidate/references/template/` and use it directly or adapt it as needed.
+Read the relevant template from `references/template/` and use it directly or adapt it as needed.
 
 - `advance.txt`
   - Use when recommending `recommend_advance`. Congratulatory note letting the candidate know they are moving forward.

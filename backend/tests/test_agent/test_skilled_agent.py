@@ -11,8 +11,8 @@ from pathlib import Path
 import pytest
 from pydantic_ai.models.test import TestModel
 from pydantic_ai_filesystem_sandbox import FileSystemToolset, Sandbox, SandboxConfig, Mount
+from pydantic_ai_skills import SkillsCapability
 
-import agent.skilled_agent as skilled_agent_module
 from agent.skilled_agent import SkilledAgent, _DEFAULT_PERSONALITY, _FILESYSTEM_INSTRUCTIONS
 from app.core.config import settings
 
@@ -144,10 +144,10 @@ class TestSkilledAgent:
     @pytest.mark.asyncio
     async def test_has_filesystem_and_skills_tools(self, tmp_path, tmp_path_factory):
         """All filesystem tools AND all skills tools should be registered."""
-        skill_src = tmp_path_factory.mktemp("skill_src")
-        skill_dir = make_skill_dir(skill_src)
+        skills_root = tmp_path_factory.mktemp("skill_src")
+        make_skill_dir(skills_root)
         model = TestModel(call_tools=[])
-        agent = make_agent(tmp_path, skills=[skill_dir])
+        agent = make_agent(tmp_path, skills=[skills_root])
 
         with agent.override(model=model):
             await agent.run("Do nothing")
@@ -174,9 +174,9 @@ class TestSkilledAgent:
     @pytest.mark.asyncio
     async def test_run_returns_output(self, tmp_path, tmp_path_factory):
         """TestModel returns a stub response without raising."""
-        skill_src = tmp_path_factory.mktemp("skill_src")
-        skill_dir = make_skill_dir(skill_src)
-        agent = make_agent(tmp_path, skills=[skill_dir])
+        skills_root = tmp_path_factory.mktemp("skill_src")
+        make_skill_dir(skills_root)
+        agent = make_agent(tmp_path, skills=[skills_root])
         with agent.override(model=TestModel(call_tools=[])):
             result = await agent.run("Say hello")
         assert result.output is not None
@@ -189,70 +189,27 @@ class TestSkilledAgent:
             (tmp_path / "shared_name.txt").write_text("from agent1")
             assert not (Path(tmp2) / "shared_name.txt").exists()
 
-    def test_skills_copied_into_work_dir(self, tmp_path, tmp_path_factory):
-        """Skill directories are copied under <work_dir>/.agent/skills/<name>."""
-        skill_src = tmp_path_factory.mktemp("skill_src")
-        skill_dir = make_skill_dir(skill_src, name="my-skill")
+    def test_skills_are_not_copied_into_work_dir(self, tmp_path, tmp_path_factory):
+        """Skill directories stay in place instead of being mirrored into work_dir."""
+        skills_root = tmp_path_factory.mktemp("skill_src")
+        make_skill_dir(skills_root, name="my-skill")
 
-        make_agent(tmp_path, skills=[skill_dir])
+        make_agent(tmp_path, skills=[skills_root])
 
-        dest = tmp_path / ".agent" / "skills" / "my-skill" / "SKILL.md"
-        assert dest.exists()
-        assert dest.read_text() == MINIMAL_SKILL
+        assert not (tmp_path / ".agent").exists()
 
-    def test_skill_name_preserved(self, tmp_path, tmp_path_factory):
-        """The skill directory name is preserved when copied."""
-        skill_src = tmp_path_factory.mktemp("skill_src")
-        skill_dir = make_skill_dir(skill_src, name="custom-name")
-
-        make_agent(tmp_path, skills=[skill_dir])
-
-        assert (tmp_path / ".agent" / "skills" / "custom-name").is_dir()
-
-    def test_multiple_skills_all_copied(self, tmp_path, tmp_path_factory):
-        """All entries in the skills list are copied."""
-        skill_src = tmp_path_factory.mktemp("skill_src")
-        dirs = [make_skill_dir(skill_src, name=f"skill-{i}") for i in range(3)]
-
-        make_agent(tmp_path, skills=dirs)
-
-        skills_root = tmp_path / ".agent" / "skills"
-        for i in range(3):
-            assert (skills_root / f"skill-{i}").is_dir()
-
-    def test_skill_subdirs_preserved(self, tmp_path, tmp_path_factory):
-        """Nested files inside a skill (e.g. references/) are preserved."""
-        skill_src = tmp_path_factory.mktemp("skill_src")
-        skill_dir = make_skill_dir(skill_src, name="rich-skill")
+    def test_skill_subdirs_are_read_from_source_directory(self, tmp_path, tmp_path_factory):
+        """Nested files should remain available from the original skill directory."""
+        skills_root = tmp_path_factory.mktemp("skill_src")
+        skill_dir = make_skill_dir(skills_root, name="rich-skill")
         refs = skill_dir / "references"
         refs.mkdir()
         (refs / "spec.md").write_text("# Spec")
 
-        make_agent(tmp_path, skills=[skill_dir])
+        make_agent(tmp_path, skills=[skills_root])
 
-        assert (tmp_path / ".agent" / "skills" / "rich-skill" / "references" / "spec.md").exists()
-
-    def test_templates_copied_into_references_template_dir(self, tmp_path, tmp_path_factory):
-        """Root templates should be copied to .agent/skills/references/template/."""
-        skill_src = tmp_path_factory.mktemp("skill_src")
-        skill_dir = make_skill_dir(skill_src, name="my-skill")
-
-        make_agent(tmp_path, skills=[skill_dir])
-
-        templates_dir = tmp_path / ".agent" / "skills" / "references" / "template"
-        assert templates_dir.exists()
-        assert (templates_dir / "advance.txt").exists()
-
-    def test_raises_if_templates_dir_missing(self, tmp_path, tmp_path_factory, monkeypatch):
-        """Agent initialization should fail if root templates directory is missing."""
-        skill_src = tmp_path_factory.mktemp("skill_src")
-        skill_dir = make_skill_dir(skill_src, name="my-skill")
-
-        missing_templates = tmp_path / "not-here"
-        monkeypatch.setattr(skilled_agent_module, "_TEMPLATES_SOURCE_DIR", missing_templates)
-
-        with pytest.raises(FileNotFoundError, match="Required templates directory not found"):
-            make_agent(tmp_path, skills=[skill_dir])
+        assert (skills_root / "rich-skill" / "references" / "spec.md").exists()
+        assert not (tmp_path / ".agent").exists()
 
     def test_default_instructions_when_none_provided(self, tmp_path):
         """Without caller instructions, default personality + fs suffix is used."""
@@ -287,16 +244,13 @@ class TestSkilledAgent:
         assert "my_custom_tool" in registered
 
     def test_skill_discovered_by_capability(self, tmp_path, tmp_path_factory):
-        """SkillsCapability in the sandbox should discover the copied skill."""
-        from pydantic_ai_skills import SkillsCapability
+        """SkillsCapability should discover the source skill directory."""
+        skills_root = tmp_path_factory.mktemp("skill_src")
+        make_skill_dir(skills_root, name="test-skill")
 
-        skill_src = tmp_path_factory.mktemp("skill_src")
-        skill_dir = make_skill_dir(skill_src, name="test-skill")
+        make_agent(tmp_path, skills=[skills_root])
 
-        make_agent(tmp_path, skills=[skill_dir])
-
-        skills_dest = tmp_path / ".agent" / "skills"
-        cap = SkillsCapability(directories=[skills_dest])
+        cap = SkillsCapability(directories=[skills_root])
         assert "test-skill" in cap.toolset.skills
 
 
@@ -359,7 +313,7 @@ class TestAutoWorkDir:
         """Calling cleanup() multiple times should not raise."""
         agent = SkilledAgent(model=settings.ai_model)
         agent.cleanup()
-        agent.cleanup()  # Should not raise
+        agent.cleanup()
 
     def test_del_triggers_cleanup(self):
         """Deleting the agent should clean up auto-created work_dir."""
@@ -371,31 +325,32 @@ class TestAutoWorkDir:
         gc.collect()
         assert not work_dir.exists()
 
-    def test_skills_copied_into_auto_work_dir(self, tmp_path_factory):
-        """Skills should be copied into auto-created work_dir."""
-        skill_src = tmp_path_factory.mktemp("skill_src")
-        skill_dir = make_skill_dir(skill_src, name="auto-skill")
+    def test_skills_are_available_with_auto_work_dir(self, tmp_path_factory):
+        """Skills should still load when work_dir is auto-created."""
+        skills_root = tmp_path_factory.mktemp("skill_src")
+        make_skill_dir(skills_root, name="auto-skill")
 
         agent = SkilledAgent(
             model=settings.ai_model,
-            skills=[skill_dir],
+            skills=[skills_root],
         )
         try:
-            skills_dest = agent.work_dir / ".agent" / "skills" / "auto-skill"
-            assert skills_dest.exists()
-            assert (skills_dest / "SKILL.md").exists()
+            assert agent.work_dir.exists()
+            assert not (agent.work_dir / ".agent").exists()
+            cap = SkillsCapability(directories=[skills_root])
+            assert "test-skill" in cap.toolset.skills
         finally:
             agent.cleanup()
 
     @pytest.mark.asyncio
     async def test_auto_work_dir_with_testmodel(self, tmp_path_factory):
         """Auto work_dir should work end-to-end with TestModel."""
-        skill_src = tmp_path_factory.mktemp("skill_src")
-        skill_dir = make_skill_dir(skill_src)
+        skills_root = tmp_path_factory.mktemp("skill_src")
+        make_skill_dir(skills_root)
 
         agent = SkilledAgent(
             model=settings.ai_model,
-            skills=[skill_dir],
+            skills=[skills_root],
         )
         try:
             model = TestModel(call_tools=[])

@@ -107,7 +107,7 @@ Instead of encoding the screening logic in code, all of it lives in a plain-Engl
 
 ### AIReviewer
 
-`backend/app/services/ai_reviewer.py` is the application-level wrapper. It instantiates a `SkilledAgent` with the `screen-candidate` skill, builds the screening prompt from the application data, and runs the agent. Structured output (`AIReviewOutput`) is extracted from the response and posted back to the application timeline via `ApplicationService.add_update`.
+`backend/app/services/ai_reviewer.py` is the application-level wrapper. It instantiates a `SkilledAgent` with the repository `skills/` directory, builds the screening prompt from the application data, and runs the agent. Structured output (`AIReviewOutput`) is extracted from the response and posted back to the application timeline via `ApplicationService.add_update`.
 
 ## Backend Structure
 

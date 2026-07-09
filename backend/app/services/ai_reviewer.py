@@ -18,8 +18,7 @@ from agent.skilled_agent import SkilledAgent
 from app.core.enums import UpdateType
 from app.services.linked_in_retriever import get_linkedin_profile as retrieve_linkedin_profile
 
-_SKILLS_DIR = Path(__file__).resolve().parents[3] / "skills"
-_SCREEN_CANDIDATE_SKILL = _SKILLS_DIR / "screen-candidate"
+_SKILLS_DIR = Path("../skills")
 
 
 def _format_prior_updates_for_prompt(application: Any, max_items: int = 25) -> str:
@@ -100,7 +99,7 @@ class AIReviewer(SkilledAgent):
                 'claude-sonnet-5',
                 settings=AnthropicModelSettings(anthropic_thinking={'type': 'adaptive'}),
             ),
-            skills=[_SCREEN_CANDIDATE_SKILL],
+            skills=[_SKILLS_DIR],
             output_type=AIReviewOutput,
             capabilities=[Thinking(effort='high'), WebSearch(), WebFetch()],
         )

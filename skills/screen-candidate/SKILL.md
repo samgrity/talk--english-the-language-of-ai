@@ -18,10 +18,10 @@ This skill handles the full screening workflow from research through recommendat
 Your final output must contain exactly these fields:
 - `update_type`: `recommend_advance` | `recommend_decline` | `recommend_follow_up`
 - `internal_notes`: required and must conform to `references/internal-notes-checklist.md`
-- `correspondence`: required for all recommendation types — use the appropriate template from the correspondence playbook:
-  - `recommend_advance` → congratulatory note from `advance.txt`
-  - `recommend_decline` → respectful rejection from `decline.txt`
-  - `recommend_follow_up` → information request from `follow_up_need_info.txt` or `follow_up_linkedin.txt`
+- `correspondence`: required for all recommendation types — use the appropriate template from `references/template/` as directed by the correspondence playbook:
+  - `recommend_advance` → congratulatory note from `references/template/advance.txt`
+  - `recommend_decline` → respectful rejection from `references/template/decline.txt`
+  - `recommend_follow_up` → information request from `references/template/follow_up_need_info.txt` or `references/template/follow_up_linkedin.txt`
 
 Important:
 - Do not emit the final output structure early.
@@ -29,6 +29,7 @@ Important:
 - Do not return the final output structure immediately after loading this skill.
 - Return the final output structure only after you have completed the required research, applied the screening flow, and made a real recommendation decision based on the instructions in this skill.
 - If research is still in progress, continue using tools and thinking; do not produce the final structured output yet.
+- Do not create temporary or scratch files unless they are truly necessary for the task. Prefer reading skill references and tool results directly.
 
 ## Decision model
 

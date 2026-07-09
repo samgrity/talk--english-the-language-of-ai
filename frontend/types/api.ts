@@ -1,6 +1,5 @@
 // TypeScript interfaces matching the backend API responses
 
-// Enums matching backend
 export enum Department {
   ENGINEERING = "ENGINEERING",
   PRODUCT = "PRODUCT",
@@ -29,21 +28,6 @@ export enum SubDepartment {
   MKT_BRAND = "MKT_BRAND"
 }
 
-export enum CompanyType {
-  STARTUP = "STARTUP",
-  ENTERPRISE = "ENTERPRISE",
-  AGENCY = "AGENCY",
-  SCALEUP = "SCALEUP",
-  PUBLIC_COMPANY = "PUBLIC_COMPANY",
-  OTHER = "OTHER"
-}
-
-export enum CompanyVerificationStatus {
-  UNVERIFIED = "unverified",
-  VERIFIED = "verified",
-  FLAGGED = "flagged"
-}
-
 export enum FilterStatus {
   PENDING = "pending",
   COMPLETED = "completed",
@@ -65,14 +49,21 @@ export interface Address {
   region: string;
 }
 
-export interface Company {
+export interface HiringCompany {
   id: string;
   name: string;
   siteUrl: string;
   size: string;
-  type: CompanyType;
-  verificationStatus: CompanyVerificationStatus;
   address: Address;
+}
+
+export interface JobOpening {
+  title: string;
+  seniorityLevel: 'Senior' | 'Mid' | 'Junior';
+  department: Department;
+  subDepartments: SubDepartment[];
+  jobDescription: string;
+  company: HiringCompany;
 }
 
 export interface LocaleInfo {
@@ -105,13 +96,7 @@ export interface Application {
   mobile: string;
   bio: string;
   linkedinUrl: string;
-  currentRole: string;
-  seniorityLevel: 'Senior' | 'Mid' | 'Junior';
-  jobTitle: string;
-  department: Department;
-  subDepartments: SubDepartment[];
-  companyId: string;
-  company: Company;
+  jobOpening: JobOpening;
   assignee_id?: string;
   region?: string;
   screeningStatus: 'waiting_for_recruiter' | 'waiting_for_ai' | 'waiting_for_candidate' | 'advanced' | 'declined' | 'withdrawn';
@@ -131,8 +116,6 @@ export interface ApplicationSummary {
   seniorityLevel: string;
   department: Department;
   companyName: string;
-  companySize: string;
-  companyType: string;
   region: string;
   assignee_id?: string;
   assignee_name?: string;
@@ -163,11 +146,10 @@ export interface ApplicationUpdateRequest {
   seniorityLevel?: string;
   department?: Department;
   subDepartments?: SubDepartment[];
+  jobDescription?: string;
   region?: string;
   assignee_id?: string;
   companyName?: string;
   companySize?: string;
-  companyType?: string;
-  companyVerificationStatus?: CompanyVerificationStatus;
   companySiteUrl?: string;
 }

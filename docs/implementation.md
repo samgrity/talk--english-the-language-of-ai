@@ -39,7 +39,7 @@ This document explains how the prototype is structured today so new contributors
 - Hook stores both canonical and editable copies
 
 **Editing and saving fields:**
-- `frontend/components/screening/CandidateDetailsPane.tsx`: field changes call hook handlers
+- `frontend/components/screening/CandidateDetailsPane.tsx`: field changes call hook handlers for both candidate details and job-opening details
 - `frontend/hooks/useScreenCandidate.ts`: handlers update working copy and call `markDirty()`
 - Click "Update Details" → `saveApplication()` diffs canonical vs working copy
 - `frontend/lib/api.ts`: `updateApplication(id, changes)` → `PUT /api/applications/{id}`
@@ -88,7 +88,7 @@ The frontend is a Next.js app in `frontend/` with route-level pages and reusable
 ### Core Components and Hooks
 
 - `frontend/components/CandidateTable.tsx`: pipeline table and click-through to screening pages.
-- `frontend/components/screening/CandidateDetailsPane.tsx`: editable candidate and company fields.
+- `frontend/components/screening/CandidateDetailsPane.tsx`: editable candidate details plus a separate job-opening/hiring-company section.
 - `frontend/components/screening/UpdateHistoryPane.tsx`: activity timeline plus submission form area.
 - `frontend/components/DecisionForm.tsx`: reviewer action form and AI action button.
 - `frontend/hooks/useScreenCandidate.ts`: screening-page state orchestration.
@@ -99,7 +99,7 @@ The frontend is a Next.js app in `frontend/` with route-level pages and reusable
 
 ### Skills-based approach
 
-Instead of encoding the screening logic in code, all of it lives in a plain-English skill file (`skills/screen-candidate/SKILL.md`) with supporting reference documents. The model reads the skill, understands what it needs to do, and carries out the steps on its own.
+Instead of encoding the screening logic in code, all of it lives in a plain-English skill file (`skills/screen-candidate/SKILL.md`) with supporting reference documents. The model reads the skill, understands that it is screening a candidate against a specific job opening, and carries out the steps on its own.
 
 ### SkilledAgent
 

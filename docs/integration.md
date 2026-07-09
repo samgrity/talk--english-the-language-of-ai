@@ -57,7 +57,7 @@ The key constraint is: **preserve the repository protocol interfaces**. These ar
 
 ## Enum Alignment Required
 
-Verify and align `Department`, `SubDepartment`, and `CompanyType` in both `backend/app/core/enums.py` and `frontend/types/api.ts`.
+Verify and align `Department` and `SubDepartment` in both `backend/app/core/enums.py` and `frontend/types/api.ts`.
 
 ## Logging
 

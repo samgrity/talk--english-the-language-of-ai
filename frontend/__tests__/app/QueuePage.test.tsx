@@ -29,8 +29,6 @@ const mockApplications = [
     seniorityLevel: 'Senior',
     department: 'ENGINEERING',
     companyName: 'Acme',
-    companySize: 'Large',
-    companyType: 'Enterprise',
     region: 'North America/United States',
     screeningStatus: 'waiting_for_recruiter',
     assignee_id: 'rev1',

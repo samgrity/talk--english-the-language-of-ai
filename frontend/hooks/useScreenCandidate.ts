@@ -3,16 +3,9 @@ import { addUpdate, getApplication, updateApplication } from '@/lib/api';
 import { DEFAULT_REVIEWER_ID } from '@/lib/defaultReviewer';
 import { Application, ApplicationUpdateRequest, NewUpdateRequest, SubDepartment } from '@/types/api';
 
-type EditableApplicationField =
-  | 'email'
-  | 'mobile'
-  | 'bio'
-  | 'linkedinUrl'
-  | 'jobTitle'
-  | 'department'
-  | 'seniorityLevel';
-
-type EditableCompanyField = 'name' | 'size' | 'type' | 'verificationStatus' | 'siteUrl';
+type EditableApplicationField = 'email' | 'mobile' | 'bio' | 'linkedinUrl';
+type EditableJobOpeningField = 'title' | 'department' | 'seniorityLevel' | 'jobDescription';
+type EditableCompanyField = 'name' | 'size' | 'siteUrl';
 
 function toUpdateRequest(
   original: Application,
@@ -26,29 +19,34 @@ function toUpdateRequest(
   if (edited.mobile !== original.mobile) request.mobile = edited.mobile;
   if (edited.bio !== original.bio) request.bio = edited.bio;
   if (edited.linkedinUrl !== original.linkedinUrl) request.linkedinUrl = edited.linkedinUrl;
-  if (edited.jobTitle !== original.jobTitle) request.jobTitle = edited.jobTitle;
-  if (edited.seniorityLevel !== original.seniorityLevel) request.seniorityLevel = edited.seniorityLevel;
-  if (edited.department !== original.department) {
-    request.department = edited.department;
+
+  if (edited.jobOpening.title !== original.jobOpening.title) {
+    request.jobTitle = edited.jobOpening.title;
   }
-  if (JSON.stringify(edited.subDepartments) !== JSON.stringify(original.subDepartments)) {
-    request.subDepartments = edited.subDepartments;
+  if (edited.jobOpening.seniorityLevel !== original.jobOpening.seniorityLevel) {
+    request.seniorityLevel = edited.jobOpening.seniorityLevel;
+  }
+  if (edited.jobOpening.department !== original.jobOpening.department) {
+    request.department = edited.jobOpening.department;
+  }
+  if (
+    JSON.stringify(edited.jobOpening.subDepartments) !==
+    JSON.stringify(original.jobOpening.subDepartments)
+  ) {
+    request.subDepartments = edited.jobOpening.subDepartments;
+  }
+  if (edited.jobOpening.jobDescription !== original.jobOpening.jobDescription) {
+    request.jobDescription = edited.jobOpening.jobDescription;
   }
 
-  if (edited.company.name !== original.company.name) {
-    request.companyName = edited.company.name;
+  if (edited.jobOpening.company.name !== original.jobOpening.company.name) {
+    request.companyName = edited.jobOpening.company.name;
   }
-  if (edited.company.size !== original.company.size) {
-    request.companySize = edited.company.size;
+  if (edited.jobOpening.company.size !== original.jobOpening.company.size) {
+    request.companySize = edited.jobOpening.company.size;
   }
-  if (edited.company.type !== original.company.type) {
-    request.companyType = edited.company.type;
-  }
-  if (edited.company.verificationStatus !== original.company.verificationStatus) {
-    request.companyVerificationStatus = edited.company.verificationStatus;
-  }
-  if (edited.company.siteUrl !== original.company.siteUrl) {
-    request.companySiteUrl = edited.company.siteUrl;
+  if (edited.jobOpening.company.siteUrl !== original.jobOpening.company.siteUrl) {
+    request.companySiteUrl = edited.jobOpening.company.siteUrl;
   }
 
   return request;
@@ -94,11 +92,7 @@ export function useScreenCandidate(applicationId: string | null) {
   const updateFirstName = useCallback(
     (firstName: string) => {
       if (!editedApplication) return;
-      const next: Application = {
-        ...editedApplication,
-        firstName: firstName,
-      };
-      markDirty(next);
+      markDirty({ ...editedApplication, firstName });
     },
     [editedApplication, markDirty]
   );
@@ -106,11 +100,7 @@ export function useScreenCandidate(applicationId: string | null) {
   const updateLastName = useCallback(
     (lastName: string) => {
       if (!editedApplication) return;
-      const next: Application = {
-        ...editedApplication,
-        lastName: lastName,
-      };
-      markDirty(next);
+      markDirty({ ...editedApplication, lastName });
     },
     [editedApplication, markDirty]
   );
@@ -118,11 +108,24 @@ export function useScreenCandidate(applicationId: string | null) {
   const updateField = useCallback(
     (field: EditableApplicationField, value: string) => {
       if (!editedApplication) return;
-      const next: Application = {
+      markDirty({
         ...editedApplication,
         [field]: value,
-      };
-      markDirty(next);
+      });
+    },
+    [editedApplication, markDirty]
+  );
+
+  const updateJobOpeningField = useCallback(
+    (field: EditableJobOpeningField, value: string) => {
+      if (!editedApplication) return;
+      markDirty({
+        ...editedApplication,
+        jobOpening: {
+          ...editedApplication.jobOpening,
+          [field]: value,
+        },
+      });
     },
     [editedApplication, markDirty]
   );
@@ -130,14 +133,16 @@ export function useScreenCandidate(applicationId: string | null) {
   const updateCompanyField = useCallback(
     (field: EditableCompanyField, value: string) => {
       if (!editedApplication) return;
-      const next: Application = {
+      markDirty({
         ...editedApplication,
-        company: {
-          ...editedApplication.company,
-          [field]: value,
+        jobOpening: {
+          ...editedApplication.jobOpening,
+          company: {
+            ...editedApplication.jobOpening.company,
+            [field]: value,
+          },
         },
-      };
-      markDirty(next);
+      });
     },
     [editedApplication, markDirty]
   );
@@ -145,11 +150,13 @@ export function useScreenCandidate(applicationId: string | null) {
   const addSubDepartment = useCallback(
     (subDept: SubDepartment) => {
       if (!editedApplication) return;
-      const next: Application = {
+      markDirty({
         ...editedApplication,
-        subDepartments: [...editedApplication.subDepartments, subDept],
-      };
-      markDirty(next);
+        jobOpening: {
+          ...editedApplication.jobOpening,
+          subDepartments: [...editedApplication.jobOpening.subDepartments, subDept],
+        },
+      });
     },
     [editedApplication, markDirty]
   );
@@ -157,13 +164,15 @@ export function useScreenCandidate(applicationId: string | null) {
   const removeSubDepartment = useCallback(
     (subDept: SubDepartment) => {
       if (!editedApplication) return;
-      const next: Application = {
+      markDirty({
         ...editedApplication,
-        subDepartments: editedApplication.subDepartments.filter(
-          (s) => s !== subDept
-        ),
-      };
-      markDirty(next);
+        jobOpening: {
+          ...editedApplication.jobOpening,
+          subDepartments: editedApplication.jobOpening.subDepartments.filter(
+            (s) => s !== subDept
+          ),
+        },
+      });
     },
     [editedApplication, markDirty]
   );
@@ -203,6 +212,7 @@ export function useScreenCandidate(applicationId: string | null) {
     updateFirstName,
     updateLastName,
     updateField,
+    updateJobOpeningField,
     updateCompanyField,
     addSubDepartment,
     removeSubDepartment,

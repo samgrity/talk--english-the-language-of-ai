@@ -158,6 +158,10 @@ class SkilledAgent(Agent):
                     f"Required templates directory not found: {templates_src}"
                 )
 
+            shared_templates_dest = self._work_dir / _SKILLS_SUBDIR / _SKILL_REFERENCES_TEMPLATE_SUBDIR
+            shared_templates_dest.mkdir(parents=True, exist_ok=True)
+            shutil.copytree(templates_src, shared_templates_dest, dirs_exist_ok=True)
+
             for src in skills:
                 src = Path(src)
                 templates_dest = self._work_dir / _SKILLS_SUBDIR / src.name / _SKILL_REFERENCES_TEMPLATE_SUBDIR

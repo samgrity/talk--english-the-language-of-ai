@@ -29,21 +29,6 @@ class SubDepartment(str, Enum):
     MKT_BRAND = "MKT_BRAND"
 
 
-class CompanyType(str, Enum):
-    STARTUP = "STARTUP"
-    ENTERPRISE = "ENTERPRISE"
-    AGENCY = "AGENCY"
-    SCALEUP = "SCALEUP"
-    PUBLIC_COMPANY = "PUBLIC_COMPANY"
-    OTHER = "OTHER"
-
-
-class CompanyVerificationStatus(str, Enum):
-    UNVERIFIED = "unverified"
-    VERIFIED = "verified"
-    FLAGGED = "flagged"
-
-
 class FilterStatus(str, Enum):
     PENDING = "pending"
     COMPLETED = "completed"

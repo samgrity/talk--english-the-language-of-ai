@@ -4,7 +4,7 @@ from typing import Awaitable, Callable, Protocol
 
 from fastapi import HTTPException
 
-from app.services.ai_reviewer import AIReviewOutput, AIReviewer
+from app.services.ai_reviewer import AIReviewer
 from app.core.enums import FilterStatus, SubDepartment, UpdateActor, UpdateType
 from app.db.models.application import ApplicationModel
 from app.integrations.email_service import send_recruiter_message_to_candidate
@@ -16,7 +16,8 @@ from app.schemas.application import (
     Application,
     ApplicationSummary,
     ApplicationUpdateRequest,
-    Company,
+    HiringCompany,
+    JobOpening,
     LocaleInfo,
     StatusUpdateRequest,
     Update,
@@ -190,7 +191,6 @@ class ApplicationService:
 
         if update_type == UpdateType.ADVANCE:
             app.screening_status = "advanced"
-            app.company.verification_status = "verified"
         elif update_type == UpdateType.DECLINE:
             app.screening_status = "declined"
         elif update_type == UpdateType.WITHDRAW:
@@ -355,8 +355,6 @@ class ApplicationService:
             seniorityLevel=app.seniority_level,
             department=self._normalize_enum_string(app.department),
             companyName=app.company.name,
-            companySize=app.company.size,
-            companyType=self._normalize_enum_string(app.company.type),
             region=app.region or app.locale_region,
             assignee_id=app.assignee_id,
             assignee_name=assignee_names.get(app.assignee_id) if app.assignee_id else None,
@@ -374,29 +372,28 @@ class ApplicationService:
             mobile=app.mobile,
             bio=app.bio,
             linkedinUrl=app.linkedin_url,
-            currentRole=app.current_role,
-            seniorityLevel=app.seniority_level,
-            jobTitle=app.job_title,
-            department=self._normalize_enum_string(app.department),
-            subDepartments=[
-                SubDepartment(self._normalize_enum_string(value))
-                for value in app.sub_departments
-            ],
-            companyId=app.company_id,
-            company=Company(
-                id=app.company.id,
-                name=app.company.name,
-                siteUrl=app.company.site_url,
-                size=app.company.size,
-                type=self._normalize_enum_string(app.company.type),
-                verificationStatus=self._normalize_enum_string(app.company.verification_status),
-                address=Address(
-                    id=app.company.address_id,
-                    address1=app.company.address1,
-                    country=app.company.country,
-                    locality=app.company.locality,
-                    postalCode=app.company.postal_code,
-                    region=app.company.region,
+            jobOpening=JobOpening(
+                title=app.job_title,
+                seniorityLevel=app.seniority_level,
+                department=self._normalize_enum_string(app.department),
+                subDepartments=[
+                    SubDepartment(self._normalize_enum_string(value))
+                    for value in app.sub_departments
+                ],
+                jobDescription=app.job_description,
+                company=HiringCompany(
+                    id=app.company.id,
+                    name=app.company.name,
+                    siteUrl=app.company.site_url,
+                    size=app.company.size,
+                    address=Address(
+                        id=app.company.address_id,
+                        address1=app.company.address1,
+                        country=app.company.country,
+                        locality=app.company.locality,
+                        postalCode=app.company.postal_code,
+                        region=app.company.region,
+                    ),
                 ),
             ),
             assignee_id=app.assignee_id,
@@ -445,6 +442,8 @@ class ApplicationService:
             app.department = self._enum_value(value)
         elif key == "subDepartments":
             app.sub_departments = [self._enum_value(item) for item in list(value)]
+        elif key == "jobDescription":
+            app.job_description = str(value)
         elif key == "region":
             app.region = str(value)
         elif key == "assignee_id":
@@ -453,10 +452,6 @@ class ApplicationService:
             app.company.name = str(value)
         elif key == "companySize":
             app.company.size = str(value)
-        elif key == "companyType":
-            app.company.type = self._enum_value(value)
-        elif key == "companyVerificationStatus":
-            app.company.verification_status = self._enum_value(value)
         elif key == "companySiteUrl":
             app.company.site_url = str(value)
 

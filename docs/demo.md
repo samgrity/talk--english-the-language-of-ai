@@ -16,7 +16,7 @@ Walk through the docs folder and README briefly.
   - filter by status and free-text search
   - status priority ordering (waiting for recruiter → AI → candidate → completed)
 - **Screening workspace**
-  - left pane: editable candidate and company fields, save changes
+  - left pane: separate candidate-details and job-opening sections, including hiring company and job description
   - right pane: activity timeline (AI recommendations, recruiter decisions, candidate correspondence)
   - submission form: action types, correspondence draft
   - "Copy AI Recommendation" button – pre-fills form from latest AI recommendation
@@ -63,7 +63,7 @@ Walk through `docs/integration.md`:
 - Outbound: `send_recruiter_message_to_candidate` stub
 - DB layer: preserve repository interfaces, replace/adapt SQLAlchemy implementations
 - Screening behavior is driven by the `screen-candidate` skill and supporting references
-- Enum alignment: `Department`, `SubDepartment`, `CompanyType`
+- Enum alignment: `Department` and `SubDepartment`
 - Logfire token → full observability in production
 
 ## 6. Future work discussion

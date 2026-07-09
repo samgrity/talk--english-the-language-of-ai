@@ -16,7 +16,7 @@ In the future if the AI agent tends to make good decisions then their recommenda
 
 The app opens directly to the candidate pipeline. The pipeline can be filtered by screening status or a free-text search across any field, making it easy to triage across all candidates or focus on a specific slice of work.
 
-Opening a candidate brings up a two-pane workspace. The left side shows editable candidate and company details – the reviewer can correct or enrich any field and save changes at any time. The right side shows the full activity timeline: a chronological view of AI recommendations, reviewer decisions, and candidate correspondence all in one place. At the bottom of the right pane, the reviewer can submit a new update – choosing an action such as advancing, declining, requesting more information, or triggering a fresh AI screening.
+Opening a candidate brings up a two-pane workspace. The left side clearly separates candidate details from the job opening they are being screened for, including the hiring company and job description. The reviewer can correct or enrich any field and save changes at any time. The right side shows the full activity timeline: a chronological view of AI recommendations, reviewer decisions, and candidate correspondence all in one place. At the bottom of the right pane, the reviewer can submit a new update – choosing an action such as advancing, declining, requesting more information, or triggering a fresh AI screening.
 
 When the AI has run, its recommendation appears as an entry in the activity timeline with internal notes and a draft candidate-facing message. If the reviewer agrees, they can copy that recommendation directly into the submission form rather than writing from scratch.
 

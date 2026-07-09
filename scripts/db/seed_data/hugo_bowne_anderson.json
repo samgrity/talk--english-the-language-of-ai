@@ -2,67 +2,67 @@
   "id": "c105-hugo-bowne-anderson-20260708",
   "first_name": "Hugo",
   "last_name": "Bowne-Anderson",
-  "email": "hugo@gmail.com",
-  "mobile": "+61-555-1105",
-  "bio": "Independent data and AI scientist, consultant, educator, writer, and podcaster with a background in developer relations, data science education, and machine learning communication.",
-  "linkedin_url": "https://www.linkedin.com/in/hugo-bowne-anderson-045939a5/",
-  "current_role": "independent_data_ai_scientist",
-  "seniority_level": "Senior",
-  "job_title": "Independent Data and AI Scientist",
-  "department": "ENGINEERING",
-  "sub_departments": ["ENG_DATA", "ENG_FRONTEND"],
-  "company": {
-    "id": "comp-hugo-independent",
-    "name": "Independent",
-    "site_url": "https://hugobowne.github.io/",
-    "size": "1-10",
-    "type": "OTHER",
-    "verification_status": "unverified",
-    "address_id": "addr-hugo-independent",
-    "address1": "Remote",
-    "country": "AU",
-    "locality": "Sydney",
-    "postal_code": "2010",
-    "region": "NSW"
+  "email": "hugo.bowne.anderson@gmail.com",
+  "mobile": "+1-555-1105",
+  "bio": "Independent data and AI educator, communicator, and consultant with strong public credibility but limited detail in this application about directly relevant recent execution.",
+  "linkedin_url": "https://www.linkedin.com/in/hugobowne/",
+  "job_opening": {
+    "title": "Head of AI Learning Products",
+    "seniority_level": "Senior",
+    "department": "PRODUCT",
+    "sub_departments": ["PROD_WEB", "PROD_GROWTH"],
+    "job_description": "Lead an AI learning and product experience for technical practitioners. We need evidence of hands-on AI product work, educational product design, and examples of shipped programs or systems that improved learner outcomes.",
+    "company": {
+      "id": "comp-learningloop",
+      "name": "LearningLoop",
+      "site_url": "https://learningloop.example.com/",
+      "size": "51-200",
+      "address_id": "addr-learningloop",
+      "address1": "500 Mission Street",
+      "country": "US",
+      "locality": "San Francisco",
+      "postal_code": "94105",
+      "region": "CA"
+    }
   },
   "assignee_id": null,
-  "region": "Oceania/Australia",
+  "region": "North America/United States",
   "screening_status": "waiting_for_candidate",
-  "created_at": "2026-07-08T10:04:00",
-  "updated_at": "2026-07-08T11:22:00",
+  "created_at": "2026-07-08T10:20:00",
+  "updated_at": "2026-07-08T12:05:00",
   "locale": {
-    "country": "AU",
-    "preferred_language": "en-AU",
-    "region": "ANZ",
-    "store_id": "au"
+    "country": "US",
+    "preferred_language": "en-US",
+    "region": "NA",
+    "store_id": "us"
   },
   "updates": [
     {
       "id": "upd-hugo-1",
-      "timestamp": "2026-07-08T10:50:00",
+      "timestamp": "2026-07-08T10:40:00",
       "actor": "human_recruiter",
-      "internal_notes": "Interesting profile, but the personal email makes me want a deeper check.",
-      "recruiter_id": "rev3",
       "update_type": "request_ai_screen",
+      "internal_notes": "Profile looks promising. Please judge fit specifically against the learning-product leadership parts of the opening.",
+      "recruiter_id": "rev1",
       "correspondence": null
     },
     {
       "id": "upd-hugo-2",
-      "timestamp": "2026-07-08T11:08:00",
+      "timestamp": "2026-07-08T11:20:00",
       "actor": "ai_agent",
-      "internal_notes": "[✓] Experience fit: Independent data and AI scientist profile is strong and relevant to senior AI/ML work.\n[✓] Company credibility: Public site and LinkedIn presence support a legitimate independent consulting/education practice.\n[ ] Employment verification: Application used a personal email and no company-domain identity linkage is present.\n[✗] Email risk check: Personal mailbox requires stronger corroboration.\n[✓] Prior updates: Human recruiter asked for extra verification; this recommendation is aligned.\n\nRecommendation: recommend_follow_up\nRationale: Public evidence supports the candidate's background, but the personal email leaves current professional identity insufficiently verified.\nRationale: A narrow follow-up asking for a direct work identity signal is the safest next step.",
-      "recruiter_id": null,
       "update_type": "recommend_follow_up",
-      "correspondence": "Hi Hugo,\n\nThanks for your application. Your background looks strong, but to continue the screening we need one more piece of verification.\n\nPlease reply with either:\n- a direct, named company-domain email, or\n- a link confirming your current professional role (for example, a company page or LinkedIn profile that clearly reflects your current work).\n\nBest,\nPete Mitchell\nHireFlow Recruiting"
+      "internal_notes": "[✓] Role fit: Public profile suggests a plausible match in AI education and communication, but the evidence is still somewhat high-level.\n[ ] Evidence quality: The application and public profile do not yet show enough concrete examples of shipped learning-product systems for this specific opening.\n[ ] Job-opening alignment: The role asks for strong product and execution evidence, and that mapping is not yet specific enough.\n[✗] Email risk check: Personal mailbox increases the need for stronger corroborating evidence.\n[✓] Missing evidence: Ask for one or two concrete examples of learning products or AI systems most relevant to this role.\n\nRecommendation: recommend_follow_up\nRationale: The candidate looks directionally strong, but the current evidence is too general for an advance decision.\nRationale: A narrow follow-up focused on recent, role-relevant examples could resolve the uncertainty.",
+      "recruiter_id": null,
+      "correspondence": "Hi Hugo,\n\nThanks for applying. To continue the screening for this role, could you reply with one or two concrete examples of learning products or AI systems you've shipped that best match this opening?\n\nBest,\nJohn Berryman\nHireFlow"
     },
     {
       "id": "upd-hugo-3",
-      "timestamp": "2026-07-08T11:22:00",
+      "timestamp": "2026-07-08T12:05:00",
       "actor": "human_recruiter",
-      "internal_notes": "Using the AI recommendation as-is and requesting a small amount of extra verification from the candidate.",
-      "recruiter_id": "rev3",
       "update_type": "follow_up",
-      "correspondence": "Hi Hugo,\n\nThanks for your application. Your background looks strong, but to continue the screening we need one more piece of verification.\n\nPlease reply with either:\n- a direct, named company-domain email, or\n- a link confirming your current professional role (for example, a company page or LinkedIn profile that clearly reflects your current work).\n\nBest,\nPete Mitchell\nHireFlow Recruiting"
+      "internal_notes": "Using the AI recommendation as-is and asking for a small amount of concrete role-fit evidence.",
+      "recruiter_id": "rev1",
+      "correspondence": "Hi Hugo,\n\nThanks for applying. To continue the screening for this role, could you reply with one or two concrete examples of learning products or AI systems you've shipped that best match this opening?\n\nBest,\nJohn Berryman\nHireFlow"
     }
   ]
 }

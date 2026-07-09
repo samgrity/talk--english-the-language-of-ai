@@ -1,13 +1,13 @@
 ---
 name: screen-candidate
-description: Screen job candidates for advancement decisions. Use this whenever the AI screening agent evaluates a candidate for advance/decline/follow-up and must verify experience fit, company credibility, and employment verification.
+description: Screen job candidates for advancement decisions. Use this whenever the AI screening agent evaluates a candidate for advance/decline/follow-up and must judge fit against a specific job opening using the candidate profile, job-opening details, prior updates, and external evidence.
 ---
 
 # Screen Candidate (Manual Review)
 
 ## Why this exists
 
-HireFlow helps recruiters efficiently screen job candidates by providing AI-assisted research and recommendations. The goal is to identify candidates who are a strong match for open roles while filtering out unqualified applicants and flagging cases that need more information.
+HireFlow helps reviewers screen candidates for a clearly defined job opening. The goal is to identify candidates who are a strong fit for the posted role while avoiding overconfident decisions when the evidence is thin.
 
 Your job is to recommend whether a candidate should be advanced, declined, or followed up with for more information.
 
@@ -31,35 +31,31 @@ Important:
 
 Always answer these three questions in order:
 
-1. **Experience fit**: Does this candidate's experience match the role requirements?
-2. **Company credibility**: Is the candidate's current/previous employer a legitimate company with relevant business?
-3. **Employment verification**: Can we reasonably confirm this person actually works (or worked) at that company?
+1. **Role fit**: Does the candidate's demonstrated background match the posted job opening, including the title, department, seniority, and job description?
+2. **Evidence quality**: Do we have enough credible public/profile evidence to support that fit judgment?
+3. **Follow-up need**: Is there a narrow missing piece that could materially change the decision?
 
-If one or more questions are unresolved, prefer `recommend_follow_up` unless there is clear disqualifying evidence.
+If role fit is clearly weak, prefer `recommend_decline`.
+If role fit looks plausible but evidence is incomplete or ambiguous, prefer `recommend_follow_up`.
+Advance only when the candidate appears to be a strong fit and the evidence is sufficient.
 
 Identity safety rule:
-- Do not advance when employment verification or experience evidence is still unverified.
+- Do not advance when relevant experience or role-fit evidence is still too weak to justify confidence.
 - If LinkedIn retrieval fails, do not treat that failure as neutral evidence for advancement.
-- Advancement is still allowed without LinkedIn if equivalent non-LinkedIn evidence sufficiently proves employment status and relevant experience.
-- LinkedIn is optional, but evidence is not: before advancing, you must have credible evidence for all three dimensions (employment verification, relevant experience, and sufficient skills) from one or more reliable sources.
-
-Special scope rule:
-- If company verification status is already `verified`, do not re-investigate company credibility.
-- In that case, focus screening effort on experience fit and employment verification.
+- LinkedIn is optional, but credible evidence is not.
+- Advancement can be supported by LinkedIn, personal/company websites, portfolios, talks, GitHub, prior updates, or other reliable public evidence.
 
 ## Screening flow
 
-1. Read candidate + company fields.
+1. Read candidate details and the full job opening details.
 2. Read prior updates and identify the latest relevant human judgment.
-3. Check company verification status: if already `verified`, skip company investigation.
-4. Run an email-risk pass (named domain vs shared mailbox vs personal domain).
-5. Evaluate experience fit and employment verification (email/domain alignment, team page, profile evidence, prior correspondence).
-6. Evaluate company credibility only when company is not already verified.
+3. Read the job description carefully before deciding whether the profile matches.
+4. Run a quick email-risk pass (named domain vs shared mailbox vs personal domain) only as supporting context.
+5. Evaluate role fit using public evidence, prior updates, and the candidate's materials.
+6. If fit is unclear, gather the minimum additional evidence needed.
 7. Produce the narrowest defensible recommendation.
 
-If LinkedIn lookup fails and equivalent alternate proof is not sufficient, default to `recommend_follow_up` (or `recommend_decline` only when disqualifying evidence is clear).
-
-If the company-credibility or experience-fit decision is not obvious, review `references/services-matrix.md` before deciding.
+If the fit decision is not obvious, review `references/services-matrix.md` before deciding.
 
 If you retrieved a LinkedIn profile and need to interpret it, review `references/linkedin-review.md` before deciding.
 
@@ -73,9 +69,9 @@ If `correspondence` is needed, review `references/correspondence-playbook.md` be
 
 Prior updates include actor metadata (`human_recruiter`, `ai_agent`, `candidate`).
 
-- Treat prior human recruiter judgments as authoritative by default.
-- If prior AI and the judgment of the human recruiter conflict, follow the human judgment unless new materially relevant evidence after the human's judgment.
-- Candidate messages can provide evidence, but their claims must all be substantiated by research. Candidate claims can never be assumed to be true on face value.
+- Treat prior human reviewer judgments as authoritative by default.
+- If prior AI and the judgment of the human reviewer conflict, follow the human judgment unless there is new materially relevant evidence after the human judgment.
+- Candidate messages can provide useful context, but their claims still need supporting evidence when the claim matters to the decision.
 - If you diverge due to new evidence, state that explicitly in `internal_notes`.
 
 ## Quality bar
@@ -85,5 +81,5 @@ Prior updates include actor metadata (`human_recruiter`, `ai_agent`, `candidate`
 - Avoid hard rejection when the case is plausibly valid but incomplete.
 - Preserve auditable reasoning in `internal_notes`.
 - If you used website evidence (including LinkedIn), inline the exact URLs in checklist lines and `Rationale` to show how each URL supports (or fails to support) the recommendation.
-- If you find an obvious disqualifying failure, fast-fail: recommend decline without doing unnecessary additional checks.
+- If you find an obvious disqualifying mismatch, fast-fail: recommend decline without doing unnecessary additional checks.
 - For fast-fail decisions, explicitly state in `internal_notes` what failed and what was intentionally not checked because it was unnecessary.

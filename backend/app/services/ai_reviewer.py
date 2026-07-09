@@ -128,30 +128,26 @@ class AIReviewer(SkilledAgent):
 
         application = await service.get_application(application_id)
 
-        company_verification_status = getattr(
-            application.company.verificationStatus,
-            "value",
-            str(application.company.verificationStatus),
-        )
-        company_scope_guidance = (
-            " (Company already verified: do NOT spend time re-investigating the company.)"
-            if company_verification_status == "verified"
-            else ""
-        )
+        job_opening = application.jobOpening
+        hiring_company = job_opening.company
+        sub_departments = ", ".join(str(value) for value in job_opening.subDepartments) or "None"
 
         prompt = (
             f"Application ID: {application_id}\n"
             f"Candidate: first_name=\"{application.firstName}\", last_name=\"{application.lastName}\"\n"
             f"Email: {application.email}\n"
-            f"Job title: {application.jobTitle}\n"
-            f"Seniority level: {application.seniorityLevel}\n"
-            f"Company: {application.company.name}\n"
-            f"Company site: {application.company.siteUrl}\n"
-            f"Company type: {application.company.type}\n"
-            f"Company verification status: {company_verification_status}{company_scope_guidance}\n"
+            f"Phone: {application.mobile}\n"
+            f"Bio: {application.bio}\n"
             f"LinkedIn URL: {application.linkedinUrl}\n"
-            f"Department: {application.department}\n"
-            f"Region: {application.region}\n"
+            f"Job opening title: {job_opening.title}\n"
+            f"Job opening seniority level: {job_opening.seniorityLevel}\n"
+            f"Job opening department: {job_opening.department}\n"
+            f"Job opening sub-departments: {sub_departments}\n"
+            f"Job opening description: {job_opening.jobDescription}\n"
+            f"Hiring company: {hiring_company.name}\n"
+            f"Hiring company site: {hiring_company.siteUrl}\n"
+            f"Hiring company size: {hiring_company.size}\n"
+            f"Candidate region: {application.region}\n"
             "\nPrior updates (chronological; later updates are last; each entry is markdown with YAML frontmatter):\n"
             f"{_format_prior_updates_for_prompt(application)}\n"
             "\nPlease screen this candidate using the screen_candidate skill."

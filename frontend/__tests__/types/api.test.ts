@@ -5,10 +5,9 @@
 import {
   Application,
   ApplicationSummary,
-  NewUpdateRequest,
-  CompanyType,
-  CompanyVerificationStatus,
   Department,
+  JobOpening,
+  NewUpdateRequest,
   Recruiter,
   SubDepartment,
   Update,
@@ -43,25 +42,37 @@ describe('API Schema Types', () => {
       expect(SubDepartment.MKT_GROWTH).toBe('MKT_GROWTH');
       expect(SubDepartment.MKT_BRAND).toBe('MKT_BRAND');
     });
-
-    it('should have CompanyType enum with expected values', () => {
-      expect(CompanyType.STARTUP).toBe('STARTUP');
-      expect(CompanyType.ENTERPRISE).toBe('ENTERPRISE');
-      expect(CompanyType.AGENCY).toBe('AGENCY');
-      expect(CompanyType.SCALEUP).toBe('SCALEUP');
-      expect(CompanyType.PUBLIC_COMPANY).toBe('PUBLIC_COMPANY');
-      expect(CompanyType.OTHER).toBe('OTHER');
-    });
-
-    it('should have CompanyVerificationStatus enum with expected values', () => {
-      expect(CompanyVerificationStatus.UNVERIFIED).toBe('unverified');
-      expect(CompanyVerificationStatus.VERIFIED).toBe('verified');
-      expect(CompanyVerificationStatus.FLAGGED).toBe('flagged');
-    });
   });
 
   describe('Type Compatibility', () => {
-    it('should accept Application with new assignee_id and region fields', () => {
+    it('should accept JobOpening with hiring company details', () => {
+      const jobOpening: JobOpening = {
+        title: 'Senior Engineer',
+        seniorityLevel: 'Senior',
+        department: Department.ENGINEERING,
+        subDepartments: [SubDepartment.ENG_BACKEND],
+        jobDescription: 'Build agent systems and backend services.',
+        company: {
+          id: 'comp-id',
+          name: 'TestCo',
+          siteUrl: 'https://example.com',
+          size: '10-49',
+          address: {
+            address1: '123 Main St',
+            country: 'US',
+            id: 'addr-id',
+            locality: 'City',
+            postalCode: '12345',
+            region: 'State'
+          }
+        }
+      };
+
+      expect(jobOpening.company.name).toBe('TestCo');
+      expect(jobOpening.subDepartments).toEqual(['ENG_BACKEND']);
+    });
+
+    it('should accept Application with nested jobOpening', () => {
       const application: Application = {
         id: 'test-id',
         firstName: 'John',
@@ -70,19 +81,17 @@ describe('API Schema Types', () => {
         mobile: '+1234567890',
         bio: 'Test bio',
         linkedinUrl: 'https://linkedin.com/in/johndoe',
-        currentRole: 'Engineer',
-        seniorityLevel: 'Senior',
-        jobTitle: 'Senior Engineer',
-        department: Department.ENGINEERING,
-        subDepartments: [SubDepartment.ENG_BACKEND],
-        companyId: 'comp-id',
+        jobOpening: {
+          title: 'Senior Engineer',
+          seniorityLevel: 'Senior',
+          department: Department.ENGINEERING,
+          subDepartments: [SubDepartment.ENG_BACKEND],
+          jobDescription: 'Build agent systems and backend services.',
           company: {
             id: 'comp-id',
             name: 'TestCo',
             siteUrl: 'https://example.com',
             size: '10-49',
-            type: CompanyType.ENTERPRISE,
-            verificationStatus: CompanyVerificationStatus.UNVERIFIED,
             address: {
               address1: '123 Main St',
               country: 'US',
@@ -91,7 +100,8 @@ describe('API Schema Types', () => {
               postalCode: '12345',
               region: 'State'
             }
-          },
+          }
+        },
         assignee_id: 'rec1',
         region: 'North America/United States',
         screeningStatus: 'waiting_for_recruiter',
@@ -108,11 +118,11 @@ describe('API Schema Types', () => {
 
       expect(application.assignee_id).toBe('rec1');
       expect(application.region).toBe('North America/United States');
-      expect(application.department).toBe('ENGINEERING');
-      expect(application.subDepartments).toEqual(['ENG_BACKEND']);
+      expect(application.jobOpening.department).toBe('ENGINEERING');
+      expect(application.jobOpening.subDepartments).toEqual(['ENG_BACKEND']);
     });
 
-    it('should accept ApplicationSummary with new fields', () => {
+    it('should accept ApplicationSummary with job opening summary fields', () => {
       const summary: ApplicationSummary = {
         id: 'test-id',
         firstName: 'John',
@@ -123,8 +133,6 @@ describe('API Schema Types', () => {
         seniorityLevel: 'Senior',
         department: Department.ENGINEERING,
         companyName: 'TestCo',
-        companySize: '10-49',
-        companyType: 'ENTERPRISE',
         region: 'North America/United States',
         assignee_id: 'rec1',
         assignee_name: 'Jane Recruiter',
@@ -182,19 +190,17 @@ describe('API Schema Types', () => {
         mobile: '+1234567890',
         bio: 'Test bio',
         linkedinUrl: 'https://linkedin.com/in/janedoe',
-        currentRole: 'Designer',
-        seniorityLevel: 'Senior',
-        jobTitle: 'Principal Designer',
-        department: Department.DESIGN,
-        subDepartments: [SubDepartment.DES_UX, SubDepartment.DES_UI],
-        companyId: 'comp-id',
+        jobOpening: {
+          title: 'Principal Designer',
+          seniorityLevel: 'Senior',
+          department: Department.DESIGN,
+          subDepartments: [SubDepartment.DES_UX, SubDepartment.DES_UI],
+          jobDescription: 'Lead a design systems and product design practice.',
           company: {
             id: 'comp-id',
             name: 'TestCo',
             siteUrl: 'https://example.com',
             size: '10-49',
-            type: CompanyType.STARTUP,
-            verificationStatus: CompanyVerificationStatus.VERIFIED,
             address: {
               address1: '456 Oak St',
               country: 'US',
@@ -203,7 +209,8 @@ describe('API Schema Types', () => {
               postalCode: '12345',
               region: 'State'
             }
-          },
+          }
+        },
         assignee_id: undefined,
         region: undefined,
         screeningStatus: 'waiting_for_candidate',
@@ -220,7 +227,7 @@ describe('API Schema Types', () => {
 
       expect(application.assignee_id).toBeUndefined();
       expect(application.region).toBeUndefined();
-      expect(application.subDepartments).toHaveLength(2);
+      expect(application.jobOpening.subDepartments).toHaveLength(2);
     });
 
     it('should allow ApplicationSummary with null assignee fields', () => {
@@ -234,8 +241,6 @@ describe('API Schema Types', () => {
         seniorityLevel: 'Senior',
         department: Department.DESIGN,
         companyName: 'TestCo',
-        companySize: '10-49',
-        companyType: 'STARTUP',
         region: 'North America/Canada',
         assignee_id: undefined,
         assignee_name: undefined,

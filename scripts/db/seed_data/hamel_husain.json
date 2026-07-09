@@ -4,32 +4,32 @@
   "last_name": "Husain",
   "email": "hamel@parlance-labs.com",
   "mobile": "+1-555-1104",
-  "bio": "Machine learning engineer and educator focused on making ML and LLM evaluation more accessible through tools, training, and open source software.",
+  "bio": "AI engineer, educator, and product builder focused on evaluation, tooling, and practical LLM systems.",
   "linkedin_url": "https://www.linkedin.com/in/hamelhusain/",
-  "current_role": "ai_engineer_educator",
-  "seniority_level": "Senior",
-  "job_title": "AI Engineer & Educator",
-  "department": "ENGINEERING",
-  "sub_departments": ["ENG_DATA", "ENG_INFRA"],
-  "company": {
-    "id": "comp-hamel-parlance",
-    "name": "Parlance Labs",
-    "site_url": "https://parlance-labs.com/",
-    "size": "1-10",
-    "type": "AGENCY",
-    "verification_status": "unverified",
-    "address_id": "addr-hamel-parlance",
-    "address1": "Remote",
-    "country": "US",
-    "locality": "Remote",
-    "postal_code": "00000",
-    "region": "US"
+  "job_opening": {
+    "title": "Principal AI Systems Engineer",
+    "seniority_level": "Senior",
+    "department": "ENGINEERING",
+    "sub_departments": ["ENG_DATA", "ENG_INFRA"],
+    "job_description": "Own high-leverage AI systems work spanning evaluation, agent workflows, developer tooling, and production ML productization. The role favors builders who can teach, prototype, and ship.",
+    "company": {
+      "id": "comp-northstar-ai",
+      "name": "Northstar AI",
+      "site_url": "https://northstar-ai.example.com/",
+      "size": "11-50",
+      "address_id": "addr-northstar-ai",
+      "address1": "Remote",
+      "country": "US",
+      "locality": "San Francisco",
+      "postal_code": "94105",
+      "region": "CA"
+    }
   },
   "assignee_id": null,
   "region": "North America/United States",
   "screening_status": "advanced",
-  "created_at": "2026-07-08T10:03:00",
-  "updated_at": "2026-07-08T11:18:00",
+  "created_at": "2026-07-08T10:15:00",
+  "updated_at": "2026-07-08T12:00:00",
   "locale": {
     "country": "US",
     "preferred_language": "en-US",
@@ -39,30 +39,30 @@
   "updates": [
     {
       "id": "upd-hamel-1",
-      "timestamp": "2026-07-08T10:45:00",
+      "timestamp": "2026-07-08T10:30:00",
       "actor": "human_recruiter",
-      "internal_notes": "Strong background. Please run AI screening before I make the final call.",
-      "recruiter_id": "rev2",
       "update_type": "request_ai_screen",
+      "internal_notes": "Strong first impression. Please do a full role-fit review against the opening.",
+      "recruiter_id": "rev1",
       "correspondence": null
     },
     {
       "id": "upd-hamel-2",
-      "timestamp": "2026-07-08T11:05:00",
+      "timestamp": "2026-07-08T11:10:00",
       "actor": "ai_agent",
-      "internal_notes": "[✓] Experience fit: AI engineer and educator profile directly matches senior ML/AI platform work; LinkedIn and public profile show deep experience in tooling, evaluation, and production ML.\n[✓] Company credibility: Parlance Labs is an active AI consultancy/training business with clear public presence and relevant work.\n[✓] Employment verification: Named company-domain email matches the company and public profile.\n[✓] Email risk check: Non-personal named mailbox.\n[✓] Prior updates: Human recruiter requested standard screening only; no conflicting judgment.\n\nRecommendation: recommend_advance\nRationale: Public background and company evidence support a strong match for advanced AI product and engineering work.\nRationale: Identity and current role are sufficiently corroborated through company-domain email and professional profile.",
-      "recruiter_id": null,
       "update_type": "recommend_advance",
-      "correspondence": "Hi Hamel,\n\nThanks for your application. We'd like to move you forward to the next step in the process.\n\nBest,\nPete Mitchell\nHireFlow Recruiting"
+      "internal_notes": "[✓] Role fit: Public profile and work history align closely with AI systems, evaluation, and practical tooling work relevant to this opening.\n[✓] Evidence quality: LinkedIn and public materials provide enough concrete detail to support a confident fit judgment.\n[✓] Job-opening alignment: The background maps directly onto the opening's emphasis on evaluation, tooling, and shipping AI systems.\n[✓] Email risk check: Named professional mailbox; low concern.\n[✓] Missing evidence: None material.\n\nRecommendation: recommend_advance\nRationale: The candidate's public body of work strongly matches the job opening's requirements.\nRationale: This is a clear fit with enough evidence to advance without extra follow-up.",
+      "recruiter_id": null,
+      "correspondence": "Hi Hamel,\n\nThanks for applying. We'd love to move you forward to the next step for this role.\n\nBest,\nJohn Berryman\nHireFlow"
     },
     {
       "id": "upd-hamel-3",
-      "timestamp": "2026-07-08T11:18:00",
+      "timestamp": "2026-07-08T12:00:00",
       "actor": "human_recruiter",
-      "internal_notes": "Agree with the AI review. Advancing to the next stage.",
-      "recruiter_id": "rev2",
       "update_type": "advance",
-      "correspondence": "Hi Hamel,\n\nWe were impressed by your background and would like to move you forward to the next stage. We'll be in touch shortly with scheduling details.\n\nBest,\nJosh Carter\nHireFlow Recruiting"
+      "internal_notes": "Reviewed the recommendation and agreed. Advancing to the next stage.",
+      "recruiter_id": "rev1",
+      "correspondence": "Hi Hamel,\n\nThanks for applying. We'd love to move you forward to the next step for this role.\n\nBest,\nJohn Berryman\nHireFlow"
     }
   ]
 }

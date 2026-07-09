@@ -15,22 +15,28 @@ def test_get_application_by_id(client):
     app = response.json()
     assert app["id"] == app_id
     assert "updates" in app
-    assert app["company"]["verificationStatus"] in ["unverified", "verified", "flagged"]
+    assert "jobOpening" in app
+    assert "company" in app["jobOpening"]
 
 
-def test_update_application_can_change_company_verification_status(client):
+def test_update_application_can_change_job_opening_fields(client):
     listing = client.get("/api/applications")
     app_id = listing.json()[0]["id"]
 
     response = client.put(
         f"/api/applications/{app_id}",
-        json={"companyVerificationStatus": "verified"},
+        json={
+            "jobDescription": "Updated role summary for the opening.",
+            "companySiteUrl": "https://updated.example.com",
+        },
     )
     assert response.status_code == 200
 
     verify = client.get(f"/api/applications/{app_id}")
     assert verify.status_code == 200
-    assert verify.json()["company"]["verificationStatus"] == "verified"
+    detail = verify.json()
+    assert detail["jobOpening"]["jobDescription"] == "Updated role summary for the opening."
+    assert detail["jobOpening"]["company"]["siteUrl"] == "https://updated.example.com"
 
 
 def test_get_application_not_found(client):

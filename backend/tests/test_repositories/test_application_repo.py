@@ -17,6 +17,6 @@ async def test_list_all_filters_by_assignee(db_session):
 async def test_list_all_searches_matching_name(db_session):
     repo = SqlAlchemyApplicationRepository(db_session)
 
-    apps = await repo.list_all(FilterStatus.ALL, "jane", None)
+    apps = await repo.list_all(FilterStatus.ALL, "john", None)
     assert len(apps) > 0
-    assert any("jane" in f"{app.first_name} {app.last_name}".lower() for app in apps)
+    assert any("john" in f"{app.first_name} {app.last_name}".lower() for app in apps)

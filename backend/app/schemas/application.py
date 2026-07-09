@@ -2,14 +2,7 @@ from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict
 
-from app.core.enums import (
-    CompanyVerificationStatus,
-    CompanyType,
-    Department,
-    SubDepartment,
-    UpdateActor,
-    UpdateType,
-)
+from app.core.enums import Department, SubDepartment, UpdateActor, UpdateType
 
 
 class Address(BaseModel):
@@ -21,14 +14,21 @@ class Address(BaseModel):
     region: str
 
 
-class Company(BaseModel):
+class HiringCompany(BaseModel):
     id: str
     name: str
     siteUrl: str
     size: str
-    type: CompanyType
-    verificationStatus: CompanyVerificationStatus
     address: Address
+
+
+class JobOpening(BaseModel):
+    title: str
+    seniorityLevel: str
+    department: Department
+    subDepartments: list[SubDepartment]
+    jobDescription: str
+    company: HiringCompany
 
 
 class LocaleInfo(BaseModel):
@@ -58,13 +58,7 @@ class Application(BaseModel):
     mobile: str
     bio: str
     linkedinUrl: str
-    currentRole: str
-    seniorityLevel: str
-    jobTitle: str
-    department: Department
-    subDepartments: list[SubDepartment]
-    companyId: str
-    company: Company
+    jobOpening: JobOpening
     assignee_id: str | None = None
     region: str | None = None
     screeningStatus: str
@@ -84,8 +78,6 @@ class ApplicationSummary(BaseModel):
     seniorityLevel: str
     department: Department
     companyName: str
-    companySize: str
-    companyType: str
     region: str
     assignee_id: str | None = None
     assignee_name: str | None = None
@@ -116,10 +108,9 @@ class ApplicationUpdateRequest(BaseModel):
     seniorityLevel: str | None = None
     department: Department | None = None
     subDepartments: list[SubDepartment] | None = None
+    jobDescription: str | None = None
     region: str | None = None
     assignee_id: str | None = None
     companyName: str | None = None
     companySize: str | None = None
-    companyType: CompanyType | None = None
-    companyVerificationStatus: CompanyVerificationStatus | None = None
     companySiteUrl: str | None = None

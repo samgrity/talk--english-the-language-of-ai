@@ -21,6 +21,7 @@ export default function ScreenPage() {
     updateFirstName,
     updateLastName,
     updateField,
+    updateJobOpeningField,
     updateCompanyField,
     addSubDepartment,
     removeSubDepartment,
@@ -98,6 +99,7 @@ export default function ScreenPage() {
             onFirstNameChange={updateFirstName}
             onLastNameChange={updateLastName}
             onFieldChange={updateField}
+            onJobOpeningFieldChange={updateJobOpeningField}
             onCompanyFieldChange={updateCompanyField}
             onSubDepartmentAdd={addSubDepartment}
             onSubDepartmentRemove={removeSubDepartment}

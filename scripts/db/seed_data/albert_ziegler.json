@@ -3,66 +3,66 @@
   "first_name": "Albert",
   "last_name": "Ziegler",
   "email": "albert@xbow.com",
-  "mobile": "+46-555-1106",
-  "bio": "AI researcher and engineering leader focused on applying machine learning to software engineering and security, currently leading AI work at XBOW.",
-  "linkedin_url": "https://www.linkedin.com/in/albert-ziegler-6b3b24138/",
-  "current_role": "head_of_ai",
-  "seniority_level": "Senior",
-  "job_title": "Head of AI",
-  "department": "ENGINEERING",
-  "sub_departments": ["ENG_SECURITY", "ENG_DATA"],
-  "company": {
-    "id": "comp-albert-xbow",
-    "name": "XBOW",
-    "site_url": "https://xbow.com/",
-    "size": "11-50",
-    "type": "STARTUP",
-    "verification_status": "unverified",
-    "address_id": "addr-albert-xbow",
-    "address1": "Remote",
-    "country": "SE",
-    "locality": "Uppsala",
-    "postal_code": "75320",
-    "region": "Uppsala County"
+  "mobile": "+1-555-1106",
+  "bio": "AI researcher and security founder with deep technical credibility in offensive security and code intelligence.",
+  "linkedin_url": "https://www.linkedin.com/in/albertziegler/",
+  "job_opening": {
+    "title": "VP of Brand Marketing",
+    "seniority_level": "Senior",
+    "department": "MARKETING",
+    "sub_departments": ["MKT_BRAND", "MKT_CONTENT"],
+    "job_description": "Lead brand marketing, editorial strategy, and campaign development for a growing AI company. We need a proven marketing leader with strong narrative, positioning, and demand-generation examples.",
+    "company": {
+      "id": "comp-beacon-ai",
+      "name": "Beacon AI",
+      "site_url": "https://beacon-ai.example.com/",
+      "size": "201-500",
+      "address_id": "addr-beacon-ai",
+      "address1": "100 Congress Avenue",
+      "country": "US",
+      "locality": "Austin",
+      "postal_code": "78701",
+      "region": "TX"
+    }
   },
   "assignee_id": null,
-  "region": "Europe/Sweden",
+  "region": "North America/United States",
   "screening_status": "declined",
-  "created_at": "2026-07-08T10:05:00",
-  "updated_at": "2026-07-08T11:30:00",
+  "created_at": "2026-07-08T10:25:00",
+  "updated_at": "2026-07-08T12:10:00",
   "locale": {
-    "country": "SE",
+    "country": "US",
     "preferred_language": "en-US",
-    "region": "EU",
-    "store_id": "se"
+    "region": "NA",
+    "store_id": "us"
   },
   "updates": [
     {
       "id": "upd-albert-1",
-      "timestamp": "2026-07-08T10:52:00",
+      "timestamp": "2026-07-08T10:45:00",
       "actor": "human_recruiter",
-      "internal_notes": "Please review carefully. Senior title, but I am not yet convinced the role lines up with what we need.",
-      "recruiter_id": "rev1",
       "update_type": "request_ai_screen",
+      "internal_notes": "Interesting candidate, but I think this may be a role mismatch. Please verify before we decline.",
+      "recruiter_id": "rev1",
       "correspondence": null
     },
     {
       "id": "upd-albert-2",
-      "timestamp": "2026-07-08T11:12:00",
+      "timestamp": "2026-07-08T11:25:00",
       "actor": "ai_agent",
-      "internal_notes": "[✗] Experience fit: Public profile is strong in AI research and security, but the background is specialized toward offensive security and code intelligence rather than the target role this screening is calibrated for.\n[✓] Company credibility: XBOW appears to be a legitimate company with clear public presence.\n[✓] Employment verification: Named company-domain email aligns with the company and public role.\n[✓] Email risk check: Non-personal named mailbox.\n[✓] Prior updates: Human recruiter requested careful review; no conflicting judgment.\n\nRecommendation: recommend_decline\nRationale: The candidate is credible and senior, but the profile appears too specialized for this opening and does not demonstrate the role-aligned competencies the screening is looking for.\nRationale: This is a fit-based decline rather than an authenticity concern.",
-      "recruiter_id": null,
       "update_type": "recommend_decline",
-      "correspondence": "Hi Albert,\n\nThank you for your application and for the time you took to share your background with us.\n\nAfter review, we won't be moving forward with this application. While your background is clearly strong, it does not appear to be the closest match for this specific role.\n\nWe appreciate your interest in HireFlow.\n\nBest,\nJohn Berryman\nHireFlow Recruiting"
+      "internal_notes": "[✗] Role fit: The candidate appears highly credible technically, but the public background is centered on AI research, security, and code intelligence rather than brand marketing leadership.\n[✓] Evidence quality: There is enough public evidence to make a confident mismatch judgment.\n[✗] Job-opening alignment: The job description emphasizes narrative, positioning, and marketing leadership, which are not demonstrated as core strengths in the visible profile.\n[ ] Email risk check: Not checked (not necessary after disqualifier).\n[✓] Missing evidence: None material after clear role mismatch.\n\nRecommendation: recommend_decline\nRationale: This is a strong technical profile, but not a fit for the posted marketing opening.\nRationale: Additional follow-up is unlikely to change the decision because the mismatch is structural rather than informational.",
+      "recruiter_id": null,
+      "correspondence": "Hi Albert,\n\nThanks again for your interest. After review, we won't be moving forward with this application because the role requires a different background than the one reflected in your experience.\n\nWe appreciate your time and interest.\n\nBest,\nJohn Berryman\nHireFlow"
     },
     {
       "id": "upd-albert-3",
-      "timestamp": "2026-07-08T11:30:00",
+      "timestamp": "2026-07-08T12:10:00",
       "actor": "human_recruiter",
-      "internal_notes": "I agree with the AI assessment. Strong candidate, but not the right fit for this role, so declining.",
-      "recruiter_id": "rev1",
       "update_type": "decline",
-      "correspondence": "Hi Albert,\n\nThank you for your application and for the time you took to share your background with us.\n\nAfter review, we won't be moving forward with this application. While your background is clearly strong, it does not appear to be the closest match for this specific role.\n\nWe appreciate your interest in HireFlow.\n\nBest,\nJohn Berryman\nHireFlow Recruiting"
+      "internal_notes": "Agree with the AI recommendation. Declining because the profile is strong but not aligned with this opening.",
+      "recruiter_id": "rev1",
+      "correspondence": "Hi Albert,\n\nThanks again for your interest. After review, we won't be moving forward with this application because the role requires a different background than the one reflected in your experience.\n\nWe appreciate your time and interest.\n\nBest,\nJohn Berryman\nHireFlow"
     }
   ]
 }

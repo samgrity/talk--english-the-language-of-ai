@@ -3,6 +3,7 @@
 import asyncio
 import json
 import sys
+from copy import deepcopy
 from datetime import datetime
 from pathlib import Path
 
@@ -74,18 +75,28 @@ async def reinitialize_database() -> None:
         for recruiter_data in SEED_RECRUITERS:
             session.add(RecruiterModel(**recruiter_data))
 
+        companies_by_id: dict[str, CompanyModel] = {}
+
         for app_data in SEED_APPLICATIONS:
-            app_entry = dict(app_data)
-            company_data = app_entry.pop("company")
-            company_data.setdefault("verification_status", "unverified")
+            app_entry = deepcopy(app_data)
+            job_opening_data = app_entry.pop("job_opening")
+            company_data = job_opening_data.pop("company")
             locale_data = app_entry.pop("locale")
             updates_data = app_entry.pop("updates")
 
-            company = CompanyModel(**company_data)
-            session.add(company)
+            company = companies_by_id.get(company_data["id"])
+            if company is None:
+                company = CompanyModel(**company_data)
+                companies_by_id[company.id] = company
+                session.add(company)
 
             application = ApplicationModel(
                 **app_entry,
+                job_title=job_opening_data["title"],
+                seniority_level=job_opening_data["seniority_level"],
+                department=job_opening_data["department"],
+                sub_departments=job_opening_data["sub_departments"],
+                job_description=job_opening_data["job_description"],
                 company_id=company.id,
                 locale_country=locale_data["country"],
                 locale_preferred_language=locale_data["preferred_language"],

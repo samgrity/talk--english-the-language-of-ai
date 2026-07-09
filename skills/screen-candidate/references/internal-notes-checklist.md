@@ -7,9 +7,9 @@
 Use checklist lines, then recommendation summary:
 
 ```
-[✓] Experience fit: ...
-[✓] Company credibility: ...
-[ ] Employment verification: ...
+[✓] Role fit: ...
+[✓] Evidence quality: ...
+[✓] Job-opening alignment: ...
 [✓] Email risk check: ...
 [ ] Missing evidence: ...
 
@@ -29,52 +29,51 @@ Rationale: <1-4 short lines: what evidence was found/missing, where (URLs), and 
 - Capture only decision-relevant information.
 - If information becomes irrelevant, remove it in later updates.
 - Mention when following prior human judgment.
-- Include unresolved items explicitly so recruiters know next step.
+- Include unresolved items explicitly so reviewers know next step.
 - If website evidence was used (including LinkedIn), inline the exact URLs in the relevant checklist lines and in `Rationale`.
 - Each checklist item should be a little descriptive: state what you checked, what you found (or did not find), where you checked (URL), and why it matters.
 - `Rationale` should explain the causal chain (evidence -> interpretation -> recommendation), not just the final conclusion.
 - Do not include URLs that were reviewed but not decision-relevant.
 - If you fast-fail on an obvious disqualifier, explicitly list checks not performed as "Not checked (not necessary after disqualifier)".
-- If company status is already verified, mark company-credibility deep investigation as "Not checked (company already verified)" unless new contradictory evidence appears.
 
 ## Example: advance
 
 ```
-[✓] Experience fit: Senior Frontend Engineer role matches job requirements; portfolio at https://github.com/janedoe shows relevant project work.
-[✓] Company credibility: Company website (https://exampleco.com/about, https://exampleco.com/products) shows active product development.
-[✓] Employment verification: Named company email domain matches company website domain; no mismatch found.
-[✓] Email risk check: Non-personal named mailbox.
-[✓] Prior updates: No conflicting human judgment.
+[✓] Role fit: Prior engineering and agent-work evidence on https://github.com/janedoe and https://www.linkedin.com/in/janedoe aligns with the posted senior backend/AI role.
+[✓] Evidence quality: Public evidence is specific and recent enough to support the fit judgment.
+[✓] Job-opening alignment: Experience clearly matches the job description's requirements for production systems, collaboration, and technical depth.
+[✓] Email risk check: Non-personal named mailbox; low importance because role-fit evidence is already strong.
+[✓] Missing evidence: None material.
 
 Recommendation: recommend_advance
-Rationale: Portfolio at https://github.com/janedoe shows relevant engineering work matching the role.
-Rationale: Candidate role is corroborated on https://exampleco.com/team and identity risk is low due to named domain email alignment.
+Rationale: The LinkedIn and GitHub evidence shows directly relevant experience, and that evidence maps cleanly onto the job opening's requirements.
+Rationale: There is enough concrete public evidence to make an advance decision without extra follow-up.
 ```
 
 ## Example: decline (clear mismatch)
 
 ```
-[✗] Experience fit: Listed role appears administrative only on company team page (https://example-co.com/team), with no relevant technical responsibilities.
-[✗] Company credibility: Services page (https://example-co.com/services) describes event planning, not software development.
-[ ] Employment verification: Not material due to experience/company disqualification.
-[ ] Email risk check: Domain quality not decisive.
-[ ] Prior updates: Human recruiter also flagged non-qualifying fit.
+[✗] Role fit: Public profile at https://example.com/profile shows mostly operational/admin work with no meaningful evidence of the technical responsibilities required by this opening.
+[✓] Evidence quality: Evidence is clear enough to make a negative fit judgment.
+[✗] Job-opening alignment: The candidate background does not match the posted job description's core requirements.
+[ ] Email risk check: Not checked (not necessary after disqualifier).
+[ ] Missing evidence: Not material after clear mismatch.
 
 Recommendation: recommend_decline
-Rationale: At https://example-co.com/services the business model appears unrelated to the role requirements.
-Rationale: Team evidence at https://example-co.com/team indicates a non-qualifying role, and no alternate sources were found that establish relevant experience.
+Rationale: The available evidence shows a real professional background, but not one that matches the opening.
+Rationale: Because the mismatch is role-based rather than identity-based, additional follow-up is unlikely to change the decision.
 ```
 
 ## Example: follow-up
 
 ```
-[✓] Experience fit: Claimed product management role is plausible, but only weakly supported by sparse profile text on https://www.linkedin.com/in/example-profile.
-[ ] Company credibility: Company homepage (https://example-startup.com) is minimal; no products or team pages found to confirm active operations.
-[ ] Employment verification: Personal-domain email plus no team-page listing on https://example-startup.com and no clear employer match on https://www.linkedin.com/in/example-profile.
-[✗] Email risk check: Personal mailbox requires stronger corroboration.
-[✓] Prior updates: Human recruiter requested additional verification.
+[✓] Role fit: Candidate appears directionally relevant based on https://www.linkedin.com/in/example-profile, but the evidence is still too high-level.
+[ ] Evidence quality: Public evidence is plausible but not specific enough to confirm the required depth.
+[ ] Job-opening alignment: The job description asks for hands-on platform experience, but the profile does not yet show concrete examples of that work.
+[✗] Email risk check: Personal mailbox increases the need for stronger corroborating evidence.
+[✓] Missing evidence: Ask for one or two concrete examples of closely related work or public artifacts.
 
 Recommendation: recommend_follow_up
-Rationale: I checked https://example-startup.com for products, team, and company evidence and did not find enough to establish company credibility or candidate-company linkage.
-Rationale: I checked https://www.linkedin.com/in/example-profile and found partial role context but no definitive tie to the claimed company, so targeted clarification is still required.
+Rationale: The profile suggests a possible match, but the evidence is not detailed enough to support an advance decision.
+Rationale: A narrow follow-up could resolve the uncertainty without forcing a premature decline.
 ```

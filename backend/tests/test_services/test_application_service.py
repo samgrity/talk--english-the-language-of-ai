@@ -67,7 +67,7 @@ async def test_add_update_follow_up_requires_correspondence(db_session):
 
 
 @pytest.mark.asyncio
-async def test_add_update_advance_marks_application_and_company_verified(db_session):
+async def test_add_update_advance_marks_application_advanced(db_session):
     service = ApplicationService(
         SqlAlchemyApplicationRepository(db_session),
         SqlAlchemyRecruiterRepository(db_session),
@@ -87,7 +87,6 @@ async def test_add_update_advance_marks_application_and_company_verified(db_sess
     assert result["success"] is True
     updated = await service.get_application(app_id)
     assert updated.screeningStatus == "advanced"
-    assert updated.company.verificationStatus == "verified"
 
 
 @pytest.mark.asyncio

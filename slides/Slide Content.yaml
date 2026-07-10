@@ -44,7 +44,7 @@ slides:
       - "№3 / 26"
     concept:
       kicker: "What an AI agent was in 2023"
-      title: "In the beginning was the LLM. <b>Text in -> text out.</b>" # is there any way you could fit this on one line
+      title: "In the beginning was the LLM. <b>Text in -> text out.</b>"
     footer: "Introducing our potato-y hero"
     image_notes:
       - "picture of a computer-brain thing stuck in a potato-y body that has no eyes, mouth, ears, arms, or legs"
@@ -192,7 +192,7 @@ slides:
     top_bar:
       - "Anatomy"
       - "Recap"
-      - "№12 / 26"
+      - "№12 / 24"
     recap:
       kicker: "Agent anatomy review"
       title: "Agents = LLM, an inner tool loop, and an outer user loop."
@@ -206,10 +206,10 @@ slides:
     top_bar:
       - "a Personal story"
       - "Recognition"
-      - "№13 / 26"
+      - "№13 / 24"
     story:
       kicker: "John's dawn of recognition"
-      title: "In an afternoon of hacking I suddenly realized: <b>English is now the language of AI software.</b>" # just the period
+      title: "In an afternoon of hacking I suddenly realized: <b>English is now the language of AI software.</b>"
       body:
         - "Just for fun, we were building a Zoom assistant. Shawn took the wheel when we started programming it, not in Python or Typescript, but in English as an agent skill. The core of the assistant could be run on Claude Code. The only thing left was a thin wrapper to connect it to the Zoom API."
         - "Then it clicked for me: <b>agents were the runtime, skills were the software, and English was the programming language.</b>" # We might want to make these bullets or a panel. Let's discuss.
@@ -261,7 +261,6 @@ slides:
       title: "How to build the <b>job application review app</b>"
       bullets:
         - "Build the UI"
-        # deleted!
     image_notes:
       - "review queue and review page screenshots on the right"
 
@@ -276,11 +275,10 @@ slides:
       bullets:
         - "Build the UI"
         - "Connect it to a Mock Agent"
-        # deleted!
     image_notes:
-      - "review queue and review page screenshots on the right (same position as before)" # still use these
+      - "review queue and review page screenshots on the right (same position as before)"
       - "mock-agent potato on the right connected to UI"
-      - "cardboard cutout feeling" #
+      - "cardboard cutout feeling"
       - "dumb blank expression, maybe drawn in crayon"
 
   - slide: 17
@@ -295,10 +293,9 @@ slides:
         - "Build the UI"
         - "Connect it to a Mock Agent"
         - "Connect it to a real agent – but not a smart one"
-        # deleted!
     image_notes:
-      - "review queue and review page screenshots on the right (same position as before)" # still use these
-      - "real potato agent on the right connected to UI" #
+      - "review queue and review page screenshots on the right (same position as before)"
+      - "real potato agent on the right connected to UI"
       - "still a little silly or dumb-looking"
 
   - slide: 18
@@ -319,8 +316,8 @@ slides:
       title: "Skillz"
       detail: "workflow · output · quality bar"
     image_notes:
-      - "review queue and review page screenshots on the right (same position as before)" # still use these
-      - "real potato agent on the right connected to UI, now looking clever and smart" #
+      - "review queue and review page screenshots on the right (same position as before)"
+      - "real potato agent on the right connected to UI, now looking clever and smart"
       - "thick Skillz manual beside it"
 
   - slide: 19

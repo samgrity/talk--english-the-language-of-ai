@@ -249,7 +249,7 @@ slides:
       - "review page screenshot in front"
       - "place 'Research is hard.' in the lower-left background area, left of the foreground screenshot"
 
-  # Again, slide 15-18 are now the same logical slide with different images.
+  # Slides 15-18 now share the same text treatment and only swap the right-side image.
 
   - slide: 15
     top_bar:
@@ -265,7 +265,7 @@ slides:
         - "Connect it to a real agent – but not a smart one"
         - "Make the agent smart"
     image_notes:
-      - "plain potato system mascot on the right"
+      - "review queue and review page screenshots on the right"
 
   - slide: 16
     top_bar:
@@ -281,7 +281,9 @@ slides:
         - "Connect it to a real agent – but not a smart one"
         - "Make the agent smart"
     image_notes:
-      - "review queue and review page screenshots on the right"
+      - "mock-agent potato on the right"
+      - "cardboard cutout feeling"
+      - "dumb blank expression, maybe drawn in crayon"
 
   - slide: 17
     top_bar:
@@ -297,32 +299,14 @@ slides:
         - "Connect it to a real agent – but not a smart one"
         - "Make the agent smart"
     image_notes:
-      - "mock-agent potato on the right"
-      - "cardboard cutout feeling"
-      - "dumb blank expression, maybe drawn in crayon"
+      - "real potato agent on the right"
+      - "still a little silly or dumb-looking"
 
   - slide: 18
     top_bar:
       - "Approach"
       - "Overview"
       - "№18 / 24"
-    build_plan:
-      kicker: "Here’s our approach"
-      title: "How to build the <b>job application review app</b>"
-      bullets:
-        - "Build the UI"
-        - "Connect it to a Mock Agent"
-        - "Connect it to a real agent – but not a smart one"
-        - "Make the agent smart"
-    image_notes:
-      - "real potato agent on the right"
-      - "still a little silly or dumb-looking"
-
-  - slide: 19
-    top_bar:
-      - "Approach"
-      - "Overview"
-      - "№19 / 24"
     build_plan:
       kicker: "Here’s our approach"
       title: "How to build the <b>job application review app</b>"
@@ -338,6 +322,17 @@ slides:
     image_notes:
       - "real potato agent on the right, now looking clever and smart"
       - "thick Skillz manual beside it"
+
+  - slide: 19
+    top_bar:
+      - "Demo"
+      - "Test drive"
+      - "№19 / 24"
+    bridge:
+      kicker: "Let’s take it for a test drive"
+      title: "Let’s take a code tour of the <b>AI application reviewer</b>."
+    footer: "The next two slides are intentionally dense and link out to the code"
+    image_notes: []
 
   - slide: 20
     top_bar:

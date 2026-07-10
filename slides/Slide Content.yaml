@@ -261,9 +261,7 @@ slides:
       title: "How to build the <b>job application review app</b>"
       bullets:
         - "Build the UI"
-        - "Connect it to a Mock Agent"
-        - "Connect it to a real agent – but not a smart one"
-        - "Make the agent smart"
+        # deleted!
     image_notes:
       - "review queue and review page screenshots on the right"
 
@@ -278,11 +276,11 @@ slides:
       bullets:
         - "Build the UI"
         - "Connect it to a Mock Agent"
-        - "Connect it to a real agent – but not a smart one"
-        - "Make the agent smart"
+        # deleted!
     image_notes:
-      - "mock-agent potato on the right"
-      - "cardboard cutout feeling"
+      - "review queue and review page screenshots on the right (same position as before)" # still use these
+      - "mock-agent potato on the right connected to UI"
+      - "cardboard cutout feeling" #
       - "dumb blank expression, maybe drawn in crayon"
 
   - slide: 17
@@ -297,9 +295,10 @@ slides:
         - "Build the UI"
         - "Connect it to a Mock Agent"
         - "Connect it to a real agent – but not a smart one"
-        - "Make the agent smart"
+        # deleted!
     image_notes:
-      - "real potato agent on the right"
+      - "review queue and review page screenshots on the right (same position as before)" # still use these
+      - "real potato agent on the right connected to UI" #
       - "still a little silly or dumb-looking"
 
   - slide: 18
@@ -320,7 +319,8 @@ slides:
       title: "Skillz"
       detail: "workflow · output · quality bar"
     image_notes:
-      - "real potato agent on the right, now looking clever and smart"
+      - "review queue and review page screenshots on the right (same position as before)" # still use these
+      - "real potato agent on the right connected to UI, now looking clever and smart" #
       - "thick Skillz manual beside it"
 
   - slide: 19

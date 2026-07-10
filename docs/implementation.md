@@ -101,13 +101,9 @@ The frontend is a Next.js app in `frontend/` with route-level pages and reusable
 
 Instead of encoding the screening logic in code, all of it lives in a plain-English skill file (`skills/screen-candidate/SKILL.md`) with supporting reference documents. The model reads the skill, understands that it is screening a candidate against a specific job opening, and carries out the steps on its own.
 
-### SkilledAgent
-
-`backend/agent/skilled_agent.py` provides `SkilledAgent`, a thin subclass of `pydantic_ai.Agent` that wires up a sandboxed filesystem and skills capability.
-
 ### AIReviewer
 
-`backend/app/services/ai_reviewer.py` is the application-level wrapper. It instantiates a `SkilledAgent` with the repository `skills/` directory, builds the screening prompt from the application data, and runs the agent. Structured output (`AIReviewOutput`) is extracted from the response and posted back to the application timeline via `ApplicationService.add_update`.
+`backend/app/services/ai_reviewer.py` contains the screening agent directly. It subclasses `pydantic_ai.Agent`, wires in the repository `skills/` directory via `SkillsCapability`, builds the screening prompt from the application data, and runs the agent. Structured output (`AIReviewOutput`) is extracted from the response and posted back to the application timeline via `ApplicationService.add_update`.
 
 ## Backend Structure
 

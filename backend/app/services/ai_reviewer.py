@@ -1,24 +1,16 @@
-"""AI screening agent.
-
-Public surface:
-  - AIReviewOutput           – structured output from the screening agent
-  - AIReviewer               – SkilledAgent subclass that screens candidates
-"""
-
-from calendar import month_abbr
 from pathlib import Path
 from typing import Any
 
 from pydantic import BaseModel, Field, field_validator
-from pydantic_ai import RunContext
+from pydantic_ai import Agent, RunContext
 from pydantic_ai.capabilities import Thinking, WebFetch, WebSearch
 from pydantic_ai.models.anthropic import AnthropicModel, AnthropicModelSettings
+from pydantic_ai_skills import SkillsCapability
 
-from agent.skilled_agent import SkilledAgent
 from app.core.enums import UpdateType
 from app.services.linked_in_retriever import get_linkedin_profile as retrieve_linkedin_profile
 
-_SKILLS_DIR = Path("../skills")
+_SKILLS_DIR = Path(__file__).resolve().parents[3] / "skills"
 
 
 def _format_prior_updates_for_prompt(application: Any, max_items: int = 25) -> str:
@@ -85,11 +77,12 @@ class AIReviewOutput(BaseModel):
             raise ValueError("correspondence must be a non-empty string")
         return value
 
+
 # ---------------------------------------------------------------------------
 # AIReviewer
 # ---------------------------------------------------------------------------
 
-class AIReviewer(SkilledAgent):
+class AIReviewer(Agent[None, AIReviewOutput]):
     """Singleton AI screening agent. Constructed once at module load; service is
     passed per-call so the agent can be shared across requests."""
 
@@ -99,9 +92,14 @@ class AIReviewer(SkilledAgent):
                 'claude-sonnet-5',
                 settings=AnthropicModelSettings(anthropic_thinking={'type': 'adaptive'}),
             ),
-            skills=[_SKILLS_DIR],
             output_type=AIReviewOutput,
-            capabilities=[Thinking(effort='high'), WebSearch(), WebFetch()],
+            capabilities=[
+                SkillsCapability(directories=[_SKILLS_DIR]),
+                Thinking(effort='high'),
+                WebSearch(),
+                WebFetch(),
+            ],
+            instructions="You are a careful candidate-screening assistant; use the skills in the repository skills directory to make a grounded recommendation.",
         )
 
         @self.tool
@@ -128,6 +126,30 @@ class AIReviewer(SkilledAgent):
                 linked_in_username=linked_in_username,
                 message_history=list(ctx.messages),
             )
+
+    # THIS WOULD BE A GOOD DUMMY IMPLEMENTATION TO START WITH
+    # async def review(self, application_id: str, service: Any) -> None:
+    #     import asyncio
+    #     from app.core.enums import UpdateActor, UpdateType
+    #
+    #     await asyncio.sleep(60)
+    #
+    #     await service.add_update(
+    #         application_id=application_id,
+    #         actor=UpdateActor.AI_AGENT,
+    #         update_type=UpdateType.RECOMMEND_FOLLOW_UP,
+    #         internal_notes=(
+    #             "Quick placeholder screening result. "
+    #             "Candidate may be a plausible match, but the current review is stubbed "
+    #             "and did not perform real research or LinkedIn verification."
+    #         ),
+    #         correspondence=(
+    #             "Hi — thanks for your application. "
+    #             "We’d like one or two more details before moving forward, "
+    #             "including your LinkedIn profile and a brief example of closely related work."
+    #         ),
+    #         recruiter_id=None,
+    #     )
 
     async def review(self, application_id: str, service: Any) -> None:
         from app.core.enums import UpdateActor

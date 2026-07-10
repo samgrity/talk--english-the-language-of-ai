@@ -225,25 +225,12 @@ slides:
     top_bar:
       - "Demo"
       - "App intro"
-      - "№14 / 26"
+      - "№14 / 25"
     demo_intro:
       kicker: "So we’ve come to the demo"
       title: "Let’s build a <b>job application review app</b>."
-      # it would be nice to add text in the bottom left that is just a bit smaller than the title "Research is hard."
-    footer: "Applications flow in. Reviewers work them down."
-    image_notes:
-      - "review queue screenshot behind"
-      - "review page screenshot in front"
-
-  - slide: 15 # this whole slide is useless, I will natureally talk about this on the previous slide (if you add the "Research is hard." text). Let's get rid of this slide.
-    top_bar:
-      - "Why this is hard"
-      - "Research synthesis"
-      - "№15 / 26"
-    problem:
-      kicker: "The expensive part"
-      title: "This is <b>cross-source research</b>, not résumé reading."
-    panels:
+      subnote: "Research is <b>hard.</b>"
+    slide_notes:
       - heading: "What reviewers do"
         bullets:
           - "research the candidate"
@@ -256,16 +243,18 @@ slides:
           - "company websites"
           - "blog posts"
           - "other public sources that prove out fit and honesty"
-    footer: "They have to prove out the match, not just skim the application"
+    footer: "Applications flow in. Reviewers work them down."
     image_notes:
-      - "two-panel research-synthesis slide"
+      - "review queue screenshot behind"
+      - "review page screenshot in front"
+      - "place 'Research is hard.' in the lower-left background area, left of the foreground screenshot"
 
   # Again, slide 16-20 is logically a single slide, let's talk about it.
-  - slide: 16
+  - slide: 15
     top_bar:
       - "Approach"
       - "Overview"
-      - "№16 / 26"
+      - "№15 / 25"
     build_plan:
       kicker: "Here’s our approach"
       title: "How to build the <b>job application review app</b>"
@@ -277,11 +266,11 @@ slides:
     image_notes:
       - "same recurring potato agent on the right as the system mascot"
 
-  - slide: 17
+  - slide: 16
     top_bar:
       - "Approach"
       - "Reveal 1/4"
-      - "№17 / 26"
+      - "№16 / 25"
     build_plan_reveal:
       kicker: "Here’s our approach"
       bullets:
@@ -289,11 +278,11 @@ slides:
     image_notes:
       - "review queue and review page screenshots"
 
-  - slide: 18
+  - slide: 17
     top_bar:
       - "Approach"
       - "Reveal 2/4"
-      - "№18 / 26"
+      - "№17 / 25"
     build_plan_reveal:
       kicker: "Here’s our approach"
       bullets:
@@ -304,32 +293,32 @@ slides:
       - "sitting at a chair"
       - "dumb blank expression, maybe drawn in crayon"
 
-  - slide: 19
+  - slide: 18
     top_bar:
       - "Approach"
       - "Reveal 3/4"
-      - "№19 / 26"
+      - "№18 / 25"
     build_plan_reveal:
       kicker: "Here’s our approach"
       bullets:
         - "Build the UI"
         - "Connect it to a Mock Agent"
-        - "Connect it to a real agent (but not a smart one)"
+        - "Connect it to a real agent – but not a smart one"
     image_notes:
       - "replace the cutout with a real potato agent"
       - "still give it a silly dumb expression"
 
-  - slide: 20
+  - slide: 19
     top_bar:
       - "Approach"
       - "Reveal 4/4"
-      - "№20 / 26"
+      - "№19 / 25"
     build_plan_reveal:
       kicker: "Here’s our approach"
       bullets:
         - "Build the UI"
         - "Connect it to a Mock Agent"
-        - "Connect it to a real agent (but not a smart one)"
+        - "Connect it to a real agent – but not a smart one"
         - "Make the agent smart"
     side_card:
       heading: "Skill manual"
@@ -339,22 +328,22 @@ slides:
       - "same real potato agent, now looking clever and smart"
       - "put a really thick instruction manual next to it"
 
-  - slide: 21
+  - slide: 20
     top_bar:
       - "Demo"
       - "Test drive"
-      - "№21 / 26"
+      - "№20 / 25"
     bridge:
       kicker: "Let’s take it for a test drive" # I'm stealing this for the title - make this different
       title: "Let’s take it for a test drive"
     footer: "The next two slides are intentionally dense and link out to the code"
     image_notes: [] # can you add here how we start and view the app and how we view the logs? I think i have hints in Outline v0
 
-  - slide: 22 # I need to check the links in these slides later. There's nothing for you to do here, but let's keep this note around until the end.
+  - slide: 21 # I need to check the links in these slides later. There's nothing for you to do here, but let's keep this note around until the end.
     top_bar:
       - "Walkthrough"
       - "Dense slide 1/2"
-      - "№22 / 26"
+      - "№21 / 25"
     dense_slide:
       heading: "Iterative implementation"
       bullets:
@@ -374,11 +363,11 @@ slides:
         - "You can also easily add tools to these models now. We add get_linkedin_profile because you can’t use web search and web fetch to directly get at LinkedIn, so we had to trick it out."
     image_notes: []
 
-  - slide: 23 # same deal here - I want to check on these
+  - slide: 22 # same deal here - I want to check on these
     top_bar:
       - "Walkthrough"
       - "Dense slide 2/2"
-      - "№23 / 26"
+      - "№22 / 25"
     dense_slide:
       heading: "Make your agent smarter"
       bullets:
@@ -388,11 +377,11 @@ slides:
         - "Also note this line in the skill, where I require internal_notes to conform to its own checklist structure. See internal-notes-checklist.md."
     image_notes: []
 
-  - slide: 24
+  - slide: 23
     top_bar:
       - "Wrap-up"
       - "smart agent"
-      - "№24 / 26"
+      - "№23 / 25"
     wrap_up:
       kicker: "Wrap-up"
       title: "Let’s review what we’ve learned."
@@ -413,11 +402,11 @@ slides:
       - "close-up image of the potato agent standing at the peak of a mountain"
       - "flag stuck in the ground"
 
-  - slide: 25
+  - slide: 24
     top_bar:
       - "Future work"
       - "Staircase 2/3"
-      - "№25 / 26"
+      - "№24 / 25"
     future_work:
       kicker: "This is just the start"
       title: "There is much yet to learn."
@@ -439,14 +428,14 @@ slides:
       - "reveal that the potato is standing on top of a very large mountain"
       - "keep the potato and flag visible"
 
-  - slide: 26
+  - slide: 25
     top_bar:
       - "Closing vision"
       - "Staircase 3/3"
-      - "№26 / 26"
+      - "№25 / 25"
     closing:
       kicker: "You’ll see there’s even more"
-      title: "Assistants will become the <b>dominant user experience.</b>" # period again - make sure to fix other places like this
+      title: "Assistants will become the <b>dominant user experience</b>."
       body:
         - "You will use <b>made-for-you applications</b>. The internet will be <b>for agents</b> to access data and APIs. You will regularly <b>co-work with your agent.</b>"
     qr_codes: # you need to make sure the size of these is the same as on slide 24

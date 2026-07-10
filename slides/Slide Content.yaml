@@ -225,7 +225,7 @@ slides:
     top_bar:
       - "Demo"
       - "App intro"
-      - "№14 / 25"
+      - "№14 / 24"
     demo_intro:
       kicker: "So we’ve come to the demo"
       title: "Let’s build a <b>job application review app</b>."
@@ -249,12 +249,13 @@ slides:
       - "review page screenshot in front"
       - "place 'Research is hard.' in the lower-left background area, left of the foreground screenshot"
 
-  # Again, slide 16-20 is logically a single slide, let's talk about it.
+  # Again, slide 15-18 are now the same logical slide with different images.
+
   - slide: 15
     top_bar:
       - "Approach"
       - "Overview"
-      - "№15 / 25"
+      - "№15 / 24"
     build_plan:
       kicker: "Here’s our approach"
       title: "How to build the <b>job application review app</b>"
@@ -264,57 +265,67 @@ slides:
         - "Connect it to a real agent – but not a smart one"
         - "Make the agent smart"
     image_notes:
-      - "same recurring potato agent on the right as the system mascot"
+      - "plain potato system mascot on the right"
 
   - slide: 16
     top_bar:
       - "Approach"
-      - "Reveal 1/4"
-      - "№16 / 25"
-    build_plan_reveal:
+      - "Overview"
+      - "№16 / 24"
+    build_plan:
       kicker: "Here’s our approach"
+      title: "How to build the <b>job application review app</b>"
       bullets:
         - "Build the UI"
+        - "Connect it to a Mock Agent"
+        - "Connect it to a real agent – but not a smart one"
+        - "Make the agent smart"
     image_notes:
-      - "review queue and review page screenshots"
+      - "review queue and review page screenshots on the right"
 
   - slide: 17
     top_bar:
       - "Approach"
-      - "Reveal 2/4"
-      - "№17 / 25"
-    build_plan_reveal:
+      - "Overview"
+      - "№17 / 24"
+    build_plan:
       kicker: "Here’s our approach"
+      title: "How to build the <b>job application review app</b>"
       bullets:
         - "Build the UI"
         - "Connect it to a Mock Agent"
+        - "Connect it to a real agent – but not a smart one"
+        - "Make the agent smart"
     image_notes:
-      - "cardboard cutout version of the potato agent"
-      - "sitting at a chair"
+      - "mock-agent potato on the right"
+      - "cardboard cutout feeling"
       - "dumb blank expression, maybe drawn in crayon"
 
   - slide: 18
     top_bar:
       - "Approach"
-      - "Reveal 3/4"
-      - "№18 / 25"
-    build_plan_reveal:
+      - "Overview"
+      - "№18 / 24"
+    build_plan:
       kicker: "Here’s our approach"
+      title: "How to build the <b>job application review app</b>"
       bullets:
         - "Build the UI"
         - "Connect it to a Mock Agent"
         - "Connect it to a real agent – but not a smart one"
+        - "Make the agent smart"
     image_notes:
-      - "replace the cutout with a real potato agent"
-      - "still give it a silly dumb expression"
+      - "real potato agent on the right"
+      - "still a little silly or dumb-looking"
 
   - slide: 19
     top_bar:
       - "Approach"
-      - "Reveal 4/4"
-      - "№19 / 25"
-    build_plan_reveal:
+      - "Overview"
+      - "№19 / 24"
+    build_plan:
       kicker: "Here’s our approach"
+      title: "How to build the <b>job application review app</b>"
       bullets:
         - "Build the UI"
         - "Connect it to a Mock Agent"
@@ -325,25 +336,14 @@ slides:
       title: "Skillz"
       detail: "workflow · output · quality bar"
     image_notes:
-      - "same real potato agent, now looking clever and smart"
-      - "put a really thick instruction manual next to it"
+      - "real potato agent on the right, now looking clever and smart"
+      - "thick Skillz manual beside it"
 
   - slide: 20
     top_bar:
-      - "Demo"
-      - "Test drive"
-      - "№20 / 25"
-    bridge:
-      kicker: "Let’s take it for a test drive" # I'm stealing this for the title - make this different
-      title: "Let’s take it for a test drive"
-    footer: "The next two slides are intentionally dense and link out to the code"
-    image_notes: [] # can you add here how we start and view the app and how we view the logs? I think i have hints in Outline v0
-
-  - slide: 21 # I need to check the links in these slides later. There's nothing for you to do here, but let's keep this note around until the end.
-    top_bar:
       - "Walkthrough"
       - "Dense slide 1/2"
-      - "№21 / 25"
+      - "№20 / 24"
     dense_slide:
       heading: "Iterative implementation"
       bullets:
@@ -363,11 +363,11 @@ slides:
         - "You can also easily add tools to these models now. We add get_linkedin_profile because you can’t use web search and web fetch to directly get at LinkedIn, so we had to trick it out."
     image_notes: []
 
-  - slide: 22 # same deal here - I want to check on these
+  - slide: 21
     top_bar:
       - "Walkthrough"
       - "Dense slide 2/2"
-      - "№22 / 25"
+      - "№21 / 24"
     dense_slide:
       heading: "Make your agent smarter"
       bullets:
@@ -377,11 +377,11 @@ slides:
         - "Also note this line in the skill, where I require internal_notes to conform to its own checklist structure. See internal-notes-checklist.md."
     image_notes: []
 
-  - slide: 23
+  - slide: 22
     top_bar:
       - "Wrap-up"
       - "smart agent"
-      - "№23 / 25"
+      - "№22 / 24"
     wrap_up:
       kicker: "Wrap-up"
       title: "Let’s review what we’ve learned."
@@ -402,11 +402,11 @@ slides:
       - "close-up image of the potato agent standing at the peak of a mountain"
       - "flag stuck in the ground"
 
-  - slide: 24
+  - slide: 23
     top_bar:
       - "Future work"
       - "Staircase 2/3"
-      - "№24 / 25"
+      - "№23 / 24"
     future_work:
       kicker: "This is just the start"
       title: "There is much yet to learn."
@@ -428,11 +428,11 @@ slides:
       - "reveal that the potato is standing on top of a very large mountain"
       - "keep the potato and flag visible"
 
-  - slide: 25
+  - slide: 24
     top_bar:
       - "Closing vision"
       - "Staircase 3/3"
-      - "№25 / 25"
+      - "№24 / 24"
     closing:
       kicker: "You’ll see there’s even more"
       title: "Assistants will become the <b>dominant user experience</b>."

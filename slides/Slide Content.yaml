@@ -1,0 +1,462 @@
+slides:
+  - slide: 1
+    top_bar:
+      - "O’Reilly · Zero to Agent · July 15"
+      - "Opening frame"
+      - "№1 / 26"
+    lead:
+      kicker: "Opening thesis"
+      title: "English is the <b>language</b> of AI software."  #
+    side_card:
+      header_left: "O’Reilly"
+      header_right: "Zero to Agent"
+      speaker_name: "John Berryman"
+      speaker_org: "Arcturus Labs"
+      org_line: "AI product consulting · applied agent systems"
+    footer: "Talk thesis first. Everything else follows from it."
+    image_notes:
+      - "include O’Reilly logo in the event card"
+      - "include John Berryman face image from Arcturus Labs"
+      - "include Arcturus logo"
+
+  - slide: 2
+    top_bar:
+      - "What you’ll learn"
+      - "Intro"
+      - "№2 / 26"
+    intro:
+      kicker: "What you’ll learn"
+      cards:
+        - number: "01"
+          text: "What an <b>agent really is</b>. (It’s actually pretty simple.)" # Make sure the parenthetical is the same font as the rest of the text on this line.
+        - number: "02"
+          text: "Why English is now <b>the language</b> for AI software."
+        - number: "03"
+          text: "How to incrementally build AI products <b>that actually work</b>."
+    footer: "What · Why · How"
+    image_notes: []
+
+  # NOTE: slides 3-5 are logically a single slide, we need to address this.
+  - slide: 3
+    top_bar:
+      - "2023 anatomy"
+      - "Sequence 1/3"
+      - "№3 / 26"
+    concept:
+      kicker: "What an AI agent was in 2023"
+      title: "In the beginning was the LLM. <b>Text in\n-> text out.</b>" # Make sure to split the line so that that arrow is at the start of the second line.
+    footer: "Introducing our potato-y hero"
+    image_notes:
+      - "picture of a computer-brain thing stuck in a potato-y body that has no eyes, mouth or legs; The brain is stickout out of the top of the potato, as if the top of his cranium has been removed (but not gross)" #
+
+  - slide: 4
+    top_bar:
+      - "2023 anatomy"
+      - "Sequence 2/3"
+      - "№4 / 26"
+    concept:
+      kicker: "Add an outer loop" #
+      title: "Wrap it in a while loop with user input. <b>Now, it's a chat bot.</b>" #
+    footer: "our hero finds its voice" #
+    image_notes:
+      - "the potato-like agent body wraps the gains a smiling mouth and ears and legs (no eyes or arms)" #
+
+  - slide: 5
+    top_bar:
+      - "2023 anatomy"
+      - "Sequence 3/3"
+      - "№5 / 26"
+    concept:
+      kicker: "Add an inner loop"
+      title: "Add another loop for tools. <b>Now it's an agent.</b>"
+      body:
+        - "It can see the world through APIs and act on the world through APIs."
+    footer: "The only real difference is the loops and the tools"
+    image_notes:
+      - "same potato-y agent but add eyeballs, give it hands with wrenches and a toolbelt
+
+  - slide: 6
+    top_bar:
+      - "Problem"
+      - "Technical framing"
+      - "№6 / 26"
+    headline:
+      kicker: "BUT 2023 AGENTS ACTUALLY SUCKED"
+      title: "They were terrible at following instructions."
+    panels:
+      - heading: "Here was the problem"
+        bullets:
+          - "they would start on the right track"
+          - "then get distracted by their own tool output"
+          - "or get distracted by examples in the context"
+          - "and soon start solving some other problem" #
+      - heading: "What we did instead"
+        bullets:
+          - "constrain the workflow with explicit state machines"
+          - "force the processing steps to happen in a fixed order"
+          - "use things like LangGraph to keep the model on rails"
+    footer: "Technical problem: not enough long-horizon reliability"
+    image_notes:
+      - "if we add imagery later, use an illustration of the agent wandering off-task"
+      - "optionally gesture toward state-machine / LangGraph-style control rails"
+
+  # NOTE - slides 7 through 11 are supposed to be a single logical slide - we need to talk about this in detail soon
+  - slide: 7
+    top_bar:
+      - "Transition"
+      - "Harnesses"
+      - "№7 / 26"
+    transition:
+      kicker: "... but nevertheless"
+      title: "Agents lived on in <b>coding harnesses</b>, and improved significantly."
+    footer: "This is where agents got practically useful"
+    image_notes:
+      - "transition slide; no required image from the outline"
+
+  - slide: 8
+    top_bar:
+      - "Harness era"
+      - "Sequence 1/4"
+      - "№8 / 26"
+    idea:
+      kicker: "Read · Write · Shell"
+      title: "Coding agents became <b>general agents</b>."
+      body:
+        - "Because once an agent can read and write files, and run shell commands, it can then build its own tools and in principle accomplish nearly any online activity."
+    footer: "Read, write, and shell changed the game."
+    image_notes:
+      - "same potato agent from before"
+      - "replace the tools with a computer the potato is using"
+      - "give it a general's hat, like a revolutionary general"
+
+  - slide: 9
+    top_bar:
+      - "Harness era"
+      - "Sequence 2/4"
+      - "№9 / 26"
+    idea:
+      kicker: "Skills"
+      title: "Skills are basically an <b>onboarding manual</b>."
+      body:
+        - "Once agents became good at files and OS interactions, agent skills were a spectacularly good idea."
+    side_card:
+      heading: "Manual"
+      title: "Skillz"
+      detail: "task definition · ordered steps · output rules"
+    footer: "The procedure becomes data the agent can read"
+    image_notes:
+      - "same potato agent from slide 8"
+      - "place a thick instruction manual labeled Skillz next to it"
+
+  - slide: 10
+    top_bar:
+      - "Late 2025"
+      - "Capability shift"
+      - "№10 / 26"
+    headline:
+      kicker: "late-2025 capability step change"
+      title: "Coding models got much better at <b>long-horizon work</b> in late 2025."
+    panels:
+      - heading: "What changed"
+        bullets:
+          - "stayed on target longer"
+          - "handled ambiguity with less hand-holding"
+          - "made fewer dead-end tool decisions"
+          - "became much more practical for coding + agent workflows"
+      - heading: "Late-2025 references"
+        items:
+          - "Simon Willison — <b>2025: The year in LLMs</b>"
+          - "Andrej Karpathy — <b>2025 LLM Year in Review</b>"
+          - "Anthropic — <b>Claude Opus 4.5</b>"
+    footer: "The Christmas miracle of 2025"
+    image_notes:
+      - "mostly text-forward slide"
+      - "if any image treatment is added, it should support the idea of a late-2025 capability jump"
+
+  - slide: 11
+    top_bar:
+      - "Consequence"
+      - "Sequence 4/4"
+      - "№11 / 26"
+    payoff:
+      kicker: "The payoff"
+      title: "You don’t need bespoke state machine workflows. <b>Just place the instructions in the agent skill.</b>"
+    footer: "This is the turning point"
+    image_notes:
+      - "final roundup message slide; no extra image required by the outline"
+
+  - slide: 12
+    top_bar:
+      - "Anatomy"
+      - "Recap"
+      - "№12 / 26"
+    recap:
+      kicker: "Agent anatomy review"
+      title: "Agents = LLM, an inner tool loop, and an outer user loop."
+      body:
+        - "The real differences: we gave it the <b>right tools</b>, we taught it to read <b>agent skills</b>, and we <b>improved the models</b>." #
+    image_notes:
+      - "close-up schematic of the same potato agent labeling each part - LLM brain, chat bot lips and ears, agentic tool-hands and feet and eyes" #
+
+  - slide: 13
+    top_bar:
+      - "a Personal story" #
+      - "Recognition"
+      - "№13 / 26"
+    story:
+      kicker: "John's dawn of recognition" #
+      title: "In an afternoon of hacking I suddenly realized: <b>English is now the language of AI software</b>." #
+      body:
+        - "Just for fun, we were building a Zoom assistant. Shawn took the wheel when we started programming it, not in Python or Typescript, but in English as an agent skill. The core of the assistant could be run on Claude Code. The only thing left was a thin wrapper to connect it to the Zoom API." #
+        - "Then it clicked for me: <b>agents were the runtime, skills were the software, and English was the programming language.</b>" # we might try to make these as bullets or a panel like above. Let's discuss.
+    photo_labels: # We need to have a discussion about how to rearrange these image
+      - "Shawn Simister"
+      - "Nick"
+      - "Me"
+    footer: "Agents were the runtime. Skills were the software."
+    image_notes:
+      - "images of 'Shawn Simister', 'Nick', and 'me'"
+
+  - slide: 14
+    top_bar:
+      - "Demo"
+      - "App intro"
+      - "№14 / 26"
+    demo_intro:
+      kicker: "So we’ve come to the demo"
+      title: "Let’s build a <b>job application review app</b>."
+      # it would be nice to add text in the bottom left that is just a bit smaller than the title "Research is hard."
+    footer: "Applications flow in. Reviewers work them down."
+    image_notes:
+      - "review queue screenshot behind" # move it an inch higher
+      - "review page screenshot in front"
+
+  - slide: 15 # this whole slide is useless, I will natureally talk about this on the previous slide (if you add the "Research is hard." text). Let's get rid of this slide.
+    top_bar:
+      - "Why this is hard"
+      - "Research synthesis"
+      - "№15 / 26"
+    problem:
+      kicker: "The expensive part"
+      title: "This is <b>cross-source research</b>, not résumé reading."
+    panels:
+      - heading: "What reviewers do"
+        bullets:
+          - "research the candidate"
+          - "research the candidate’s current company"
+          - "research the hiring company"
+          - "compare background against the role"
+      - heading: "Where they look"
+        bullets:
+          - "LinkedIn"
+          - "company websites"
+          - "blog posts"
+          - "other public sources that prove out fit and honesty"
+    footer: "They have to prove out the match, not just skim the application"
+    image_notes:
+      - "two-panel research-synthesis slide"
+
+  # Again, slide 16-20 is logically a single slide, let's talk about it.
+  - slide: 16
+    top_bar:
+      - "Approach"
+      - "Overview"
+      - "№16 / 26"
+    build_plan:
+      kicker: "Here’s our approach"
+      title: "How to build the <b>job application review app</b>"
+      bullets: # maybe bump up the font size?
+        - "Build the UI"
+        - "Connect it to a Mock Agent"
+        - "Connect it to a real agent – but not a smart one" #
+        - "Make the agent smart"
+    image_notes:
+      - "same recurring potato agent on the right as the system mascot"
+
+  - slide: 17
+    top_bar:
+      - "Approach"
+      - "Reveal 1/4"
+      - "№17 / 26"
+    build_plan_reveal:
+      kicker: "Here’s our approach"
+      bullets:
+        - "Build the UI"
+    image_notes:
+      - "review queue and review page screenshots"
+
+  - slide: 18
+    top_bar:
+      - "Approach"
+      - "Reveal 2/4"
+      - "№18 / 26"
+    build_plan_reveal:
+      kicker: "Here’s our approach"
+      bullets:
+        - "Build the UI"
+        - "Connect it to a Mock Agent"
+    image_notes:
+      - "cardboard cutout version of the potato agent"
+      - "sitting at a chair"
+      - "dumb blank expression, maybe drawn in crayon"
+
+  - slide: 19
+    top_bar:
+      - "Approach"
+      - "Reveal 3/4"
+      - "№19 / 26"
+    build_plan_reveal:
+      kicker: "Here’s our approach"
+      bullets:
+        - "Build the UI"
+        - "Connect it to a Mock Agent"
+        - "Connect it to a real agent (but not a smart one)"
+    image_notes:
+      - "replace the cutout with a real potato agent"
+      - "still give it a silly dumb expression"
+
+  - slide: 20
+    top_bar:
+      - "Approach"
+      - "Reveal 4/4"
+      - "№20 / 26"
+    build_plan_reveal:
+      kicker: "Here’s our approach"
+      bullets:
+        - "Build the UI"
+        - "Connect it to a Mock Agent"
+        - "Connect it to a real agent (but not a smart one)"
+        - "Make the agent smart"
+    side_card:
+      heading: "Skill manual"
+      title: "Skillz"
+      detail: "workflow · output · quality bar"
+    image_notes:
+      - "same real potato agent, now looking clever and smart"
+      - "put a really thick instruction manual next to it"
+
+  - slide: 21
+    top_bar:
+      - "Demo"
+      - "Test drive"
+      - "№21 / 26"
+    bridge:
+      kicker: "Let’s take it for a test drive" # I'm stealing this for the title - make this different
+      title: "Let’s take it for a test drive"
+    footer: "The next two slides are intentionally dense and link out to the code"
+    image_notes: [] # can you add here how we start and view the app and how we view the logs? I think i have hints in Outline v0
+
+  - slide: 22 # I need to check the links in these slides later. There's nothing for you to do here, but let's keep this note around until the end.
+    top_bar:
+      - "Walkthrough"
+      - "Dense slide 1/2"
+      - "№22 / 26"
+    dense_slide:
+      heading: "Iterative implementation"
+      bullets:
+        - "Start w/ simple review function — a good first mock implementation for review would be to sleep briefly and then return a canned follow-up recommendation."
+        - "Then add an agent w/ basic skills."
+        - "The goal here is just to show how a Pydantic AI agent is put together."
+        - "Note, we used PydanticAI build and agent skill."
+        - "Whenever the request to review an application comes through, we create a prompt and hand it off to our agent."
+        - "So now it’s already a little bit smarter: instead of a canned answer, it can read the application context and do the workflow. But the workflow is still basic."
+        - "Once the agent responds, it returns structured data that we use to call service.add_update(...)."
+        - "The agent implementation itself starts here in __init__."
+        - "All we do is specify the model, the output type, the capabilities, and a basic instruction."
+        - "One thing that’s really interesting is how modular everything is — it all pops in like Lego blocks."
+        - "We point it at a bunch of skills with SkillsCapability(...)."
+        - "We give it the ability to think with Thinking(...)."
+        - "We give it web search with WebSearch()."
+        - "You can also easily add tools to these models now. We add get_linkedin_profile because you can’t use web search and web fetch to directly get at LinkedIn, so we had to trick it out."
+    image_notes: []
+
+  - slide: 23 # same deal here - I want to check on these
+    top_bar:
+      - "Walkthrough"
+      - "Dense slide 2/2"
+      - "№23 / 26"
+    dense_slide:
+      heading: "Make your agent smarter"
+      bullets:
+        - "The skill file is where you actually make the agent smart. These days it’s often enough to implement the workflow in English."
+        - "The Screening flow lays out an ordered set of steps. For workflows, defined steps make the agent easier to steer and much easier to debug when something goes wrong."
+        - "Be crisp about output. The Your output section defines it in English, and AIReviewOutput defines that exact shape in code. PydanticAI enforces this structure as well, so it’s a great way to make sure the model returns the required structure."
+        - "Also note this line in the skill, where I require internal_notes to conform to its own checklist structure. See internal-notes-checklist.md."
+    image_notes: []
+
+  - slide: 24
+    top_bar:
+      - "Wrap-up"
+      - "smart agent" #
+      - "№24 / 26"
+    wrap_up:
+      kicker: "Wrap-up"
+      title: "Let’s review what we’ve learned."
+      bullets:
+        - "agents really aren’t <b>that complicated</b>"  # blue text!
+        - "agent skills are programs, and <b>English is their programming language</b>" # blue text!
+        - "much of AI software is built by <b>giving an agent the right tools and skills</b> and <b>connecting it to an appropriate UI</>" # blue text!
+    qr_codes:
+      - label: "This Codebase" #
+        highlighted: true
+      - label: "Arcturus Labs AI consulting" #
+        highlighted: false
+      - label: "I build AI products live" #
+        highlighted: false
+      - label: "O’Reilly Superstream July 23"
+        highlighted: false #
+    image_notes:
+      - "close-up image of the potato agent standing at the peak of a mountain flag stuck in the ground" #
+
+  - slide: 25
+    top_bar:
+      - "Future work"
+      - "Staircase 2/3"
+      - "№25 / 26"
+    future_work:
+      kicker: "This is just the start" #
+      title: "There is much yet to learn."
+      bullets:
+        - "gathering and generating training data"
+        - "evaluating the software (and this is changing!)"
+        - "establishing a \"virtuous cycle\" of improvement"
+    qr_codes:
+      - label: "This Codebase" #
+        highlighted: false
+      - label: "Arcturus Labs AI consulting" #
+        highlighted: true
+      - label: "I build AI products live" #
+        highlighted: true
+      - label: "O’Reilly Superstream July 23"
+        highlighted: false #
+    image_notes:
+      - "zoom out from slide 24"
+      - "reveal that the potato is standing on top of a very large mountain"
+      - "keep the potato and flag visible"
+
+  - slide: 26
+    top_bar:
+      - "Closing vision"
+      - "Staircase 3/3"
+      - "№26 / 26"
+    closing:
+      kicker: "You’ll see there’s even more"
+      title: "Assistants will become the <b>dominant user experience</b>." #
+      body:
+        - "You will use <b>made-for-you applications</b>. The internet will be <b>for agents</b> to access data and APIs. You will regularly <b>co-work with your agent.</b>" # lots of changes here
+    qr_codes:
+      - label: "This Codebase" #
+        highlighted: false
+      - label: "Arcturus Labs AI consulting" #
+        highlighted: false
+      - label: "I build AI products live" #
+        highlighted: true
+      - label: "O’Reilly Superstream July 23"
+        highlighted: true #
+    image_notes:
+      - "zoom out again from slide 25"
+      - "reveal that the mountain peak is actually the top of a huge iceberg"
+      - "most of the iceberg is underwater"
+      - "the potato agent is still on top with the flag planted at the peak"
+
+# A hugely important theme is that we need to have the ability to make bulleted slides where each slide introduces a single bullet at a time and modifies the images on the slides. I don't know why this is hard. We should fix the problem.

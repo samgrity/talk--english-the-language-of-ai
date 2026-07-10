@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>English is the Programming Language of AI Workflows</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg: #0a0e1a;
+      --bg2: #10182d;
+      --ink: #f5f5f7;
+      --muted: rgba(245,245,247,.72);
+      --line: rgba(255,255,255,.10);
+      --accent: #5ac8fa;
+      --accent2: #8b7cff;
+      --warn: #fbbf24;
+      --good: #86efac;
+      --bad: #fb7185;
+    }
+    html,body{margin:0;background:#030712;color:var(--ink);overflow:hidden;font-family:Inter,ui-sans-serif,system-ui,sans-serif}
+    body{background-image:radial-gradient(circle at 15% 10%,rgba(90,200,250,.12),transparent 24%),radial-gradient(circle at 80% 20%,rgba(139,124,255,.10),transparent 28%),radial-gradient(circle at 75% 78%,rgba(90,200,250,.08),transparent 22%)}
+    .deck-shell{width:100vw;height:100vh;display:flex;align-items:center;justify-content:center}
+    .deck-scale{width:1920px;height:1080px;transform-origin:center center}
+    .slide{width:1920px;height:1080px;position:relative;overflow:hidden;display:none;background:linear-gradient(180deg,rgba(16,24,45,.97),rgba(10,14,26,.98));border:1px solid rgba(255,255,255,.08);box-shadow:0 40px 120px rgba(0,0,0,.45)}
+    .slide.active{display:block}
+    .grain:before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(circle at center,black,transparent 90%);pointer-events:none}
+    .eyebrow,.note,.footer-note,.chip{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.18em;text-transform:uppercase}
+    .eyebrow{font-size:22px;color:var(--accent)}
+    .note,.footer-note{font-size:15px;color:rgba(245,245,247,.55)}
+    .footer-note{letter-spacing:.14em}
+    .muted{color:var(--muted)}
+    .accent{color:var(--accent)}
+    .panel{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);backdrop-filter:blur(8px)}
+    .h-hero{font-size:166px;line-height:.9;letter-spacing:-.06em;font-weight:900}
+    .h-xl{font-size:118px;line-height:.94;letter-spacing:-.05em;font-weight:900}
+    .h-lg{font-size:88px;line-height:.98;letter-spacing:-.04em;font-weight:850}
+    .h-md{font-size:68px;line-height:1.02;letter-spacing:-.03em;font-weight:850}
+    .body-lg{font-size:34px;line-height:1.32}
+    .body-md{font-size:28px;line-height:1.36}
+    .body-sm{font-size:24px;line-height:1.38}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+    .code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:20px;line-height:1.45;white-space:pre-wrap}
+    .chip{display:inline-block;padding:10px 16px;border:1px solid rgba(255,255,255,.12);border-radius:999px;font-size:15px;color:rgba(245,245,247,.85)}
+    .stack > * + *{margin-top:16px}
+    .potato svg{display:block}
+    .potato .body{fill:#cf9d53;stroke:#f4d7a7;stroke-width:7}
+    .potato .line{stroke:#1b1b1b;stroke-width:6;stroke-linecap:round;fill:none}
+    .potato .thin{stroke-width:4}
+    .potato .fill-dark{fill:#1b1b1b}
+    .potato .fill-accent{fill:var(--accent)}
+    .potato .fill-paper{fill:#f7f1df}
+    .potato.placeholder{filter:drop-shadow(0 12px 30px rgba(0,0,0,.35))}
+    .img-shadow{box-shadow:0 24px 70px rgba(0,0,0,.45)}
+    .img-border{border:1px solid rgba(255,255,255,.12)}
+    .qr img{background:white;padding:10px;border-radius:12px}
+    .link{color:#8bd6ff;text-decoration:underline;text-decoration-color:rgba(139,214,255,.35)}
+    .speaker-notes{display:none}
+    .nav{position:fixed;right:22px;bottom:16px;color:rgba(245,245,247,.4);font:13px ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase}
+  </style>
+</head>
+<body>
+<div class="deck-shell">
+  <div class="deck-scale" id="deckScale">
+
+    <svg width="0" height="0" style="position:absolute">
+      <defs>
+        <symbol id="potato-base" viewBox="0 0 260 320">
+          <path class="body" d="M50 82c19-37 70-59 118-45 53 16 82 67 72 123-8 46-21 102-64 124-51 27-128 8-164-48-31-47-23-114 38-154Z"/>
+          <circle cx="102" cy="128" r="11" class="fill-dark"/>
+          <circle cx="160" cy="126" r="11" class="fill-dark"/>
+          <path class="line" d="M94 178c16 11 52 11 70-3"/>
+          <path class="line thin" d="M65 233c-10 22-18 41-28 58"/>
+          <path class="line thin" d="M196 233c12 19 22 38 29 57"/>
+          <path class="line thin" d="M63 204c-22 8-37 19-49 33"/>
+          <path class="line thin" d="M200 203c20 8 37 19 50 31"/>
+        </symbol>
+      </defs>
+    </svg>
+
+    <!-- 1 -->
+    <section class="slide grain active" data-slide-id="1">
+      <div class="absolute inset-0 p-[96px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>O’Reilly · Zero to Agent · July 15</span><span>Opening frame</span><span>№1 / 26</span></div>
+        <div class="grid grid-cols-[1.15fr_0.85fr] gap-10 items-center">
+          <div>
+            <div class="eyebrow">Opening thesis</div>
+            <h1 class="h-hero mt-6">English is the<br><span class="accent">language</span><br>of AI software.</h1>
+          </div>
+          <div class="panel rounded-[34px] p-10">
+            <div class="flex items-center justify-between mb-8">
+              <div class="text-[46px] font-black tracking-[-.04em]">O’Reilly</div>
+              <div class="chip">Zero to Agent</div>
+            </div>
+            <div class="flex items-center gap-6">
+              <img src="assets/john_berryman_face.jpg" class="w-32 h-32 rounded-full object-cover img-border" alt="John Berryman" />
+              <div>
+                <div class="text-[40px] font-bold">John Berryman</div>
+                <div class="body-sm muted mt-2">Arcturus Labs</div>
+              </div>
+            </div>
+            <div class="mt-8 flex items-center gap-4">
+              <img src="assets/arcturus_logo.png" class="w-16 h-16 object-contain" alt="Arcturus Labs logo" />
+              <div class="body-sm muted">AI product consulting · applied agent systems</div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-note">Talk thesis first. Everything else follows from it.</div>
+      </div>
+    </section>
+
+    <!-- 2 -->
+    <section class="slide grain" data-slide-id="2">
+      <div class="absolute inset-0 p-[112px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>What you’ll learn</span><span>Intro</span><span>№2 / 26</span></div>
+        <div>
+          <div class="eyebrow">What you’ll learn</div>
+          <div class="grid grid-cols-3 gap-8 mt-12">
+            <div class="panel rounded-[30px] p-10 h-[430px]">
+              <div class="text-[84px] font-black accent">01</div>
+              <div class="body-lg mt-8">What an <span class="accent">agent really is</span>.</div>
+              <div class="body-sm muted mt-6">(It’s actually pretty simple.)</div>
+            </div>
+            <div class="panel rounded-[30px] p-10 h-[430px]">
+              <div class="text-[84px] font-black accent">02</div>
+              <div class="body-lg mt-8">Why English is now <span class="accent">the language</span> for AI software.</div>
+            </div>
+            <div class="panel rounded-[30px] p-10 h-[430px]">
+              <div class="text-[84px] font-black accent">03</div>
+              <div class="body-lg mt-8">How to incrementally build AI products that actually work.</div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-note">What · Why · How</div>
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section class="slide grain" data-slide-id="3">
+      <div class="absolute inset-0 p-[112px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>2023 anatomy</span><span>Sequence 1/3</span><span>№3 / 26</span></div>
+        <div class="grid grid-cols-[1fr_1fr] gap-8 items-center">
+          <div>
+            <div class="eyebrow">What an AI agent was in 2023</div>
+            <h2 class="h-xl mt-6">In the beginning was the LLM.<br><span class="accent">Text in -&gt; text out.</span></h2>
+          </div>
+          <div class="flex items-center justify-center">
+            <div class="potato placeholder w-[420px]">
+              <svg viewBox="0 0 260 320"><use href="#potato-base"/><rect x="77" y="94" width="104" height="72" rx="16" fill="#dfe8ff" stroke="#1b1b1b" stroke-width="5"/><path d="M98 116h61M98 132h44M98 148h52" class="line thin"/><circle cx="130" cy="214" r="34" class="fill-accent" opacity=".18"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="footer-note">Base form for the recurring mascot sequence</div>
+      </div>
+    </section>
+
+    <!-- 4 -->
+    <section class="slide grain" data-slide-id="4">
+      <div class="absolute inset-0 p-[112px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>2023 anatomy</span><span>Sequence 2/3</span><span>№4 / 26</span></div>
+        <div class="grid grid-cols-[1fr_1fr] gap-8 items-center">
+          <div>
+            <div class="eyebrow">Add the outer loop</div>
+            <h2 class="h-xl mt-6">Wrap it in a while loop with user input.<br><span class="accent">Poof, it’s a chat bot.</span></h2>
+          </div>
+          <div class="flex items-center justify-center">
+            <div class="potato placeholder w-[430px]">
+              <svg viewBox="0 0 260 320"><use href="#potato-base"/><path d="M28 160C22 85 87 31 163 38c60 6 106 58 102 126" class="line"/><path d="M149 42l16 3-9 14" class="line"/><ellipse cx="130" cy="184" rx="32" ry="16" fill="#f06ea9" stroke="#1b1b1b" stroke-width="5"/><path d="M130 185c-13 0-25-5-32-14" class="line thin"/><path d="M65 233c-18 18-29 35-40 53" class="line thin"/><path d="M198 232c12 16 23 34 31 55" class="line thin"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="footer-note">Same character, one added concept</div>
+      </div>
+    </section>
+
+    <!-- 5 -->
+    <section class="slide grain" data-slide-id="5">
+      <div class="absolute inset-0 p-[112px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>2023 anatomy</span><span>Sequence 3/3</span><span>№5 / 26</span></div>
+        <div class="grid grid-cols-[1fr_1fr] gap-8 items-center">
+          <div>
+            <div class="eyebrow">Add the inner loop</div>
+            <h2 class="h-xl mt-6">Add a tools loop.<br><span class="accent">Now it’s an agent.</span></h2>
+            <p class="body-md muted mt-8">It can see the world through APIs and act on the world through APIs.</p>
+          </div>
+          <div class="flex items-center justify-center">
+            <div class="potato placeholder w-[450px]">
+              <svg viewBox="0 0 260 320"><use href="#potato-base"/><circle cx="102" cy="126" r="17" fill="#fff" stroke="#1b1b1b" stroke-width="5"/><circle cx="159" cy="124" r="17" fill="#fff" stroke="#1b1b1b" stroke-width="5"/><circle cx="108" cy="128" r="7" class="fill-dark"/><circle cx="165" cy="126" r="7" class="fill-dark"/><path d="M48 205c-20 6-34 15-47 31" class="line thin"/><path d="M212 204c19 7 34 18 46 31" class="line thin"/><path d="M6 239l20-21 10 10-20 20z" fill="#9ca3af" stroke="#1b1b1b" stroke-width="4"/><rect x="207" y="219" width="18" height="28" rx="4" fill="#6b7280" stroke="#1b1b1b" stroke-width="4"/><rect x="221" y="228" width="16" height="10" rx="2" fill="#9ca3af" stroke="#1b1b1b" stroke-width="4"/><rect x="96" y="250" width="68" height="18" rx="9" fill="#5b6477"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="footer-note">The only real difference is the loops and the tools</div>
+      </div>
+    </section>
+
+    <!-- 6 -->
+    <section class="slide grain" data-slide-id="6">
+      <div class="absolute inset-0 p-[96px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>Problem</span><span>Technical framing</span><span>№6 / 26</span></div>
+        <div>
+          <div class="eyebrow">BUT 2023 AGENTS ACTUALLY SUCKED</div>
+          <h2 class="h-lg mt-5">They were terrible at following instructions.</h2>
+        </div>
+        <div class="grid grid-cols-[.95fr_1.05fr] gap-10 items-start">
+          <div class="panel rounded-[30px] p-10">
+            <div class="eyebrow mb-4">Here was the problem</div>
+            <ul class="body-md muted list-disc pl-8 space-y-4">
+              <li>they would start on the right track</li>
+              <li>then get distracted by their own tool output</li>
+              <li>or get distracted by examples in the context</li>
+              <li>and soon wander off solving a problem you never asked for</li>
+            </ul>
+          </div>
+          <div class="panel rounded-[30px] p-10">
+            <div class="eyebrow mb-4">What we did instead</div>
+            <ul class="body-md muted list-disc pl-8 space-y-4">
+              <li>constrain the workflow with explicit state machines</li>
+              <li>force the processing steps to happen in a fixed order</li>
+              <li>use things like LangGraph to keep the model on rails</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-note">Technical problem: not enough long-horizon reliability</div>
+      </div>
+    </section>
+
+    <!-- 7 -->
+    <section class="slide grain" data-slide-id="7">
+      <div class="absolute inset-0 p-[112px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>Transition</span><span>Harnesses</span><span>№7 / 26</span></div>
+        <div>
+          <div class="eyebrow">... but nevertheless</div>
+          <h2 class="h-xl mt-6">Agents lived on in <span class="accent">coding harnesses</span>, and improved significantly.</h2>
+        </div>
+        <div class="footer-note">This is where agents got practically useful</div>
+      </div>
+    </section>
+
+    <!-- 8 -->
+    <section class="slide grain" data-slide-id="8">
+      <div class="absolute inset-0 p-[96px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>Harness era</span><span>Sequence 1/4</span><span>№8 / 26</span></div>
+        <div class="grid grid-cols-[1fr_1fr] gap-8 items-center">
+          <div>
+            <div class="eyebrow">Read · Write · Shell</div>
+            <h2 class="h-lg mt-6">Coding agents became <span class="accent">general agents</span>.</h2>
+            <p class="body-md muted mt-8">Because once an agent can read and write files, and run shell commands, it can then build its own tools and in principle accomplish nearly any online activity.</p>
+          </div>
+          <div class="flex items-center justify-center">
+            <div class="potato placeholder w-[470px]">
+              <svg viewBox="0 0 320 320"><use href="#potato-base" transform="translate(30,0)"/><rect x="12" y="34" width="88" height="48" rx="12" fill="#1b1b1b" stroke="#f5f5f7" stroke-width="4"/><path d="M24 57h55M24 70h40" class="line thin" style="stroke:#f5f5f7"/><path d="M199 22l26 11-12 17" fill="#d8d2c0" stroke="#1b1b1b" stroke-width="4"/><path d="M170 32c24-18 52-18 74 0" class="line"/><rect x="204" y="171" width="90" height="58" rx="10" fill="#dfe8ff" stroke="#1b1b1b" stroke-width="5"/><path d="M221 193h50M221 207h34" class="line thin"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="footer-note">Read, write, and shell changed the game.</div>
+      </div>
+    </section>
+
+    <!-- 9 -->
+    <section class="slide grain" data-slide-id="9">
+      <div class="absolute inset-0 p-[96px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>Harness era</span><span>Sequence 2/4</span><span>№9 / 26</span></div>
+        <div class="grid grid-cols-[1fr_1fr] gap-8 items-center">
+          <div>
+            <div class="eyebrow">Skills</div>
+            <h2 class="h-lg mt-6">Skills are basically an <span class="accent">onboarding manual</span>.</h2>
+            <p class="body-md muted mt-8">Once agents became good at files and OS interactions, agent skills were a spectacularly good idea.</p>
+          </div>
+          <div class="flex items-center justify-center gap-6">
+            <div class="potato placeholder w-[320px]"><svg viewBox="0 0 260 320"><use href="#potato-base"/></svg></div>
+            <div class="panel rounded-[24px] p-6 rotate-[-4deg] w-[190px] h-[240px] flex flex-col justify-between">
+              <div class="eyebrow">Manual</div>
+              <div class="text-[56px] font-black leading-none">Skillz</div>
+              <div class="body-sm muted">task definition · ordered steps · output rules</div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-note">The procedure becomes data the agent can read</div>
+      </div>
+    </section>
+
+    <!-- 10 -->
+    <section class="slide grain" data-slide-id="10">
+      <div class="absolute inset-0 p-[96px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>Late 2025</span><span>Capability shift</span><span>№10 / 26</span></div>
+        <div>
+          <div class="eyebrow">late-2025 capability step change</div>
+          <h2 class="h-lg mt-5">Coding models got much better at <span class="accent">long-horizon work</span> in late 2025.</h2>
+        </div>
+        <div class="grid grid-cols-[1.05fr_.95fr] gap-10 items-start">
+          <div class="panel rounded-[30px] p-10">
+            <div class="eyebrow mb-4">What changed</div>
+            <ul class="body-md muted list-disc pl-8 space-y-4">
+              <li>stayed on target longer</li>
+              <li>handled ambiguity with less hand-holding</li>
+              <li>made fewer dead-end tool decisions</li>
+              <li>became much more practical for coding + agent workflows</li>
+            </ul>
+          </div>
+          <div class="panel rounded-[30px] p-8">
+            <div class="eyebrow mb-4">Late-2025 references</div>
+            <div class="body-sm muted stack">
+              <div>Simon Willison — <span class="accent">2025: The year in LLMs</span></div>
+              <div>Andrej Karpathy — <span class="accent">2025 LLM Year in Review</span></div>
+              <div>Anthropic — <span class="accent">Claude Opus 4.5</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-note">The Christmas miracle of 2025</div>
+      </div>
+    </section>
+
+    <!-- 11 -->
+    <section class="slide grain" data-slide-id="11">
+      <div class="absolute inset-0 p-[112px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>Consequence</span><span>Sequence 4/4</span><span>№11 / 26</span></div>
+        <div>
+          <div class="eyebrow">The payoff</div>
+          <h2 class="h-xl mt-6">You don’t need bespoke state machine workflows.<br><span class="accent">Just place the instructions in the agent skill.</span></h2>
+        </div>
+        <div class="footer-note">This is the turning point</div>
+      </div>
+    </section>
+
+    <!-- 12 -->
+    <section class="slide grain" data-slide-id="12">
+      <div class="absolute inset-0 p-[96px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>Anatomy</span><span>Recap</span><span>№12 / 26</span></div>
+        <div class="grid grid-cols-[.92fr_1.08fr] gap-8 items-center">
+          <div class="flex items-center justify-center">
+            <div class="potato placeholder w-[420px]">
+              <svg viewBox="0 0 320 340"><use href="#potato-base" transform="translate(30,8)"/><rect x="180" y="46" width="95" height="58" rx="16" fill="#dfe8ff" stroke="#1b1b1b" stroke-width="5"/><path d="M197 69h56M197 84h43" class="line thin"/><path d="M57 57c42-27 100-29 148-8" class="line"/><path d="M31 165h60" class="line thin"/><path d="M229 159h64" class="line thin"/><text x="20" y="155" fill="#f5f5f7" font-size="16">tools</text><text x="238" y="149" fill="#f5f5f7" font-size="16">brain</text></svg>
+            </div>
+          </div>
+          <div>
+            <div class="eyebrow">Agent anatomy review</div>
+            <h2 class="h-lg mt-5">The agent is still just an LLM wrapped in a tool loop wrapped in a user loop.</h2>
+            <p class="body-lg muted mt-8">The real differences: we gave it the right tools, we taught it to read <span class="mono">SKILL.md</span>, and we improved the models <span class="accent">considerably</span>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 -->
+    <section class="slide grain" data-slide-id="13">
+      <div class="absolute inset-0 p-[90px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>Personal story</span><span>Recognition</span><span>№13 / 26</span></div>
+        <div class="grid grid-cols-[1.05fr_.95fr] gap-10 items-center">
+          <div>
+            <div class="eyebrow">The dawn of recognition</div>
+            <h2 class="h-md mt-5">In an afternoon of hacking I suddenly realized that <span class="accent">English is now the language of AI software</span>.</h2>
+            <p class="body-md muted mt-8">We were building a video conferencing assistant just for fun. Shawn took the wheel when we started programming it. He implemented the core of it as a skill to be run by Claude Code. All that was left was a thin wrapper to interface it with a Zoom API.</p>
+            <p class="body-lg mt-8"><span class="accent">Then it clicked for me:</span> agents were the runtime, skills were the software, and English was the programming language.</p>
+          </div>
+          <div class="relative h-[620px]">
+            <img src="assets/shawn_simister.jpg" class="absolute left-[160px] top-[10px] w-[290px] h-[290px] object-cover rounded-[26px] img-shadow img-border" alt="Shawn Simister" />
+            <div class="absolute left-[205px] top-[316px] body-sm">Shawn Simister</div>
+            <img src="assets/nick_chouard.jpg" class="absolute left-[10px] top-[330px] w-[220px] h-[220px] object-cover rounded-[26px] img-shadow img-border" alt="Nick Chouard" />
+            <div class="absolute left-[86px] top-[566px] body-sm">Nick</div>
+            <img src="assets/john_berryman_face.jpg" class="absolute right-[20px] top-[340px] w-[220px] h-[220px] object-cover rounded-[26px] img-shadow img-border" alt="John Berryman" />
+            <div class="absolute right-[108px] top-[576px] body-sm">Me</div>
+          </div>
+        </div>
+        <div class="footer-note">Agents were the runtime. Skills were the software.</div>
+      </div>
+    </section>
+
+    <!-- 14 -->
+    <section class="slide grain" data-slide-id="14">
+      <div class="absolute inset-0 p-[84px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>Demo</span><span>App intro</span><span>№14 / 26</span></div>
+        <div>
+          <div class="eyebrow">So we’ve come to the demo</div>
+          <h2 class="h-lg mt-5">Let’s build a <span class="accent">job application review app</span>.</h2>
+        </div>
+        <div class="relative h-[620px] mt-4">
+          <img src="assets/review_queue.png" class="absolute left-[100px] top-[30px] w-[920px] rounded-[22px] img-shadow img-border opacity-90" alt="Review queue" />
+          <img src="assets/review_page.png" class="absolute right-[120px] top-[70px] w-[980px] rounded-[24px] img-shadow img-border" alt="Review page" />
+        </div>
+        <div class="footer-note">Applications flow in. Reviewers work them down.</div>
+      </div>
+    </section>
+
+    <!-- 15 -->
+    <section class="slide grain" data-slide-id="15">
+      <div class="absolute inset-0 p-[96px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>Why this is hard</span><span>Research synthesis</span><span>№15 / 26</span></div>
+        <div>
+          <div class="eyebrow">The expensive part</div>
+          <h2 class="h-lg mt-5">This is <span class="accent">cross-source research</span>, not résumé reading.</h2>
+        </div>
+        <div class="grid grid-cols-2 gap-10">
+          <div class="panel rounded-[30px] p-10">
+            <div class="eyebrow mb-4">What reviewers do</div>
+            <ul class="body-md muted list-disc pl-8 space-y-4">
+              <li>research the candidate</li>
+              <li>research the candidate’s current company</li>
+              <li>research the hiring company</li>
+              <li>compare background against the role</li>
+            </ul>
+          </div>
+          <div class="panel rounded-[30px] p-10">
+            <div class="eyebrow mb-4">Where they look</div>
+            <ul class="body-md muted list-disc pl-8 space-y-4">
+              <li>LinkedIn</li>
+              <li>company websites</li>
+              <li>blog posts</li>
+              <li>other public sources that prove out fit and honesty</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-note">They have to prove out the match, not just skim the application</div>
+      </div>
+    </section>
+
+    <!-- 16 -->
+    <section class="slide grain" data-slide-id="16">
+      <div class="absolute inset-0 p-[96px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>Approach</span><span>Overview</span><span>№16 / 26</span></div>
+        <div class="grid grid-cols-[1.05fr_.95fr] gap-10 items-center">
+          <div>
+            <div class="eyebrow">Here’s our approach</div>
+            <h2 class="h-lg mt-5">Build the system in the same shape it will eventually have.</h2>
+            <ul class="body-md muted list-disc pl-8 mt-10 space-y-5">
+              <li>Build the UI</li>
+              <li>Connect it to a Mock Agent</li>
+              <li>Connect it to a real agent (but not a smart one)</li>
+              <li>Make the agent smart</li>
+            </ul>
+          </div>
+          <div class="flex items-center justify-center">
+            <div class="potato placeholder w-[360px]"><svg viewBox="0 0 260 320"><use href="#potato-base"/></svg></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 17 -->
+    <section class="slide grain" data-slide-id="17">
+      <div class="absolute inset-0 p-[96px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>Approach</span><span>Reveal 1/4</span><span>№17 / 26</span></div>
+        <div class="grid grid-cols-[1.05fr_.95fr] gap-10 items-center">
+          <div>
+            <div class="eyebrow">Here’s our approach</div>
+            <ul class="body-md muted list-disc pl-8 mt-12 space-y-5">
+              <li>Build the UI</li>
+            </ul>
+          </div>
+          <div class="relative h-[520px]">
+            <img src="assets/review_queue.png" class="absolute left-0 bottom-[20px] w-[560px] rounded-[18px] img-shadow img-border" alt="Review queue" />
+            <img src="assets/review_page.png" class="absolute right-0 top-0 w-[590px] rounded-[18px] img-shadow img-border" alt="Review page" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 18 -->
+    <section class="slide grain" data-slide-id="18">
+      <div class="absolute inset-0 p-[96px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>Approach</span><span>Reveal 2/4</span><span>№18 / 26</span></div>
+        <div class="grid grid-cols-[1.05fr_.95fr] gap-10 items-center">
+          <div>
+            <div class="eyebrow">Here’s our approach</div>
+            <ul class="body-md muted list-disc pl-8 mt-12 space-y-5">
+              <li>Build the UI</li>
+              <li>Connect it to a Mock Agent</li>
+            </ul>
+          </div>
+          <div class="flex items-center justify-center">
+            <div class="potato placeholder w-[440px]">
+              <svg viewBox="0 0 320 360"><use href="#potato-base" transform="translate(35,10)"/><rect x="34" y="30" width="252" height="180" rx="18" fill="none" stroke="#9ca3af" stroke-width="6" stroke-dasharray="10 10"/><rect x="92" y="220" width="140" height="18" rx="9" fill="#6b7280"/><circle cx="109" cy="138" r="9" class="fill-dark"/><circle cx="166" cy="136" r="9" class="fill-dark"/><path d="M105 186c18-4 40-4 60 0" class="line thin"/><text x="52" y="58" fill="#f5f5f7" font-size="18">mock agent</text></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 19 -->
+    <section class="slide grain" data-slide-id="19">
+      <div class="absolute inset-0 p-[96px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>Approach</span><span>Reveal 3/4</span><span>№19 / 26</span></div>
+        <div class="grid grid-cols-[1.05fr_.95fr] gap-10 items-center">
+          <div>
+            <div class="eyebrow">Here’s our approach</div>
+            <ul class="body-md muted list-disc pl-8 mt-12 space-y-5">
+              <li>Build the UI</li>
+              <li>Connect it to a Mock Agent</li>
+              <li>Connect it to a real agent (but not a smart one)</li>
+            </ul>
+          </div>
+          <div class="flex items-center justify-center">
+            <div class="potato placeholder w-[430px]">
+              <svg viewBox="0 0 260 320"><use href="#potato-base"/><circle cx="96" cy="126" r="5" fill="#fff"/><circle cx="154" cy="124" r="5" fill="#fff"/><path d="M98 176c17 7 34 8 52 2" class="line"/><path d="M54 204c-18 6-31 13-42 26" class="line thin"/><path d="M204 204c17 7 29 15 40 27" class="line thin"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 20 -->
+    <section class="slide grain" data-slide-id="20">
+      <div class="absolute inset-0 p-[96px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>Approach</span><span>Reveal 4/4</span><span>№20 / 26</span></div>
+        <div class="grid grid-cols-[1.05fr_.95fr] gap-10 items-center">
+          <div>
+            <div class="eyebrow">Here’s our approach</div>
+            <ul class="body-md muted list-disc pl-8 mt-12 space-y-5">
+              <li>Build the UI</li>
+              <li>Connect it to a Mock Agent</li>
+              <li>Connect it to a real agent (but not a smart one)</li>
+              <li>Make the agent smart</li>
+            </ul>
+          </div>
+          <div class="flex items-center justify-center gap-6">
+            <div class="potato placeholder w-[300px]"><svg viewBox="0 0 260 320"><use href="#potato-base"/><path d="M88 172c16 14 51 14 71 0" class="line"/></svg></div>
+            <div class="panel rounded-[24px] p-6 w-[220px] h-[270px] flex flex-col justify-between rotate-[4deg]">
+              <div class="eyebrow">Skill manual</div>
+              <div class="text-[58px] font-black leading-none">Skillz</div>
+              <div class="body-sm muted">workflow · output · quality bar</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 21 -->
+    <section class="slide grain" data-slide-id="21">
+      <div class="absolute inset-0 p-[112px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>Demo</span><span>Test drive</span><span>№21 / 26</span></div>
+        <div>
+          <div class="eyebrow">Let’s take it for a test drive</div>
+          <h2 class="h-xl mt-6">Let’s take a code tour of the<br><span class="accent">AI application reviewer</span>.</h2>
+        </div>
+        <div class="footer-note">The next two slides are intentionally dense and link out to the code</div>
+      </div>
+    </section>
+
+    <!-- 22 -->
+    <section class="slide grain" data-slide-id="22">
+      <div class="absolute inset-0 p-[68px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>Walkthrough</span><span>Dense slide 1/2</span><span>№22 / 26</span></div>
+        <div class="grid grid-cols-1 gap-8 items-start h-[900px]">
+          <div class="panel rounded-[24px] p-8 h-full overflow-hidden">
+            <div class="eyebrow mb-5">Iterative implementation</div>
+            <ul class="body-sm muted list-disc pl-7 space-y-3">
+              <li>Start w/ simple review function — a <a class="link" href="https://github.com/arcturus-labs/talk--agents-are-the-core/blob/88d28b473bdc5a138719051d89773bf0a06ce13e/backend/app/services/ai_reviewer.py#L130-L152">good first mock implementation for <span class="mono">review</span></a> would be to sleep briefly and then return a canned follow-up recommendation.</li>
+              <li>Then add an agent w/ basic skills.</li>
+              <li>The goal here is just to show how a Pydantic AI agent is put together.</li>
+              <li>Note, we used PydanticAI build and agent skill.</li>
+              <li>Whenever the request to review an application comes through, we <a class="link" href="https://github.com/arcturus-labs/talk--agents-are-the-core/blob/88d28b473bdc5a138719051d89773bf0a06ce13e/backend/app/services/ai_reviewer.py#L154-L190">create a prompt and hand it off to our agent</a>.</li>
+              <li>So now it’s already a little bit smarter: instead of a canned answer, it can read the application context and do the workflow. But the workflow is still basic.</li>
+              <li>Once the agent responds, it returns structured data that we use to call <span class="mono">service.add_update(...)</span>.</li>
+              <li>The <a class="link" href="https://github.com/arcturus-labs/talk--agents-are-the-core/blob/88d28b473bdc5a138719051d89773bf0a06ce13e/backend/app/services/ai_reviewer.py#L89-L128">agent implementation itself starts here in <span class="mono">__init__</span></a>.</li>
+              <li>All we do is specify the model, the output type, the capabilities, and a basic instruction.</li>
+              <li>One thing that’s really interesting is how modular everything is — it all pops in like Lego blocks.</li>
+              <li>We point it at a bunch of skills with <span class="mono">SkillsCapability(...)</span>.</li>
+              <li>We give it the ability to think with <span class="mono">Thinking(...)</span>.</li>
+              <li>We give it web search with <span class="mono">WebSearch()</span>.</li>
+              <li>You can also easily add tools to these models now. We add <a class="link" href="https://github.com/arcturus-labs/talk--agents-are-the-core/blob/88d28b473bdc5a138719051d89773bf0a06ce13e/backend/app/services/ai_reviewer.py#L105-L128"><span class="mono">get_linkedin_profile</span></a> because you can’t use web search and web fetch to directly get at LinkedIn, so we had to trick it out.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 23 -->
+    <section class="slide grain" data-slide-id="23">
+      <div class="absolute inset-0 p-[68px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>Walkthrough</span><span>Dense slide 2/2</span><span>№23 / 26</span></div>
+        <div class="grid grid-cols-1 gap-8 items-start h-[900px]">
+          <div class="panel rounded-[24px] p-8 h-full overflow-hidden">
+            <div class="eyebrow mb-5">Make your agent smarter</div>
+            <ul class="body-sm muted list-disc pl-7 space-y-3">
+              <li>The <a class="link" href="https://github.com/arcturus-labs/talk--agents-are-the-core/blob/88d28b473bdc5a138719051d89773bf0a06ce13e/skills/screen-candidate/SKILL.md#L1-L90">skill file</a> is where you actually make the agent smart. These days it’s often enough to implement the workflow in English.</li>
+              <li>The <a class="link" href="https://github.com/arcturus-labs/talk--agents-are-the-core/blob/88d28b473bdc5a138719051d89773bf0a06ce13e/skills/screen-candidate/SKILL.md#L54-L74">Screening flow</a> lays out an ordered set of steps. For workflows, defined steps make the agent easier to steer and much easier to debug when something goes wrong.</li>
+              <li>Be crisp about output. The <a class="link" href="https://github.com/arcturus-labs/talk--agents-are-the-core/blob/88d28b473bdc5a138719051d89773bf0a06ce13e/skills/screen-candidate/SKILL.md#L16-L32">Your output section</a> defines it in English, and <a class="link" href="https://github.com/arcturus-labs/talk--agents-are-the-core/blob/88d28b473bdc5a138719051d89773bf0a06ce13e/backend/app/services/ai_reviewer.py#L60-L78">AIReviewOutput</a> defines that exact shape in code. PydanticAI enforces this structure as well, so it’s a great way to make sure the model returns the required structure.</li>
+              <li><a class="link" href="https://github.com/arcturus-labs/talk--agents-are-the-core/blob/88d28b473bdc5a138719051d89773bf0a06ce13e/skills/screen-candidate/SKILL.md#L18-L21">Also note this line in the skill</a>, where I require <span class="mono">internal_notes</span> to conform to its own checklist structure. See <a class="link" href="https://github.com/arcturus-labs/talk--agents-are-the-core/blob/88d28b473bdc5a138719051d89773bf0a06ce13e/skills/screen-candidate/references/internal-notes-checklist.md#L1-L39">internal-notes-checklist.md</a>.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 24 -->
+    <section class="slide grain" data-slide-id="24">
+      <div class="absolute inset-0 p-[84px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>Wrap-up</span><span>Staircase 1/3</span><span>№24 / 26</span></div>
+        <div class="grid grid-cols-[1fr_1fr] gap-10 items-center">
+          <div>
+            <div class="eyebrow">Wrap-up</div>
+            <h2 class="h-lg mt-5">Let’s review what we’ve learned.</h2>
+            <ul class="body-md muted list-disc pl-8 mt-8 space-y-4">
+              <li>agents really aren’t that complicated</li>
+              <li>agent skills are the new programs for AI applications, and English is their programming language</li>
+              <li>you can build AI workflows by wrapping the right agent with the right skill</li>
+            </ul>
+          </div>
+          <div class="relative h-[620px] flex items-end justify-center">
+            <svg viewBox="0 0 600 620" class="w-[560px] h-[620px]">
+              <path d="M70 600 250 240 380 430 520 120 560 600Z" fill="#1f2a44" stroke="#3f516f" stroke-width="4"/>
+              <line x1="520" y1="120" x2="520" y2="50" stroke="#f5f5f7" stroke-width="6"/>
+              <path d="M520 50 568 64 520 86Z" fill="#5ac8fa"/>
+              <g transform="translate(430 40) scale(.5)"><use href="#potato-base" class="potato"/></g>
+            </svg>
+          </div>
+        </div>
+        <div class="grid grid-cols-4 gap-4 qr">
+          <div class="panel rounded-[20px] p-4 text-center border-[2px] border-sky-300"><img src="assets/qr_codebase.png" class="w-32 h-32 mx-auto" alt="QR code codebase" /><div class="body-sm mt-3">this codebase</div></div>
+          <div class="panel rounded-[20px] p-4 text-center"><img src="assets/qr_arcturus.png" class="w-32 h-32 mx-auto" alt="QR code Arcturus" /><div class="body-sm mt-3">AI product consulting</div></div>
+          <div class="panel rounded-[20px] p-4 text-center"><img src="assets/qr_live.png" class="w-32 h-32 mx-auto" alt="QR code live" /><div class="body-sm mt-3">I build AI product live</div></div>
+          <div class="panel rounded-[20px] p-4 text-center border-[2px] border-sky-300"><img src="assets/qr_superstream.png" class="w-32 h-32 mx-auto" alt="QR code Superstream" /><div class="body-sm mt-3">O’Reilly Superstream July 23</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 25 -->
+    <section class="slide grain" data-slide-id="25">
+      <div class="absolute inset-0 p-[84px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>Future work</span><span>Staircase 2/3</span><span>№25 / 26</span></div>
+        <div class="grid grid-cols-[1fr_1fr] gap-8 items-center">
+          <div>
+            <div class="eyebrow">But this is only the start</div>
+            <h2 class="h-lg mt-5">There is much yet to learn.</h2>
+            <ul class="body-md muted list-disc pl-8 mt-8 space-y-4">
+              <li>gathering or generating test and training data</li>
+              <li>evaluating the workflow</li>
+              <li>establishing a virtuous cycle of iterative improvement</li>
+            </ul>
+          </div>
+          <div class="relative h-[620px] flex items-end justify-center">
+            <svg viewBox="0 0 700 620" class="w-[640px] h-[620px]">
+              <path d="M30 600 160 420 300 250 395 330 500 180 620 70 670 600Z" fill="#1f2a44" stroke="#3f516f" stroke-width="4"/>
+              <line x1="620" y1="70" x2="620" y2="14" stroke="#f5f5f7" stroke-width="6"/>
+              <path d="M620 14 665 26 620 48Z" fill="#5ac8fa"/>
+              <g transform="translate(540 -18) scale(.38)"><use href="#potato-base" class="potato"/></g>
+            </svg>
+          </div>
+        </div>
+        <div class="grid grid-cols-4 gap-4 qr">
+          <div class="panel rounded-[20px] p-4 text-center"><img src="assets/qr_codebase.png" class="w-28 h-28 mx-auto" alt="QR" /><div class="body-sm mt-2">this codebase</div></div>
+          <div class="panel rounded-[20px] p-4 text-center border-[2px] border-sky-300"><img src="assets/qr_arcturus.png" class="w-28 h-28 mx-auto" alt="QR" /><div class="body-sm mt-2">AI product consulting</div></div>
+          <div class="panel rounded-[20px] p-4 text-center border-[2px] border-sky-300"><img src="assets/qr_live.png" class="w-28 h-28 mx-auto" alt="QR" /><div class="body-sm mt-2">I build AI product live</div></div>
+          <div class="panel rounded-[20px] p-4 text-center"><img src="assets/qr_superstream.png" class="w-28 h-28 mx-auto" alt="QR" /><div class="body-sm mt-2">Superstream</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 26 -->
+    <section class="slide grain" data-slide-id="26">
+      <div class="absolute inset-0 p-[80px] flex flex-col justify-between">
+        <div class="note flex justify-between"><span>Closing vision</span><span>Staircase 3/3</span><span>№26 / 26</span></div>
+        <div class="grid grid-cols-[1.08fr_.92fr] gap-8 items-center">
+          <div>
+            <div class="eyebrow">And soon you’ll see there’s even more</div>
+            <h2 class="h-md mt-5">The agent is the core of AI applications.<br>Soon, your personal agent will be the <span class="accent">full user experience</span>.</h2>
+            <p class="body-md muted mt-8">That’s the broader future: not just agentic features, but agentic interfaces to the world around you.</p>
+          </div>
+          <div class="relative h-[640px] flex items-end justify-center">
+            <svg viewBox="0 0 720 640" class="w-[650px] h-[640px]">
+              <path d="M58 110c63 17 124 57 165 126 34 58 40 107 49 167 8 55 33 95 84 132 86 61 210 59 281 32 3 23 5 45 7 66H49c2-160 5-272 9-338Z" fill="#132034" stroke="#2a4265" stroke-width="4" opacity=".88"/>
+              <path d="M58 110c94-18 180 9 241 75 51 55 65 111 78 178 9 49 33 101 88 143 57 43 119 59 180 63H49c1-116 4-226 9-338Z" fill="#1f2a44" stroke="#3f516f" stroke-width="4"/>
+              <path d="M490 92 553 108 490 137Z" fill="#5ac8fa"/>
+              <line x1="490" y1="92" x2="490" y2="33" stroke="#f5f5f7" stroke-width="6"/>
+              <g transform="translate(405 1) scale(.36)"><use href="#potato-base" class="potato"/></g>
+            </svg>
+          </div>
+        </div>
+        <div class="grid grid-cols-4 gap-4 qr">
+          <div class="panel rounded-[20px] p-4 text-center"><img src="assets/qr_codebase.png" class="w-28 h-28 mx-auto" alt="QR" /><div class="body-sm mt-2">this codebase</div></div>
+          <div class="panel rounded-[20px] p-4 text-center"><img src="assets/qr_arcturus.png" class="w-28 h-28 mx-auto" alt="QR" /><div class="body-sm mt-2">AI product consulting</div></div>
+          <div class="panel rounded-[20px] p-4 text-center border-[2px] border-sky-300"><img src="assets/qr_live.png" class="w-28 h-28 mx-auto" alt="QR" /><div class="body-sm mt-2">I build AI product live</div></div>
+          <div class="panel rounded-[20px] p-4 text-center border-[2px] border-sky-300"><img src="assets/qr_superstream.png" class="w-28 h-28 mx-auto" alt="QR" /><div class="body-sm mt-2">O’Reilly Superstream July 23</div></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  let index = 0;
+  function fit(){ const s = Math.min(window.innerWidth/1920, window.innerHeight/1080); document.getElementById('deckScale').style.transform = `scale(${s})`; }
+  function show(i,sync=true){ index=Math.max(0,Math.min(slides.length-1,i)); slides.forEach((s,j)=>s.classList.toggle('active',j===index)); if(sync) location.hash=`slide-${index+1}`; }
+  function fromHash(){ const m=location.hash.match(/slide-(\d+)/); if(m) show(parseInt(m[1],10)-1,false); }
+  window.addEventListener('resize',fit);
+  window.addEventListener('hashchange',fromHash);
+  window.addEventListener('keydown',e=>{ if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') show(index+1); if(e.key==='ArrowLeft'||e.key==='PageUp') show(index-1); if(e.key==='Home') show(0); if(e.key==='End') show(slides.length-1); });
+  fit(); if(location.hash) fromHash(); else show(0,false);
+</script>
+</body>
+</html>

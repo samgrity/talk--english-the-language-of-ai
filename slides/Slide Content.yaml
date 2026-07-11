@@ -76,7 +76,7 @@ slides:
     delta_of: 4
     reveal:
       add_bullet: "Add an inner tools loop and <b>now it’s an agent</b>. It can see and interact with the world."
-      payoff: "It can see the world through APIs and <b>act on the world through APIs</b>."
+      payoff: "" # lets remove this
       code_snippet: |
         messages = []
         while True:
@@ -120,7 +120,7 @@ slides:
       - "if we add imagery later, use an illustration of the agent wandering off-task"
       - "optionally gesture toward state-machine / LangGraph-style control rails"
 
-  # NOTE - slides 7 through 11 are currently the same logical slide with progressive bullet reveal and different right-side treatments.
+
   - slide: 7
     top_bar:
       - "Harness era"
@@ -129,104 +129,55 @@ slides:
     harness_overview:
       kicker: "... but nevertheless"
       title: "Agents lived on in <b>coding harnesses</b>, and improved significantly."
-      bullets:
-        - "We gave them `read`, `write`, `edit`, and `shell` tools. They could write their own scripts. <b>This made them _general_ agents.</b>"
-        - 'When you get good at reading from the file system, agent skills become an obvious way to capture repeated instructions. <b>Skills are basically an onboarding manual for your agent "intern".</b>'
-        - "Then in late 2025 <b>coding agents suddenly became much better at long-horizon work.</b>"
-      payoff: "We only rarely need bespoke state-machine workflows. <b>Just give the agent the right tools and the right agent skills.</b>"
-      revealed_bullets: 0
+      bullets: []
       payoff_visible: false
     image_notes:
       - "image of the basic potato agent from a few slides back"
 
   - slide: 8
-    top_bar:
-      - "Harness era"
-      - "Overview"
-      - "№8 / 24"
-    harness_overview:
-      kicker: "... but nevertheless"
-      title: "Agents lived on in <b>coding harnesses</b>, and improved significantly."
-      bullets:
-        - "We gave them `read`, `write`, `edit`, and `shell` tools. They could write their own scripts. <b>This made them _general_ agents.</b>"
-        - 'When you get good at reading from the file system, agent skills become an obvious way to capture repeated instructions. <b>Skills are basically an onboarding manual for your agent "intern".</b>'
-        - "Then in late 2025 <b>coding agents suddenly became much better at long-horizon work.</b>"
-      payoff: "We only rarely need bespoke state-machine workflows. <b>Just give the agent the right tools and the right agent skills.</b>"
-      revealed_bullets: 1
-      payoff_visible: false
-    image_notes:
-      - "potato with computer and general's hat on the right"
+    delta_of: 7
+    reveal:
+      add_bullet: "We gave them `read`, `write`, `edit`, and `shell` tools. They could write their own scripts. <b>This made them _general_ agents.</b>"
+      image_notes:
+        - images/general_agent.png #
 
   - slide: 9
-    top_bar:
-      - "Harness era"
-      - "Overview"
-      - "№9 / 24"
-    harness_overview:
-      kicker: "... but nevertheless"
-      title: "Agents lived on in <b>coding harnesses</b>, and improved significantly."
-      bullets:
-        - "We gave them `read`, `write`, `edit`, and `shell` tools. They could write their own scripts. <b>This made them _general_ agents.</b>"
-        - 'When you get good at reading from the file system, agent skills become an obvious way to capture repeated instructions. <b>Skills are basically an onboarding manual for your agent "intern".</b>'
-        - "Then in late 2025 <b>coding agents suddenly became much better at long-horizon work.</b>"
-      payoff: "We only rarely need bespoke state-machine workflows. <b>Just give the agent the right tools and the right agent skills.</b>"
-      revealed_bullets: 2
-      payoff_visible: false
-    side_card:
-      heading: "Manual"
-      title: "Skillz"
-      detail: "task definition · ordered steps · output rules"
-    image_notes:
-      - "potato plus Skillz manual on the right"
+    delta_of: 8
+    reveal:
+      add_bullet: 'When you get good at reading from the file system, agent skills become an obvious way to capture repeated instructions. <b>Skills are basically an onboarding manual for your agent "intern".</b>'
+      side_card:
+        heading: "Manual"
+        title: "Skillz"
+        detail: "task definition · ordered steps · output rules"
+      image_notes:
+        - images/skilled_agent.png # use this image
 
   - slide: 10
-    top_bar:
-      - "Harness era"
-      - "Overview"
-      - "№10 / 24"
-    harness_overview:
-      kicker: "... but nevertheless"
-      title: "Agents lived on in <b>coding harnesses</b>, and improved significantly."
-      bullets:
-        - "We gave them `read`, `write`, `edit`, and `shell` tools. They could write their own scripts. <b>This made them _general_ agents.</b>"
-        - 'When you get good at reading from the file system, agent skills become an obvious way to capture repeated instructions. <b>Skills are basically an onboarding manual for your agent "intern".</b>'
-        - "Then in late 2025 <b>coding agents suddenly became much better at long-horizon work.</b>"
-      payoff: "We only rarely need bespoke state-machine workflows. <b>Just give the agent the right tools and the right agent skills.</b>"
-      revealed_bullets: 3
-      payoff_visible: false
-    side_panel:
-      heading: "Late-2025 references"
-      items:
-        - "Simon Willison — <b>2025: The year in LLMs</b>"
-        - "Andrej Karpathy — <b>2025 LLM Year in Review</b>"
-        - "Anthropic — <b>Claude Opus 4.5</b>"
-    image_notes:
-      - "reference panel on the right"
+    delta_of: 9
+    reveal:
+      add_bullet: "Then in late 2025 <b>coding agents suddenly became much better at long-horizon work.</b>"
+      side_panel:
+        heading: "Late-2025 references"
+        items:
+          - "Simon Willison — <b>2025: The year in LLMs</b>"
+          - "Andrej Karpathy — <b>2025 LLM Year in Review</b>"
+          - "Anthropic — <b>Claude Opus 4.5</b>"
+      image_notes:
+        - "reference panel on the right"
 
   - slide: 11
-    top_bar:
-      - "Harness era"
-      - "Overview"
-      - "№11 / 24"
-    harness_overview:
-      kicker: "... but nevertheless"
-      title: "Agents lived on in <b>coding harnesses</b>, and improved significantly."
-      bullets:
-        - "We gave them `read`, `write`, `edit`, and `shell` tools. They could write their own scripts. <b>This made them _general_ agents.</b>"
-        - 'When you get good at reading from the file system, agent skills become an obvious way to capture repeated instructions. <b>Skills are basically an onboarding manual for your agent "intern".</b>'
-        - "Then in late 2025 <b>coding agents suddenly became much better at long-horizon work.</b>"
-      payoff: "We only rarely need bespoke state-machine workflows. <b>Just give the agent the right tools and the right agent skills.</b>"
-      revealed_bullets: 3
-      payoff_visible: true
-    side_panel:
-      heading: "Late-2025 references"
-      items:
-        - "Simon Willison — <b>2025: The year in LLMs</b>"
-        - "Andrej Karpathy — <b>2025 LLM Year in Review</b>"
-        - "Anthropic — <b>Claude Opus 4.5</b>"
-    image_notes:
-      - "modify the potato agent of the last image to have a larger, smarter cyber brain - it should look powerful" #
-      - "use the images of slide 10 here"
+    delta_of: 10
+    reveal:
+      payoff: "We rarely need bespoke state-machine workflows. <b>Instead, give the agent the right tools and the right skills.</b>"
+      side_panel:
+        heading: "Late-2025 references"
+        items:
+          - "Simon Willison — <b>2025: The year in LLMs</b>"
+          - "Andrej Karpathy — <b>2025 LLM Year in Review</b>"
+          - "Anthropic — <b>Claude Opus 4.5</b>"
+      image_notes:
+        - "modify the potato agent of the last image to have a larger, smarter cyber brain - it should look powerful" #
+        - "use the images of slide 10 here"
 
   - slide: 12
     top_bar:
@@ -289,7 +240,7 @@ slides:
       - "review page screenshot in front"
       - "place 'Research is hard.' in the lower-left background area, left of the foreground screenshot"
 
-  # Slides 15-18 now share the same text treatment and only swap the right-side image.
+  # Slides 15-18 can now be represented as a base slide plus deltas.
 
   - slide: 15
     top_bar:
@@ -300,65 +251,41 @@ slides:
       kicker: "Here’s our approach"
       title: "How to build the <b>job application review app</b>"
       bullets:
-        - "Build the UI"
+        - "Build the <b>user interface</b>" #
     image_notes:
       - "review queue and review page screenshots on the right"
 
   - slide: 16
-    top_bar:
-      - "Approach"
-      - "Overview"
-      - "№16 / 24"
-    build_plan:
-      kicker: "Here’s our approach"
-      title: "How to build the <b>job application review app</b>"
-      bullets:
-        - "Build the UI"
-        - "Connect it to a Mock Agent"
-    image_notes:
-      - "review queue and review page screenshots on the right (same position as before)"
-      - "mock-agent potato on the right connected to UI"
-      - "cardboard cutout feeling"
-      - "dumb blank expression, maybe drawn in crayon"
+    delta_of: 15
+    reveal:
+      add_bullet: "Connect it to a <b>mock Agent</b>" #
+      image_notes:
+        - "review queue and review page screenshots on the right (same position as before)"
+        - "mock-agent potato on the right connected to UI"
+        - "cardboard cutout feeling"
+        - "dumb blank expression, maybe drawn in crayon"
 
   - slide: 17
-    top_bar:
-      - "Approach"
-      - "Overview"
-      - "№17 / 24"
-    build_plan:
-      kicker: "Here’s our approach"
-      title: "How to build the <b>job application review app</b>"
-      bullets:
-        - "Build the UI"
-        - "Connect it to a Mock Agent"
-        - "Connect it to a real agent – but not a smart one"
-    image_notes:
-      - "review queue and review page screenshots on the right (same position as before)"
-      - "real potato agent on the right connected to UI"
-      - "still a little silly or dumb-looking"
+    delta_of: 16
+    reveal:
+      add_bullet: "Connect it to a <b>real agent</b> – but not a smart one" #
+      image_notes:
+        - "review queue and review page screenshots on the right (same position as before)"
+        - "real potato agent on the right connected to UI"
+        - "still a little silly or dumb-looking"
 
   - slide: 18
-    top_bar:
-      - "Approach"
-      - "Overview"
-      - "№18 / 24"
-    build_plan:
-      kicker: "Here’s our approach"
-      title: "How to build the <b>job application review app</b>"
-      bullets:
-        - "Build the UI"
-        - "Connect it to a Mock Agent"
-        - "Connect it to a real agent – but not a smart one"
-        - "Make the agent smart"
-    side_card:
-      heading: "Skill manual"
-      title: "Skillz"
-      detail: "workflow · output · quality bar"
-    image_notes:
-      - "review queue and review page screenshots on the right (same position as before)"
-      - "real potato agent on the right connected to UI, now looking clever and smart"
-      - "thick Skillz manual beside it"
+    delta_of: 17
+    reveal:
+      add_bullet: "Finally, make the agent <b>smarter</b>" #
+      side_card:
+        heading: "Skill manual"
+        title: "Skillz"
+        detail: "workflow · output · quality bar"
+      image_notes:
+        - "review queue and review page screenshots on the right (same position as before)"
+        - "real potato agent on the right connected to UI, now looking clever and smart"
+        - "thick Skillz manual beside it"
 
   - slide: 19
     top_bar:
@@ -485,4 +412,4 @@ slides:
       - "most of the iceberg is underwater"
       - "the potato agent is still on top with the flag planted at the peak"
 
-# A hugely important theme is that we need to have the ability to make bulleted slides where each slide introduces a single bullet at a time and modifies the images on the slides. I don't know why this is hard. We should fix the problem.
+# We need to update text size on the other bulleted slides to be a bit larger like the size on 15-18

@@ -75,7 +75,6 @@ slides:
     delta_of: 4
     reveal:
       add_bullet: "Add an inner tools loop and <b>now it’s an agent</b>. It can see and interact with the world."
-      payoff: "It can see the world through APIs and act on the world through APIs." # lets remove this from the slide entirely
       code_snippet: |
         messages = []
         while True:
@@ -138,7 +137,7 @@ slides:
     reveal:
       add_bullet: "We gave them `read`, `write`, `edit`, and `shell` tools. They could write their own scripts. <b>This made them _general_ agents.</b>"
       image_notes:
-        - images/general_agent.png # we need to remove the svg and insert the image
+        - images/general_agent.png
 
   - slide: 9
     delta_of: 8
@@ -149,7 +148,7 @@ slides:
         title: "Skillz"
         detail: "task definition · ordered steps · output rules"
       image_notes:
-        - images/skilled_agent.png # we need to remove the svg and insert the image
+        - images/skilled_agent.png # we need to remove the skills manual svg b/c it already exists in the image - and the image needs to be the same size as the last slide
 
   - slide: 10
     delta_of: 9
@@ -162,20 +161,13 @@ slides:
           - "Andrej Karpathy — <b>2025 LLM Year in Review</b>"
           - "Anthropic — <b>Claude Opus 4.5</b>"
       image_notes:
-        - "reference panel on the right"
+        - "images/cosmic_agent.png" # add this in front of the side panel
 
   - slide: 11
     delta_of: 10
     reveal:
       payoff: "We rarely need bespoke state-machine workflows. <b>Instead, give the agent the right tools and the right skills.</b>"
-      side_panel:
-        heading: "Late-2025 references"
-        items:
-          - "Simon Willison — <b>2025: The year in LLMs</b>"
-          - "Andrej Karpathy — <b>2025 LLM Year in Review</b>"
-          - "Anthropic — <b>Claude Opus 4.5</b>"
-      image_notes:
-        - images/cosmic_agent.png # we need to remove the svg and insert the image
+      # we'll keep the side panel and agent from the last slide just as they were
 
   - slide: 12
     top_bar:
@@ -248,14 +240,15 @@ slides:
       kicker: "Here’s our approach"
       title: "How to build the <b>job application review app</b>"
       bullets:
-        - "Build the <b>user interface</b>" # We need to change the words here and make part of it blue. 
+        - "Build the <b>user interface</b>"
     image_notes:
       - "review queue and review page screenshots on the right"
 
   - slide: 16
     delta_of: 15
     reveal:
-      add_bullet: "Connect it to a <b>mock agent</b>" # We need to fix the capitalization and make part of this blue. 
+      # oops! make sure the previous bullet is still the way it was above!
+      add_bullet: "Connect it to a <b>mock agent</b>"
       image_notes:
         - "review queue and review page screenshots on the right (same position as before)"
         - "mock-agent potato on the right connected to UI"
@@ -265,7 +258,8 @@ slides:
   - slide: 17
     delta_of: 16
     reveal:
-      add_bullet: "Connect it to a <b>real agent</b> – but not a smart one" # Make part of this blue. 
+      # oops! make sure the previous bullets are still the way they were
+      add_bullet: "Connect it to a <b>real agent</b> – but not a smart one"
       image_notes:
         - "review queue and review page screenshots on the right (same position as before)"
         - "real potato agent on the right connected to UI"
@@ -274,7 +268,8 @@ slides:
   - slide: 18
     delta_of: 17
     reveal:
-      add_bullet: "Finally, make the agent <b>smarter</b>" # This is different wording and make part of it blue. 
+      # oops! make sure the previous bullets are still the way they were
+      add_bullet: "Finally, make the agent <b>smarter</b>"
       side_card:
         heading: "Skill manual"
         title: "Skillz"

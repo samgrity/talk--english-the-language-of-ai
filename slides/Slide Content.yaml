@@ -103,90 +103,113 @@ slides:
       - "if we add imagery later, use an illustration of the agent wandering off-task"
       - "optionally gesture toward state-machine / LangGraph-style control rails"
 
-  # NOTE - slides 7 through 11 are supposed to be a single logical slide - we need to talk about this in detail soon
+  # NOTE - slides 7 through 11 are currently the same logical slide with progressive bullet reveal and different right-side treatments.
   - slide: 7
     top_bar:
-      - "Transition"
-      - "Harnesses"
-      - "№7 / 26"
-    transition:
+      - "Harness era"
+      - "Overview"
+      - "№7 / 24"
+    harness_overview:
       kicker: "... but nevertheless"
       title: "Agents lived on in <b>coding harnesses</b>, and improved significantly."
-    footer: "This is where agents got practically useful"
+      bullets:
+        - "We gave them `read`, `write`, `edit`, and `shell` tools. They could write their own scripts. <b>This made them _general_ agents.</b>"
+        - 'When you get good at reading from the file system, agent skills become an obvious way to capture repeated instructions. <b>Skills are basically an onboarding manual for your agent "intern".</b>'
+        - "Then in late 2025 <b>coding agents suddenly became much better at long-horizon work.</b>"
+      payoff: "We only rarely need bespoke state-machine workflows. <b>Just give the agent the right tools and the right agent skills.</b>"
+      revealed_bullets: 0
+      payoff_visible: false
     image_notes:
-      - "transition slide; no required image from the outline"
+      - "image of the basic potato agent from a few slides back"
 
   - slide: 8
     top_bar:
       - "Harness era"
-      - "Sequence 1/4"
-      - "№8 / 26"
-    idea:
-      kicker: "Read · Write · Shell"
-      title: "Coding agents became <b>general agents</b>."
-      body:
-        - "Because once an agent can read and write files, and run shell commands, it can then build its own tools and in principle accomplish nearly any online activity."
-    footer: "Read, write, and shell changed the game."
+      - "Overview"
+      - "№8 / 24"
+    harness_overview:
+      kicker: "... but nevertheless"
+      title: "Agents lived on in <b>coding harnesses</b>, and improved significantly."
+      bullets:
+        - "We gave them `read`, `write`, `edit`, and `shell` tools. They could write their own scripts. <b>This made them _general_ agents.</b>"
+        - 'When you get good at reading from the file system, agent skills become an obvious way to capture repeated instructions. <b>Skills are basically an onboarding manual for your agent "intern".</b>'
+        - "Then in late 2025 <b>coding agents suddenly became much better at long-horizon work.</b>"
+      payoff: "We only rarely need bespoke state-machine workflows. <b>Just give the agent the right tools and the right agent skills.</b>"
+      revealed_bullets: 1
+      payoff_visible: false
     image_notes:
-      - "same potato agent from before"
-      - "replace the tools with a computer the potato is using"
-      - "give it a general's hat, like a revolutionary general"
+      - "potato with computer and general's hat on the right"
 
   - slide: 9
     top_bar:
       - "Harness era"
-      - "Sequence 2/4"
-      - "№9 / 26"
-    idea:
-      kicker: "Skills"
-      title: "Skills are basically an <b>onboarding manual</b>."
-      body:
-        - "Once agents became good at files and OS interactions, agent skills were a spectacularly good idea."
+      - "Overview"
+      - "№9 / 24"
+    harness_overview:
+      kicker: "... but nevertheless"
+      title: "Agents lived on in <b>coding harnesses</b>, and improved significantly."
+      bullets:
+        - "We gave them `read`, `write`, `edit`, and `shell` tools. They could write their own scripts. <b>This made them _general_ agents.</b>"
+        - 'When you get good at reading from the file system, agent skills become an obvious way to capture repeated instructions. <b>Skills are basically an onboarding manual for your agent "intern".</b>'
+        - "Then in late 2025 <b>coding agents suddenly became much better at long-horizon work.</b>"
+      payoff: "We only rarely need bespoke state-machine workflows. <b>Just give the agent the right tools and the right agent skills.</b>"
+      revealed_bullets: 2
+      payoff_visible: false
     side_card:
       heading: "Manual"
       title: "Skillz"
       detail: "task definition · ordered steps · output rules"
-    footer: "The procedure becomes data the agent can read"
     image_notes:
-      - "same potato agent from slide 8"
-      - "place a thick instruction manual labeled Skillz next to it"
+      - "potato plus Skillz manual on the right"
 
   - slide: 10
     top_bar:
-      - "Late 2025"
-      - "Capability shift"
-      - "№10 / 26"
-    headline:
-      kicker: "late-2025 capability step change"
-      title: "Coding models got much better at <b>long-horizon work</b> in late 2025."
-    panels:
-      - heading: "What changed"
-        bullets:
-          - "stayed on target longer"
-          - "handled ambiguity with less hand-holding"
-          - "made fewer dead-end tool decisions"
-          - "became much more practical for coding + agent workflows"
-      - heading: "Late-2025 references"
-        items:
-          - "Simon Willison — <b>2025: The year in LLMs</b>"
-          - "Andrej Karpathy — <b>2025 LLM Year in Review</b>"
-          - "Anthropic — <b>Claude Opus 4.5</b>"
-    footer: "The Christmas miracle of 2025"
+      - "Harness era"
+      - "Overview"
+      - "№10 / 24"
+    harness_overview:
+      kicker: "... but nevertheless"
+      title: "Agents lived on in <b>coding harnesses</b>, and improved significantly."
+      bullets:
+        - "We gave them `read`, `write`, `edit`, and `shell` tools. They could write their own scripts. <b>This made them _general_ agents.</b>"
+        - 'When you get good at reading from the file system, agent skills become an obvious way to capture repeated instructions. <b>Skills are basically an onboarding manual for your agent "intern".</b>'
+        - "Then in late 2025 <b>coding agents suddenly became much better at long-horizon work.</b>"
+      payoff: "We only rarely need bespoke state-machine workflows. <b>Just give the agent the right tools and the right agent skills.</b>"
+      revealed_bullets: 3
+      payoff_visible: false
+    side_panel:
+      heading: "Late-2025 references"
+      items:
+        - "Simon Willison — <b>2025: The year in LLMs</b>"
+        - "Andrej Karpathy — <b>2025 LLM Year in Review</b>"
+        - "Anthropic — <b>Claude Opus 4.5</b>"
     image_notes:
-      - "mostly text-forward slide"
-      - "if any image treatment is added, it should support the idea of a late-2025 capability jump"
+      - "reference panel on the right"
 
   - slide: 11
     top_bar:
-      - "Consequence"
-      - "Sequence 4/4"
-      - "№11 / 26"
-    payoff:
-      kicker: "The payoff"
-      title: "You don’t need bespoke state machine workflows. <b>Just place the instructions in the agent skill.</b>"
-    footer: "This is the turning point"
+      - "Harness era"
+      - "Overview"
+      - "№11 / 24"
+    harness_overview:
+      kicker: "... but nevertheless"
+      title: "Agents lived on in <b>coding harnesses</b>, and improved significantly."
+      bullets:
+        - "We gave them `read`, `write`, `edit`, and `shell` tools. They could write their own scripts. <b>This made them _general_ agents.</b>"
+        - 'When you get good at reading from the file system, agent skills become an obvious way to capture repeated instructions. <b>Skills are basically an onboarding manual for your agent "intern".</b>'
+        - "Then in late 2025 <b>coding agents suddenly became much better at long-horizon work.</b>"
+      payoff: "We only rarely need bespoke state-machine workflows. <b>Just give the agent the right tools and the right agent skills.</b>"
+      revealed_bullets: 3
+      payoff_visible: true
+    side_panel:
+      heading: "Late-2025 references"
+      items:
+        - "Simon Willison — <b>2025: The year in LLMs</b>"
+        - "Andrej Karpathy — <b>2025 LLM Year in Review</b>"
+        - "Anthropic — <b>Claude Opus 4.5</b>"
     image_notes:
-      - "final roundup message slide; no extra image required by the outline"
+      - "modify the potato agent of the last image to have a larger, smarter cyber brain - it should look powerful" #
+      - "use the images of slide 10 here"
 
   - slide: 12
     top_bar:
@@ -405,7 +428,7 @@ slides:
       bullets:
         - "gathering and generating training data"
         - "evaluating the software (and this is changing!)"
-        - "establishing a \"virtuous cycle\" of improvement"
+        - 'establishing a "virtuous cycle" of improvement'
     qr_codes: # you need to make sure the size of these is the same as on slide 24
       - label: "This Codebase"
         highlighted: false

@@ -36,7 +36,6 @@ slides:
     footer: "What · Why · How"
     image_notes: []
 
-  # Slides 3-5 now use a base-plus-delta schema for one logical slide with progressive reveal.
   - slide: 3
     top_bar:
       - "2023 anatomy"
@@ -76,7 +75,7 @@ slides:
     delta_of: 4
     reveal:
       add_bullet: "Add an inner tools loop and <b>now it’s an agent</b>. It can see and interact with the world."
-      payoff: "" # lets remove this
+      payoff: "It can see the world through APIs and act on the world through APIs." # lets remove this from the slide entirely
       code_snippet: |
         messages = []
         while True:
@@ -139,7 +138,7 @@ slides:
     reveal:
       add_bullet: "We gave them `read`, `write`, `edit`, and `shell` tools. They could write their own scripts. <b>This made them _general_ agents.</b>"
       image_notes:
-        - images/general_agent.png #
+        - images/general_agent.png # we need to remove the svg and insert the image
 
   - slide: 9
     delta_of: 8
@@ -150,7 +149,7 @@ slides:
         title: "Skillz"
         detail: "task definition · ordered steps · output rules"
       image_notes:
-        - images/skilled_agent.png # use this image
+        - images/skilled_agent.png # we need to remove the svg and insert the image
 
   - slide: 10
     delta_of: 9
@@ -176,8 +175,7 @@ slides:
           - "Andrej Karpathy — <b>2025 LLM Year in Review</b>"
           - "Anthropic — <b>Claude Opus 4.5</b>"
       image_notes:
-        - "modify the potato agent of the last image to have a larger, smarter cyber brain - it should look powerful" #
-        - "use the images of slide 10 here"
+        - images/cosmic_agent.png # we need to remove the svg and insert the image
 
   - slide: 12
     top_bar:
@@ -188,7 +186,7 @@ slides:
       kicker: "Agent anatomy review"
       title: "Agents = LLM, an inner tool loop, and an outer user loop."
       body:
-        - "We just gave it the <b>right tools</b>, we taught it to read <b>agent skills</b>, and we <b>improved the models</b>." #
+        - "We just gave it the <b>right tools</b>, we taught it to read <b>agent skills</b>, and we <b>improved the models</b>."
     image_notes:
       - "close-up schematic of the same potato agent"
       - "label each part: LLM brain, chat-bot lips and ears, agentic tool-hands, feet, and eyes"
@@ -240,7 +238,6 @@ slides:
       - "review page screenshot in front"
       - "place 'Research is hard.' in the lower-left background area, left of the foreground screenshot"
 
-  # Slides 15-18 can now be represented as a base slide plus deltas.
 
   - slide: 15
     top_bar:
@@ -251,14 +248,14 @@ slides:
       kicker: "Here’s our approach"
       title: "How to build the <b>job application review app</b>"
       bullets:
-        - "Build the <b>user interface</b>" #
+        - "Build the <b>user interface</b>" # We need to change the words here and make part of it blue. 
     image_notes:
       - "review queue and review page screenshots on the right"
 
   - slide: 16
     delta_of: 15
     reveal:
-      add_bullet: "Connect it to a <b>mock Agent</b>" #
+      add_bullet: "Connect it to a <b>mock agent</b>" # We need to fix the capitalization and make part of this blue. 
       image_notes:
         - "review queue and review page screenshots on the right (same position as before)"
         - "mock-agent potato on the right connected to UI"
@@ -268,7 +265,7 @@ slides:
   - slide: 17
     delta_of: 16
     reveal:
-      add_bullet: "Connect it to a <b>real agent</b> – but not a smart one" #
+      add_bullet: "Connect it to a <b>real agent</b> – but not a smart one" # Make part of this blue. 
       image_notes:
         - "review queue and review page screenshots on the right (same position as before)"
         - "real potato agent on the right connected to UI"
@@ -277,7 +274,7 @@ slides:
   - slide: 18
     delta_of: 17
     reveal:
-      add_bullet: "Finally, make the agent <b>smarter</b>" #
+      add_bullet: "Finally, make the agent <b>smarter</b>" # This is different wording and make part of it blue. 
       side_card:
         heading: "Skill manual"
         title: "Skillz"
@@ -411,5 +408,3 @@ slides:
       - "reveal that the mountain peak is actually the top of a huge iceberg"
       - "most of the iceberg is underwater"
       - "the potato agent is still on top with the flag planted at the peak"
-
-# We need to update text size on the other bulleted slides to be a bit larger like the size on 15-18

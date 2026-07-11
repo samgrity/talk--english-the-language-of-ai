@@ -36,6 +36,7 @@ slides:
     footer: "What · Why · How"
     image_notes: []
 
+  # Slides 3-5 now use a base-plus-delta schema for one logical slide with progressive reveal.
   - slide: 3
     top_bar:
       - "2023 anatomy"
@@ -45,9 +46,7 @@ slides:
       kicker: "defining an agent"
       title: "In 2023, an AI agent was just an <b>LLM wrapped in loops</b>."
       bullets:
-        - "On the inside was an LLM: <b>text in -> text out.</b>"  #
-        - "Add an outer user loop and <b>now it’s a chat bot</b>. It listens and speaks." # make all the subsequent slides consistent with this
-        - "Add an inner tools loop and <b>now it’s an agent</b>. It can see and interact with the world." # make all the subsequent slides consistent with this
+        - "On the inside was an LLM: <b>text in -> text out.</b>"
       revealed_bullets: 1
       payoff_visible: false
     code_snippet: |
@@ -59,63 +58,42 @@ slides:
       - "the brain sticks out of the top of the potato, as if the top of its cranium has been removed, but not in a gross way"
 
   - slide: 4
-    top_bar:
-      - "2023 anatomy"
-      - "Overview"
-      - "№4 / 24"
-    agent_anatomy_2023:
-      kicker: "defining an agent"
-      title: "In 2023, an AI agent was just an <b>LLM wrapped in loops</b>."
-      bullets:
-        - "On the inside was an <b>LLM</b>: text in -> text out."
-        - "Add an outer user loop and <b>now it’s a chat bot</b>. It listens and speaks."
-        - "Add an inner tools loop and <b>now it’s an agent</b>. It can see and interact with the world."
-      revealed_bullets: 2
-      payoff_visible: false
-    code_snippet: |
-      messages = []
-      while True:
-          messages.append(input("user>"))
-          resp = llm(messages)
-          print(resp)
-          messages.append(resp)
-    image_notes:
-      - "the potato-like agent body gains a smiling mouth, ears, and legs"
-      - "it still has no eyes or arms"
+    delta_of: 3
+    reveal:
+      add_bullet: "Add an outer user loop and <b>now it’s a chat bot</b>. It listens and speaks."
+      code_snippet: |
+        messages = []
+        while True:
+            messages.append(input("user>"))
+            resp = llm(messages)
+            print(resp)
+            messages.append(resp)
+      image_notes:
+        - "the potato-like agent body gains a smiling mouth, ears, and legs"
+        - "it still has no eyes or arms"
 
   - slide: 5
-    top_bar:
-      - "2023 anatomy"
-      - "Overview"
-      - "№5 / 24"
-    agent_anatomy_2023:
-      kicker: "defining an agent"
-      title: "In 2023, an AI agent was just an <b>LLM wrapped in loops</b>."
-      bullets:
-        - "On the inside was an <b>LLM</b>: text in -> text out."
-        - "Add an outer user loop and <b>now it’s a chat bot</b>. It listens and speaks."
-        - "Add an inner tools loop and <b>now it’s an agent</b>. It can see and interact with the world."
-      revealed_bullets: 3
+    delta_of: 4
+    reveal:
+      add_bullet: "Add an inner tools loop and <b>now it’s an agent</b>. It can see and interact with the world."
       payoff: "It can see the world through APIs and <b>act on the world through APIs</b>."
-      payoff_visible: true
-    code_snippet: |
-      messages = []
-      while True:
-          messages.append(input("user>"))
-          while True:
-              resp = llm(messages)
-              print(resp)
-              messages.append(resp)
-              if resp.has_tool_usage():
-                  messages.append(
-                      execute(resp.tool_name, resp.tool_args)
-                  )
-              else:
-                  break
-
-    image_notes:
-      - "same potato-y agent, but add eyeballs"
-      - "give it hands with wrenches and a toolbelt"
+      code_snippet: |
+        messages = []
+        while True:
+            messages.append(input("user>"))
+            while True:
+                resp = llm(messages)
+                print(resp)
+                messages.append(resp)
+                if resp.has_tool_usage():
+                    messages.append(
+                        execute(resp.tool_name, resp.tool_args)
+                    )
+                else:
+                    break
+      image_notes:
+        - "same potato-y agent, but add eyeballs"
+        - "give it hands with wrenches and a toolbelt"
 
   - slide: 6
     top_bar:

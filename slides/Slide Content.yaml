@@ -36,16 +36,20 @@ slides:
     footer: "What · Why · How"
     image_notes: []
 
-  # NOTE: slides 3-5 are logically a single slide, we need to address this.
   - slide: 3
     top_bar:
       - "2023 anatomy"
-      - "Sequence 1/3"
-      - "№3 / 26"
-    concept:
-      kicker: "What an AI agent was in 2023"
-      title: "In the beginning was the LLM. <b>Text in -> text out.</b>"
-    footer: "Introducing our potato-y hero"
+      - "Overview"
+      - "№3 / 24"
+    agent_anatomy_2023:
+      kicker: "defining an agent" # make the other slids in this series consistent
+      title: "In 2023, an AI agent was just an <b>LLM wrapped in loops</b>."
+      bullets:
+        - "On the inside was an <b>LLM</b>: text in -> text out."
+        - "Add an outer user loop and <b>now it’s a chat bot</b>. It listens and speaks." #
+        - "Add an inner tools loop and <b>now it’s an agent</b>. It can see and interact with the world" #
+      revealed_bullets: 1
+      payoff_visible: false
     image_notes:
       - "picture of a computer-brain thing stuck in a potato-y body that has no eyes, mouth, ears, arms, or legs"
       - "the brain sticks out of the top of the potato, as if the top of its cranium has been removed, but not in a gross way"
@@ -53,12 +57,17 @@ slides:
   - slide: 4
     top_bar:
       - "2023 anatomy"
-      - "Sequence 2/3"
-      - "№4 / 26"
-    concept:
-      kicker: "Add an outer loop"
-      title: "Wrap it in a while loop with user input. <b>Now, it's a chat bot.</b>"
-    footer: "our hero finds its voice"
+      - "Overview"
+      - "№4 / 24"
+    agent_anatomy_2023:
+      kicker: "What an AI agent was in 2023"
+      title: "In 2023, an AI agent was just an <b>LLM wrapped in loops</b>."
+      bullets:
+        - "On the inside was an <b>LLM</b>: text in, text out."
+        - "Add an outer user loop and <b>now it’s a chat bot</b>."
+        - "Add an inner tools loop and <b>now it’s an agent</b>."
+      revealed_bullets: 2
+      payoff_visible: false
     image_notes:
       - "the potato-like agent body gains a smiling mouth, ears, and legs"
       - "it still has no eyes or arms"
@@ -66,14 +75,18 @@ slides:
   - slide: 5
     top_bar:
       - "2023 anatomy"
-      - "Sequence 3/3"
-      - "№5 / 26"
-    concept:
-      kicker: "Add an inner loop"
-      title: "Add another loop for tools. <b>Now it's an agent.</b>"
-      body:
-        - "It can see the world through APIs and act on the world through APIs."
-    footer: "The only real difference is the loops and the tools"
+      - "Overview"
+      - "№5 / 24"
+    agent_anatomy_2023:
+      kicker: "What an AI agent was in 2023"
+      title: "In 2023, an AI agent was just an <b>LLM wrapped in loops</b>."
+      bullets:
+        - "On the inside was an <b>LLM</b>: text in, text out."
+        - "Add an outer user loop and <b>now it’s a chat bot</b>."
+        - "Add an inner tools loop and <b>now it’s an agent</b>."
+      revealed_bullets: 3
+      payoff: "It can see the world through APIs and <b>act on the world through APIs</b>."
+      payoff_visible: true
     image_notes:
       - "same potato-y agent, but add eyeballs"
       - "give it hands with wrenches and a toolbelt"

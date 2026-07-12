@@ -3,7 +3,7 @@ slides:
     top_bar:
       - "O’Reilly · Zero to Agent · July 15"
       - "title slide"
-      - "№1 / 26"
+      - "№1 / 25"
     lead:
       kicker: "oh hey, the title"
       title: "English is the <b>language</b> of AI software."
@@ -23,7 +23,7 @@ slides:
     top_bar:
       - "What you’ll learn"
       - "Intro"
-      - "№2 / 26"
+      - "№2 / 25"
     intro:
       kicker: "What you’ll learn"
       cards:
@@ -40,7 +40,7 @@ slides:
     top_bar:
       - "2023 anatomy"
       - "Overview"
-      - "№3 / 24"
+      - "№3 / 25"
     agent_anatomy_2023:
       kicker: "defining an agent"
       title: "In 2023, an AI agent was just an <b>LLM wrapped in loops</b>."
@@ -97,7 +97,7 @@ slides:
     top_bar:
       - "Problem"
       - "Technical framing"
-      - "№6 / 26"
+      - "№6 / 25"
     headline:
       kicker: "BUT 2023 AGENTS ACTUALLY SUCKED"
       title: "They were terrible at following instructions."
@@ -123,7 +123,7 @@ slides:
     top_bar:
       - "Harness era"
       - "Overview"
-      - "№7 / 24"
+      - "№7 / 25"
     harness_overview:
       kicker: "... but nevertheless"
       title: "Agents lived on in <b>coding harnesses</b>, and improved significantly."
@@ -173,7 +173,7 @@ slides:
     top_bar:
       - "Anatomy"
       - "Recap"
-      - "№12 / 24"
+      - "№12 / 25"
     recap:
       kicker: "Agent anatomy review"
       title: "Agents = LLM, an inner tool loop, and an outer user loop."
@@ -186,7 +186,7 @@ slides:
     top_bar:
       - "a Personal story"
       - "Recognition"
-      - "№13 / 24"
+      - "№13 / 25"
     story:
       kicker: "John's dawn of recognition"
       title: "In an afternoon of hacking I suddenly realized: <b>English is now the language of AI software.</b>"
@@ -205,7 +205,7 @@ slides:
     top_bar:
       - "Demo"
       - "App intro"
-      - "№14 / 24"
+      - "№14 / 25"
     demo_intro:
       kicker: "So we’ve come to the demo"
       title: "Let’s build a <b>job application review app</b>."
@@ -234,7 +234,7 @@ slides:
     top_bar:
       - "Approach"
       - "Overview"
-      - "№15 / 24"
+      - "№15 / 25"
     build_plan:
       kicker: "Here’s our approach"
       title: "How to build the <b>job application review app</b>"
@@ -278,18 +278,28 @@ slides:
     top_bar:
       - "Demo"
       - "Test drive"
-      - "№19 / 24"
+      - "№19 / 25"
     bridge:
-      kicker: "Let’s take it for a test drive"
-      title: "Let’s take a code tour of the <b>AI application reviewer.</b>"
-    footer: "The next two slides are intentionally dense and link out to the code"
+      kicker: "First, let’s see it in action"
+      title: "Let’s take the <b>AI application reviewer</b> for a test drive."
     image_notes: []
 
   - slide: 20
     top_bar:
+      - "Demo"
+      - "Code tour"
+      - "№20 / 25"
+    bridge:
+      kicker: "Then let’s open it up"
+      title: "Let’s take a code tour of the <b>AI application reviewer.</b>"
+    footer: "The next two slides are intentionally dense and link out to the code"
+    image_notes: []
+
+  - slide: 21
+    top_bar:
       - "Walkthrough"
       - "Dense slide 1/2"
-      - "№20 / 24"
+      - "№21 / 25"
     dense_slide:
       heading: "Iterative implementation"
       bullets:
@@ -309,11 +319,11 @@ slides:
         - "You can also easily add tools to these models now. We add get_linkedin_profile because you can’t use web search and web fetch to directly get at LinkedIn, so we had to trick it out."
     image_notes: []
 
-  - slide: 21
+  - slide: 22
     top_bar:
       - "Walkthrough"
       - "Dense slide 2/2"
-      - "№21 / 24"
+      - "№22 / 25"
     dense_slide:
       heading: "Make your agent smarter"
       bullets:
@@ -323,11 +333,11 @@ slides:
         - "Also note this line in the skill, where I require internal_notes to conform to its own checklist structure. See internal-notes-checklist.md."
     image_notes: []
 
-  - slide: 22
+  - slide: 23
     top_bar:
       - "Wrap-up"
       - "smart agent"
-      - "№22 / 24"
+      - "№23 / 25"
     wrap_up:
       kicker: "Wrap-up"
       title: "Let’s review what we’ve learned."
@@ -347,11 +357,11 @@ slides:
     image_notes:
       - images/mountain_top_agent.png
 
-  - slide: 23
+  - slide: 24
     top_bar:
       - "Future work"
       - "Staircase 2/3"
-      - "№23 / 24"
+      - "№24 / 25"
     future_work:
       kicker: "This is just the start"
       title: "There is much yet to learn."
@@ -371,11 +381,11 @@ slides:
     image_notes:
       - images/mountain_zoom.png
 
-  - slide: 24
+  - slide: 25
     top_bar:
       - "Closing vision"
       - "Staircase 3/3"
-      - "№24 / 24"
+      - "№25 / 25"
     closing:
       kicker: "You’ll see there’s even more"
       title: "Assistants will become the <b>dominant user experience</b>."

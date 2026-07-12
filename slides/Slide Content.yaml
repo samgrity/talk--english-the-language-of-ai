@@ -232,9 +232,19 @@ slides:
 
   - slide: 15
     top_bar:
+      - "Demo"
+      - "Test drive"
+      - "№15 / 25"
+    bridge:
+      kicker: "First, let’s see it in action"
+      title: "Let’s take the <b>AI application reviewer</b> for a test drive."
+    image_notes: []
+
+  - slide: 16
+    top_bar:
       - "Approach"
       - "Overview"
-      - "№15 / 25"
+      - "№16 / 25"
     build_plan:
       kicker: "Here’s our approach"
       title: "How to build the <b>job application review app</b>"
@@ -244,8 +254,8 @@ slides:
     image_notes:
       - "review queue and review page screenshots on the right"
 
-  - slide: 16
-    delta_of: 15
+  - slide: 17
+    delta_of: 16
     reveal:
       add_bullet: "Connect it to a <b>mock agent</b>"
       footer: "Start with the UI. Then wire in smarter agents."
@@ -255,8 +265,8 @@ slides:
         - "cardboard cutout feeling"
         - "dumb blank expression, maybe drawn in crayon"
 
-  - slide: 17
-    delta_of: 16
+  - slide: 18
+    delta_of: 17
     reveal:
       add_bullet: "Connect it to a <b>real agent</b> – but not a smart one"
       footer: "Start with the UI. Then wire in smarter agents."
@@ -265,8 +275,8 @@ slides:
         - "images/dumb_agent.png, very large on the right, top-right corner held fixed across the sequence"
         - "still a little silly or dumb-looking"
 
-  - slide: 18
-    delta_of: 17
+  - slide: 19
+    delta_of: 18
     reveal:
       add_bullet: "Finally, make the agent <b>smarter</b>"
       footer: "Start with the UI. Then wire in smarter agents."
@@ -274,70 +284,37 @@ slides:
         - "review queue and review page screenshots on the right (same position as before)"
         - "images/tool_agent.png, very large on the right, top-right corner held fixed across the sequence"
 
-  - slide: 19
-    top_bar:
-      - "Demo"
-      - "Test drive"
-      - "№19 / 25"
-    bridge:
-      kicker: "First, let’s see it in action"
-      title: "Let’s take the <b>AI application reviewer</b> for a test drive."
-    image_notes: []
-
   - slide: 20
     top_bar:
       - "Demo"
       - "Code tour"
-      - "№20 / 25"
+      - "№20 / 23"
     bridge:
       kicker: "Then let’s open it up"
       title: "Let’s take a code tour of the <b>AI application reviewer.</b>"
-    footer: "The next two slides are intentionally dense and link out to the code"
+    dense_slide:
+      sections:
+        - heading: "Iterative implementation"
+          bullets:
+            - "Start by attaching the mock agent to the UI"
+            - "Then give it a real agent implementation but don't worry about "smarts""
+            - "Notice how modular agents are at this point – model, output schema, capabilities, instructions"
+            - "It's also easy to add custom tools."
+        - heading: "Make your agent smarter"
+          bullets:
+            - "Agent skills is how to make your agent smarter"
+            - "Notice that we provide the workflow as a set of steps – this makes it easier to understand and debug what the agent is doing."
+            - "We also clearly define the output of the agent. This helps make its execution stable."
+            - "Another trick: make it fill out checklists. Even have them write them to file. This helps the agent stay on track."
     image_notes: []
+
+
 
   - slide: 21
     top_bar:
-      - "Walkthrough"
-      - "Dense slide 1/2"
-      - "№21 / 25"
-    dense_slide:
-      heading: "Iterative implementation"
-      bullets:
-        - "Start w/ simple review function — a good first mock implementation for review would be to sleep briefly and then return a canned follow-up recommendation."
-        - "Then add an agent w/ basic skills."
-        - "The goal here is just to show how a Pydantic AI agent is put together."
-        - "Note, we used PydanticAI build and agent skill."
-        - "Whenever the request to review an application comes through, we create a prompt and hand it off to our agent."
-        - "So now it’s already a little bit smarter: instead of a canned answer, it can read the application context and do the workflow. But the workflow is still basic."
-        - "Once the agent responds, it returns structured data that we use to call service.add_update(...)."
-        - "The agent implementation itself starts here in __init__."
-        - "All we do is specify the model, the output type, the capabilities, and a basic instruction."
-        - "One thing that’s really interesting is how modular everything is — it all pops in like Lego blocks."
-        - "We point it at a bunch of skills with SkillsCapability(...)."
-        - "We give it the ability to think with Thinking(...)."
-        - "We give it web search with WebSearch()."
-        - "You can also easily add tools to these models now. We add get_linkedin_profile because you can’t use web search and web fetch to directly get at LinkedIn, so we had to trick it out."
-    image_notes: []
-
-  - slide: 22
-    top_bar:
-      - "Walkthrough"
-      - "Dense slide 2/2"
-      - "№22 / 25"
-    dense_slide:
-      heading: "Make your agent smarter"
-      bullets:
-        - "The skill file is where you actually make the agent smart. These days it’s often enough to implement the workflow in English."
-        - "The Screening flow lays out an ordered set of steps. For workflows, defined steps make the agent easier to steer and much easier to debug when something goes wrong."
-        - "Be crisp about output. The Your output section defines it in English, and AIReviewOutput defines that exact shape in code. PydanticAI enforces this structure as well, so it’s a great way to make sure the model returns the required structure."
-        - "Also note this line in the skill, where I require internal_notes to conform to its own checklist structure. See internal-notes-checklist.md."
-    image_notes: []
-
-  - slide: 23
-    top_bar:
       - "Wrap-up"
       - "smart agent"
-      - "№23 / 25"
+      - "№21 / 23"
     wrap_up:
       kicker: "Wrap-up"
       title: "Let’s review what we’ve learned."
@@ -357,11 +334,11 @@ slides:
     image_notes:
       - images/mountain_top_agent.png
 
-  - slide: 24
+  - slide: 22
     top_bar:
       - "Future work"
       - "Staircase 2/3"
-      - "№24 / 25"
+      - "№22 / 23"
     future_work:
       kicker: "This is just the start"
       title: "There is much yet to learn."
@@ -381,11 +358,11 @@ slides:
     image_notes:
       - images/mountain_zoom.png
 
-  - slide: 25
+  - slide: 23
     top_bar:
       - "Closing vision"
       - "Staircase 3/3"
-      - "№25 / 25"
+      - "№23 / 23"
     closing:
       kicker: "You’ll see there’s even more"
       title: "Assistants will become the <b>dominant user experience</b>."

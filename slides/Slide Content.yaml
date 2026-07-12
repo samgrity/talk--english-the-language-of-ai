@@ -349,7 +349,7 @@ slides:
         - "gathering and generating training data"
         - "evaluating the software (and this is changing!)"
         - 'establishing a "virtuous cycle" of improvement'
-    qr_codes: # you need to make sure the size of these is the same as on slide 24
+    qr_codes:
       - label: "This Codebase"
         highlighted: false
       - label: "Arcturus Labs AI consulting"
@@ -371,7 +371,7 @@ slides:
       title: "Assistants will become the <b>dominant user experience</b>."
       body:
         - "You will use <b>made-for-you applications</b>. The internet will be <b>for agents</b> to access data and APIs. You will regularly <b>co-work with your agent.</b>"
-    qr_codes: # you need to make sure the size of these is the same as on slide 24
+    qr_codes:
       - label: "This Codebase"
         highlighted: false
       - label: "Arcturus Labs AI consulting"

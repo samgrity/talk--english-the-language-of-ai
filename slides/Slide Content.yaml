@@ -2,7 +2,7 @@ slides:
   - slide: 1
     top_bar:
       - "O’Reilly · Zero to Agent · July 15"
-      - "title slide" #
+      - "title slide"
       - "№1 / 26"
     lead:
       kicker: "oh hey, the title"
@@ -48,11 +48,11 @@ slides:
         - "On the inside was an LLM: <b>text in -> text out.</b>"
       revealed_bullets: 1
       payoff_visible: false
-    # bump up the code_snippet size here and in the following slides
+    # make all of the subsequent code blocks have a larger text size and have the top of each code block be in the same location on the slide (top justified)
     code_snippet: |
       resp = llm("ol' macdonald had a ")
       print(resp)
-      >>> farm
+      >>> farm, E-I-E-I-O  # note this change
     image_notes:
       - images/llm_core.png
 
@@ -133,7 +133,7 @@ slides:
   - slide: 8
     delta_of: 7
     reveal:
-      add_bullet: "We gave them `read`, `write`, `edit`, and `shell` tools. They could write their own scripts. <b>This made them _general_ agents.</b>"
+      add_bullet: "We gave them `read`, `write`, `edit`, and `shell` tools. They could write their own scripts. <b>This made them general agents.</b>" # remove the italixs on "general"
       image_notes:
         - images/tool_agent.png
 
@@ -153,12 +153,6 @@ slides:
     delta_of: 9
     reveal:
       add_bullet: "Then in late 2025 <b>coding agents suddenly became much better at long-horizon work.</b>"
-      side_panel:
-        heading: "Late-2025 references"
-        items:
-          - "Simon Willison — <b>2025: The year in LLMs</b>"
-          - "Andrej Karpathy — <b>2025 LLM Year in Review</b>"
-          - "Anthropic — <b>Claude Opus 4.5</b>"
       image_notes:
         - "images/cosmic_agent.png"
 
@@ -200,7 +194,7 @@ slides:
       - "Me"
     footer: "Agents were the runtime. Skills were the software."
     image_notes:
-      - "images of 'Shawn Simister', 'Nick', and 'me'"
+      - "images of 'Shawn Simister', 'Nick', and 'me'" # make shawn's image the large one in the middle of the image stuff and "Nick" smal and to the botttom left and "me" small and to the bottom right
 
   - slide: 14
     top_bar:
@@ -259,7 +253,7 @@ slides:
     reveal:
       add_bullet: "Connect it to a <b>real agent</b> – but not a smart one"
       image_notes:
-        - "review queue and review page screenshots on the right (same position as before)"
+        - "review queue and review page screenshots on the right (same position as before)" # you didn't do this!, they should be just like on slide 15
         - images/dumb_agent.png
         - "still a little silly or dumb-looking"
 
@@ -278,7 +272,7 @@ slides:
       - "№19 / 24"
     bridge:
       kicker: "Let’s take it for a test drive"
-      title: "Let’s take a code tour of the <b>AI application reviewer</b>."
+      title: "Let’s take a code tour of the <b>AI application reviewer.</b>" # Oops, we need to move the period inside of the blue. 
     footer: "The next two slides are intentionally dense and link out to the code"
     image_notes: []
 

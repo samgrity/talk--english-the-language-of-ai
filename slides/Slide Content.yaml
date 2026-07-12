@@ -243,7 +243,7 @@ slides:
       add_bullet: "Connect it to a <b>mock agent</b>"
       image_notes:
         - "review queue and review page screenshots on the right (same position as before)"
-        - images/mock_agent.png
+        - "images/mock_agent.png, very large on the right, top-right corner held fixed across the sequence"
         - "cardboard cutout feeling"
         - "dumb blank expression, maybe drawn in crayon"
 
@@ -253,7 +253,7 @@ slides:
       add_bullet: "Connect it to a <b>real agent</b> – but not a smart one"
       image_notes:
         - "review queue and review page screenshots on the right (same position as slide 15)"
-        - images/dumb_agent.png
+        - "images/dumb_agent.png, very large on the right, top-right corner held fixed across the sequence"
         - "still a little silly or dumb-looking"
 
   - slide: 18
@@ -262,7 +262,7 @@ slides:
       add_bullet: "Finally, make the agent <b>smarter</b>"
       image_notes:
         - "review queue and review page screenshots on the right (same position as before)"
-        - images/tool_agent.png
+        - "images/tool_agent.png, very large on the right, top-right corner held fixed across the sequence"
 
   - slide: 19
     top_bar:

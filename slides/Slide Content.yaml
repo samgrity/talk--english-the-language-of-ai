@@ -52,6 +52,7 @@ slides:
       resp = llm("ol' macdonald had a ")
       print(resp)
       >>> farm, E-I-E-I-O
+    footer: "Start with the model. Then add loops."
     image_notes:
       - images/llm_core.png
 
@@ -66,6 +67,7 @@ slides:
             resp = llm(messages)
             print(resp)
             messages.append(resp)
+      footer: "Start with the model. Then add loops."
       image_notes:
         - images/chatbot_agent.png
 
@@ -87,6 +89,7 @@ slides:
                     )
                 else:
                     break
+      footer: "Start with the model. Then add loops."
       image_notes:
         - images/tool_agent.png
 
@@ -126,6 +129,7 @@ slides:
       title: "Agents lived on in <b>coding harnesses</b>, and improved significantly."
       bullets: []
       payoff_visible: false
+    footer: "Tools and skills made agents broadly useful."
     image_notes:
       - "no image on this slide yet"
 
@@ -133,6 +137,7 @@ slides:
     delta_of: 7
     reveal:
       add_bullet: "We gave them `read`, `write`, `edit`, and `shell` tools. They could write their own scripts. <b>This made them general agents.</b>"
+      footer: "Tools and skills made agents broadly useful."
       image_notes:
         - images/tool_agent.png
 
@@ -141,6 +146,7 @@ slides:
     delta_of: 8
     reveal:
       add_bullet: 'When you get good at reading from the file system, agent skills become an obvious way to capture repeated instructions. <b>Skills are basically an onboarding manual for your agent "intern".</b>'
+      footer: "Tools and skills made agents broadly useful."
       side_card:
         heading: "Manual"
         title: "Skillz"
@@ -234,6 +240,7 @@ slides:
       title: "How to build the <b>job application review app</b>"
       bullets:
         - "Build the <b>user interface</b>"
+    footer: "Start with the UI. Then wire in smarter agents."
     image_notes:
       - "review queue and review page screenshots on the right"
 
@@ -241,6 +248,7 @@ slides:
     delta_of: 15
     reveal:
       add_bullet: "Connect it to a <b>mock agent</b>"
+      footer: "Start with the UI. Then wire in smarter agents."
       image_notes:
         - "review queue and review page screenshots on the right (same position as before)"
         - "images/mock_agent.png, very large on the right, top-right corner held fixed across the sequence"
@@ -251,6 +259,7 @@ slides:
     delta_of: 16
     reveal:
       add_bullet: "Connect it to a <b>real agent</b> – but not a smart one"
+      footer: "Start with the UI. Then wire in smarter agents."
       image_notes:
         - "review queue and review page screenshots on the right (same position as slide 15)"
         - "images/dumb_agent.png, very large on the right, top-right corner held fixed across the sequence"
@@ -260,6 +269,7 @@ slides:
     delta_of: 17
     reveal:
       add_bullet: "Finally, make the agent <b>smarter</b>"
+      footer: "Start with the UI. Then wire in smarter agents."
       image_notes:
         - "review queue and review page screenshots on the right (same position as before)"
         - "images/tool_agent.png, very large on the right, top-right corner held fixed across the sequence"

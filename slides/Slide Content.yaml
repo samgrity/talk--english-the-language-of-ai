@@ -2,10 +2,10 @@ slides:
   - slide: 1
     top_bar:
       - "O’Reilly · Zero to Agent · July 15"
-      - "Opening frame"
+      - "title slide" #
       - "№1 / 26"
     lead:
-      kicker: "Opening thesis"
+      kicker: "oh hey, the title"
       title: "English is the <b>language</b> of AI software."
     side_card:
       header_left: "O’Reilly"
@@ -48,6 +48,7 @@ slides:
         - "On the inside was an LLM: <b>text in -> text out.</b>"
       revealed_bullets: 1
       payoff_visible: false
+    # bump up the code_snippet size here and in the following slides
     code_snippet: |
       resp = llm("ol' macdonald had a ")
       print(resp)
@@ -134,7 +135,8 @@ slides:
     reveal:
       add_bullet: "We gave them `read`, `write`, `edit`, and `shell` tools. They could write their own scripts. <b>This made them _general_ agents.</b>"
       image_notes:
-        - images/general_agent.png
+        - images/tool_agent.png
+
 
   - slide: 9
     delta_of: 8
@@ -163,11 +165,10 @@ slides:
   - slide: 11
     delta_of: 10
     reveal:
-      payoff: "We rarely need bespoke state-machine workflows. <b>Instead, give the agent the right tools and the right skills.</b>"
-      # we'll keep the side panel and agent from the last slide just as they were
+      payoff: "We only rarely need bespoke state-machine workflows. <b>Just give the agent the right tools and the right agent skills.</b>"
     image_notes:
-      - "reference panel + cosmic agent on the right"
-      - "payoff statement at bottom right"
+      - "cosmic agent on the right"
+      - "payoff text in a panel below the agent image"
 
   - slide: 12
     top_bar:
@@ -266,14 +267,9 @@ slides:
     delta_of: 17
     reveal:
       add_bullet: "Finally, make the agent <b>smarter</b>"
-      side_card:
-        heading: "Skill manual"
-        title: "Skillz"
-        detail: "workflow · output · quality bar"
       image_notes:
         - "review queue and review page screenshots on the right (same position as before)"
-        - "real potato agent on the right connected to UI, now looking clever and smart"
-        - "thick Skillz manual beside it"
+        - images/tool_agent.png
 
   - slide: 19
     top_bar:
@@ -346,8 +342,7 @@ slides:
       - label: "O’Reilly Superstream July 23"
         highlighted: false
     image_notes:
-      - "close-up image of the potato agent standing at the peak of a mountain"
-      - "flag stuck in the ground"
+      - images/mountain_top_agent.png
 
   - slide: 23
     top_bar:
@@ -371,9 +366,7 @@ slides:
       - label: "O’Reilly Superstream July 23"
         highlighted: false
     image_notes:
-      - "zoom out from slide 24"
-      - "reveal that the potato is standing on top of a very large mountain"
-      - "keep the potato and flag visible"
+      - images/mountain_zoom.png
 
   - slide: 24
     top_bar:
@@ -395,7 +388,4 @@ slides:
       - label: "O’Reilly Superstream July 23"
         highlighted: true
     image_notes:
-      - "zoom out again from slide 25"
-      - "reveal that the mountain peak is actually the top of a huge iceberg"
-      - "most of the iceberg is underwater"
-      - "the potato agent is still on top with the flag planted at the peak"
+      - images/iceberg_reveal.png

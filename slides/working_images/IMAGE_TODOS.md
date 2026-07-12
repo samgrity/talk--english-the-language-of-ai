@@ -31,6 +31,6 @@ Workflow:
 
 ## Closing sequence images
 
-- [ ] Slide 22 — hero summit shot: potato with flag on mountain peak
-- [ ] Slide 23 — zoomed-out mountain reveal
-- [ ] Slide 24 — iceberg reveal with potato still on top
+- [x] Slide 22 — hero summit shot: potato with flag on mountain peak (`mountain_top_agent.png`)
+- [x] Slide 23 — zoomed-out mountain reveal (`mountain_zoom.png`)
+- [x] Slide 24 — iceberg reveal with potato still on top (`iceberg_reveal.png`)

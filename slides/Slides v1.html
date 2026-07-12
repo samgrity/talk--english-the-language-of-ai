@@ -150,9 +150,7 @@
             </ul>
           </div>
           <div class="flex flex-col items-center justify-start pt-[18px] gap-5">
-            <div class="potato placeholder w-[420px]">
-              <svg viewBox="0 0 260 320"><use href="#potato-base"/><rect x="77" y="94" width="104" height="72" rx="16" fill="#dfe8ff" stroke="#1b1b1b" stroke-width="5"/><path d="M98 116h61M98 132h44M98 148h52" class="line thin"/><circle cx="130" cy="214" r="34" class="fill-accent" opacity=".18"/></svg>
-            </div>
+            <img src="images/llm_core.png" class="w-[420px] object-contain" alt="LLM core agent" />
             <div class="panel rounded-[18px] px-4 py-3 code text-[15px] leading-[1.2] opacity-90 whitespace-pre">resp = llm("ol' macdonald had a ")
 print(resp)
 &gt;&gt;&gt; farm</div>
@@ -176,9 +174,7 @@ print(resp)
             </ul>
           </div>
           <div class="flex flex-col items-center justify-start pt-[18px] gap-5">
-            <div class="potato placeholder w-[430px]">
-              <svg viewBox="0 0 260 320"><use href="#potato-base"/><path d="M28 160C22 85 87 31 163 38c60 6 106 58 102 126" class="line"/><path d="M149 42l16 3-9 14" class="line"/><ellipse cx="130" cy="184" rx="32" ry="16" fill="#f06ea9" stroke="#1b1b1b" stroke-width="5"/><path d="M130 185c-13 0-25-5-32-14" class="line thin"/><path d="M65 233c-18 18-29 35-40 53" class="line thin"/><path d="M198 232c12 16 23 34 31 55" class="line thin"/></svg>
-            </div>
+            <img src="images/chatbot_agent.png" class="w-[430px] object-contain" alt="Chatbot agent" />
             <div class="panel rounded-[18px] px-4 py-3 code text-[15px] leading-[1.18] opacity-90 whitespace-pre">messages = []
 while True:
     messages.append(input("user>"))
@@ -205,9 +201,7 @@ while True:
             </ul>
           </div>
           <div class="flex flex-col items-center justify-start pt-[18px] gap-5">
-            <div class="potato placeholder w-[450px]">
-              <svg viewBox="0 0 260 320"><use href="#potato-base"/><circle cx="102" cy="126" r="17" fill="#fff" stroke="#1b1b1b" stroke-width="5"/><circle cx="159" cy="124" r="17" fill="#fff" stroke="#1b1b1b" stroke-width="5"/><circle cx="108" cy="128" r="7" class="fill-dark"/><circle cx="165" cy="126" r="7" class="fill-dark"/><path d="M48 205c-20 6-34 15-47 31" class="line thin"/><path d="M212 204c19 7 34 18 46 31" class="line thin"/><path d="M6 239l20-21 10 10-20 20z" fill="#9ca3af" stroke="#1b1b1b" stroke-width="4"/><rect x="207" y="219" width="18" height="28" rx="4" fill="#6b7280" stroke="#1b1b1b" stroke-width="4"/><rect x="221" y="228" width="16" height="10" rx="2" fill="#9ca3af" stroke="#1b1b1b" stroke-width="4"/><rect x="96" y="250" width="68" height="18" rx="9" fill="#5b6477"/></svg>
-            </div>
+            <img src="images/tool_agent.png" class="w-[450px] object-contain" alt="Tool agent" />
             <div class="panel rounded-[18px] px-4 py-3 code text-[14px] leading-[1.14] opacity-90 whitespace-pre">messages = []
 while True:
     messages.append(input("user>"))
@@ -272,8 +266,7 @@ while True:
             </ul>
             <div class="body-lg mt-10 opacity-0">We only rarely need bespoke state-machine workflows. <span class="accent">Just give the agent the right tools and the right agent skills.</span></div>
           </div>
-          <div class="flex items-center justify-center pt-[30px]">
-            <div class="potato placeholder w-[360px]"><svg viewBox="0 0 260 320"><use href="#potato-base"/></svg></div>
+          <div class="flex items-center justify-center pt-[18px]">
           </div>
         </div>
       </div>
@@ -316,13 +309,8 @@ while True:
             </ul>
             <div class="body-lg mt-10 opacity-0">We only rarely need bespoke state-machine workflows. <span class="accent">Just give the agent the right tools and the right agent skills.</span></div>
           </div>
-          <div class="flex items-center justify-center gap-6 pt-[18px]">
-            <img src="images/skilled_agent.png" class="w-[320px] object-contain" alt="Skilled agent" />
-            <div class="panel rounded-[24px] p-6 rotate-[-4deg] w-[190px] h-[240px] flex flex-col justify-between">
-              <div class="eyebrow">Manual</div>
-              <div class="text-[56px] font-black leading-none">Skillz</div>
-              <div class="body-sm muted">task definition · ordered steps · output rules</div>
-            </div>
+          <div class="flex items-center justify-center pt-[18px]">
+            <img src="images/skilled_agent.png" class="w-[470px] object-contain" alt="Skilled agent" />
           </div>
         </div>
       </div>
@@ -343,12 +331,15 @@ while True:
             </ul>
             <div class="body-lg mt-10 opacity-0">We only rarely need bespoke state-machine workflows. <span class="accent">Just give the agent the right tools and the right agent skills.</span></div>
           </div>
-          <div class="panel rounded-[30px] p-8 mt-[18px]">
-            <div class="eyebrow mb-4">Late-2025 references</div>
-            <div class="body-sm muted stack space-y-3">
-              <div>Simon Willison — <span class="accent">2025: The year in LLMs</span></div>
-              <div>Andrej Karpathy — <span class="accent">2025 LLM Year in Review</span></div>
-              <div>Anthropic — <span class="accent">Claude Opus 4.5</span></div>
+          <div class="flex flex-col items-center gap-5 mt-[18px]">
+            <img src="images/cosmic_agent.png" class="w-[400px] object-contain" alt="Cosmic agent" />
+            <div class="panel rounded-[28px] p-6 w-full">
+              <div class="eyebrow mb-3">Late-2025 references</div>
+              <div class="body-sm muted stack space-y-2">
+                <div>Simon Willison — <span class="accent">2025: The year in LLMs</span></div>
+                <div>Andrej Karpathy — <span class="accent">2025 LLM Year in Review</span></div>
+                <div>Anthropic — <span class="accent">Claude Opus 4.5</span></div>
+              </div>
             </div>
           </div>
         </div>
@@ -388,9 +379,7 @@ while True:
         <div class="note flex justify-between"><span>Anatomy</span><span>Recap</span><span>№12 / 24</span></div>
         <div class="grid grid-cols-[.92fr_1.08fr] gap-8 items-center">
           <div class="flex items-center justify-center">
-            <div class="potato placeholder w-[420px]">
-              <svg viewBox="0 0 320 340"><use href="#potato-base" transform="translate(30,8)"/><rect x="180" y="46" width="95" height="58" rx="16" fill="#dfe8ff" stroke="#1b1b1b" stroke-width="5"/><path d="M197 69h56M197 84h43" class="line thin"/><path d="M57 57c42-27 100-29 148-8" class="line"/><path d="M31 165h60" class="line thin"/><path d="M229 159h64" class="line thin"/><text x="20" y="155" fill="#f5f5f7" font-size="16">tools</text><text x="238" y="149" fill="#f5f5f7" font-size="16">brain</text></svg>
-            </div>
+            <img src="images/exploded_agent.png" class="w-[420px] object-contain" alt="Exploded agent schematic" />
           </div>
           <div>
             <div class="eyebrow">Agent anatomy review</div>
@@ -472,16 +461,14 @@ while True:
             <div class="eyebrow">Here’s our approach</div>
             <h2 class="h-lg mt-5">How to build the <span class="accent">job application review app</span></h2>
             <ul class="bullet-lg mt-10 space-y-5">
-              <li>Build the UI</li>
+              <li>Build the <span class="accent">user interface</span></li>
               <li>Connect it to a <span class="accent">mock agent</span></li>
             </ul>
           </div>
           <div class="relative h-[520px]">
             <img src="assets/review_queue.png" class="absolute left-[10px] bottom-[20px] w-[360px] rounded-[18px] img-shadow img-border opacity-90" alt="Review queue" />
             <img src="assets/review_page.png" class="absolute right-[10px] top-[10px] w-[390px] rounded-[18px] img-shadow img-border opacity-90" alt="Review page" />
-            <div class="absolute right-[60px] bottom-[-10px] potato placeholder w-[290px] z-10">
-              <svg viewBox="0 0 320 360"><use href="#potato-base" transform="translate(35,10)"/><rect x="34" y="30" width="252" height="180" rx="18" fill="none" stroke="#9ca3af" stroke-width="6" stroke-dasharray="10 10"/><rect x="92" y="220" width="140" height="18" rx="9" fill="#6b7280"/><circle cx="109" cy="138" r="9" class="fill-dark"/><circle cx="166" cy="136" r="9" class="fill-dark"/><path d="M105 186c18-4 40-4 60 0" class="line thin"/><text x="52" y="58" fill="#f5f5f7" font-size="18">mock agent</text></svg>
-            </div>
+            <img src="images/mock_agent.png" class="absolute right-[50px] bottom-[-10px] w-[290px] object-contain z-10" alt="Mock agent" />
           </div>
         </div>
       </div>
@@ -496,17 +483,15 @@ while True:
             <div class="eyebrow">Here’s our approach</div>
             <h2 class="h-lg mt-5">How to build the <span class="accent">job application review app</span></h2>
             <ul class="bullet-lg mt-10 space-y-5">
-              <li>Build the UI</li>
-              <li>Connect it to a Mock Agent</li>
+              <li>Build the <span class="accent">user interface</span></li>
+              <li>Connect it to a <span class="accent">mock agent</span></li>
               <li>Connect it to a <span class="accent">real agent</span> – but not a smart one</li>
             </ul>
           </div>
           <div class="relative h-[520px]">
             <img src="assets/review_queue.png" class="absolute left-[10px] bottom-[20px] w-[360px] rounded-[18px] img-shadow img-border opacity-90" alt="Review queue" />
             <img src="assets/review_page.png" class="absolute right-[10px] top-[10px] w-[390px] rounded-[18px] img-shadow img-border opacity-90" alt="Review page" />
-            <div class="absolute right-[68px] bottom-[0px] potato placeholder w-[270px] z-10">
-              <svg viewBox="0 0 260 320"><use href="#potato-base"/><circle cx="96" cy="126" r="5" fill="#fff"/><circle cx="154" cy="124" r="5" fill="#fff"/><path d="M98 176c17 7 34 8 52 2" class="line"/><path d="M54 204c-18 6-31 13-42 26" class="line thin"/><path d="M204 204c17 7 29 15 40 27" class="line thin"/></svg>
-            </div>
+            <img src="images/dumb_agent.png" class="absolute right-[60px] bottom-[0px] w-[270px] object-contain z-10" alt="Dumb agent" />
           </div>
         </div>
       </div>
@@ -521,8 +506,8 @@ while True:
             <div class="eyebrow">Here’s our approach</div>
             <h2 class="h-lg mt-5">How to build the <span class="accent">job application review app</span></h2>
             <ul class="bullet-lg mt-10 space-y-5">
-              <li>Build the UI</li>
-              <li>Connect it to a Mock Agent</li>
+              <li>Build the <span class="accent">user interface</span></li>
+              <li>Connect it to a <span class="accent">mock agent</span></li>
               <li>Connect it to a real agent – but not a smart one</li>
               <li>Finally, make the agent <span class="accent">smarter</span></li>
             </ul>

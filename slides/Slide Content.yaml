@@ -53,8 +53,7 @@ slides:
       print(resp)
       >>> farm
     image_notes:
-      - "picture of a computer-brain thing stuck in a potato-y body that has no eyes, mouth, ears, arms, or legs"
-      - "the brain sticks out of the top of the potato, as if the top of its cranium has been removed, but not in a gross way"
+      - images/llm_core.png
 
   - slide: 4
     delta_of: 3
@@ -68,8 +67,7 @@ slides:
             print(resp)
             messages.append(resp)
       image_notes:
-        - "the potato-like agent body gains a smiling mouth, ears, and legs"
-        - "it still has no eyes or arms"
+        - images/chatbot_agent.png
 
   - slide: 5
     delta_of: 4
@@ -90,8 +88,7 @@ slides:
                 else:
                     break
       image_notes:
-        - "same potato-y agent, but add eyeballs"
-        - "give it hands with wrenches and a toolbelt"
+        - images/tool_agent.png
 
   - slide: 6
     top_bar:
@@ -130,7 +127,7 @@ slides:
       bullets: []
       payoff_visible: false
     image_notes:
-      - "image of the basic potato agent from a few slides back"
+      - "no image on this slide yet"
 
   - slide: 8
     delta_of: 7
@@ -148,7 +145,7 @@ slides:
         title: "Skillz"
         detail: "task definition · ordered steps · output rules"
       image_notes:
-        - images/skilled_agent.png # we need to remove the skills manual svg b/c it already exists in the image - and the image needs to be the same size as the last slide
+        - images/skilled_agent.png
 
   - slide: 10
     delta_of: 9
@@ -161,13 +158,16 @@ slides:
           - "Andrej Karpathy — <b>2025 LLM Year in Review</b>"
           - "Anthropic — <b>Claude Opus 4.5</b>"
       image_notes:
-        - "images/cosmic_agent.png" # add this in front of the side panel
+        - "images/cosmic_agent.png"
 
   - slide: 11
     delta_of: 10
     reveal:
       payoff: "We rarely need bespoke state-machine workflows. <b>Instead, give the agent the right tools and the right skills.</b>"
       # we'll keep the side panel and agent from the last slide just as they were
+    image_notes:
+      - "reference panel + cosmic agent on the right"
+      - "payoff statement at bottom right"
 
   - slide: 12
     top_bar:
@@ -180,8 +180,7 @@ slides:
       body:
         - "We just gave it the <b>right tools</b>, we taught it to read <b>agent skills</b>, and we <b>improved the models</b>."
     image_notes:
-      - "close-up schematic of the same potato agent"
-      - "label each part: LLM brain, chat-bot lips and ears, agentic tool-hands, feet, and eyes"
+      - images/exploded_agent.png
 
   - slide: 13
     top_bar:
@@ -247,28 +246,25 @@ slides:
   - slide: 16
     delta_of: 15
     reveal:
-      # oops! make sure the previous bullet is still the way it was above!
       add_bullet: "Connect it to a <b>mock agent</b>"
       image_notes:
         - "review queue and review page screenshots on the right (same position as before)"
-        - "mock-agent potato on the right connected to UI"
+        - images/mock_agent.png
         - "cardboard cutout feeling"
         - "dumb blank expression, maybe drawn in crayon"
 
   - slide: 17
     delta_of: 16
     reveal:
-      # oops! make sure the previous bullets are still the way they were
       add_bullet: "Connect it to a <b>real agent</b> – but not a smart one"
       image_notes:
         - "review queue and review page screenshots on the right (same position as before)"
-        - "real potato agent on the right connected to UI"
+        - images/dumb_agent.png
         - "still a little silly or dumb-looking"
 
   - slide: 18
     delta_of: 17
     reveal:
-      # oops! make sure the previous bullets are still the way they were
       add_bullet: "Finally, make the agent <b>smarter</b>"
       side_card:
         heading: "Skill manual"

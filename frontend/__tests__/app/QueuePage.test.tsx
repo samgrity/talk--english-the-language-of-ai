@@ -61,6 +61,16 @@ describe('QueuePage', () => {
     expect(mockReplace).not.toHaveBeenCalledWith('/login');
   });
 
+  it('defaults the screening status filter to all statuses', async () => {
+    render(<QueuePage />);
+
+    await waitFor(() => {
+      expect(getApplications).toHaveBeenCalledWith('all', '');
+    });
+
+    expect(screen.getByLabelText('Screening Status')).toHaveValue('all');
+  });
+
   it('shows error state and retry button when API call fails', async () => {
     (getApplications as jest.Mock).mockRejectedValue(new Error('Network error'));
 

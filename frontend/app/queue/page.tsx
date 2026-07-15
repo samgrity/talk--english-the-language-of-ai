@@ -17,12 +17,12 @@ function QueuePageContent() {
 
   const [searchText, setSearchText] = useState<string>(searchParams.get('search') || '');
   const [statusFilter, setStatusFilter] = useState<string>(
-    searchParams.get('filter') || FilterStatus.PENDING
+    searchParams.get('filter') || FilterStatus.ALL
   );
 
   const updateURL = useCallback((filter: string, search: string) => {
     const params = new URLSearchParams();
-    params.set('filter', filter || FilterStatus.PENDING);
+    params.set('filter', filter || FilterStatus.ALL);
     params.set('search', search);
 
     const newURL = params.toString() ? `?${params.toString()}` : '/queue';
